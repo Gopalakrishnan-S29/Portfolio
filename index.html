@@ -1,409 +1,480 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gopalakrishnan S — Cybersecurity Portfolio</title>
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;font-size:15px}
-    body{background:#07070e;color:#b8b4d0;font-family:'Outfit',sans-serif;overflow-x:hidden;line-height:1.7}
-    ::-webkit-scrollbar{width:4px}
-    ::-webkit-scrollbar-track{background:#07070e}
-    ::-webkit-scrollbar-thumb{background:#00ddb3;border-radius:2px}
-    ::selection{background:#00ddb3;color:#07070e}
-    a{text-decoration:none;color:inherit}
-    button{border:none;background:none;cursor:pointer;font-family:inherit}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes fadeLeft{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
-    @keyframes fadeRight{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.15)}}
-    @keyframes scan{0%{top:-5%}100%{top:105%}}
-    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Gopalakrishnan S — Cybersecurity Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#05080f;--bg2:#080d1a;--surf:#0b1120;--card:#0e1428;
+  --b1:rgba(0,220,255,.13);--b2:rgba(0,220,255,.06);
+  --c1:#00dcff;--c2:#00ff88;--c3:#ff2255;--c4:#ffaa00;--c5:#9955ff;
+  --t1:#cce8f5;--t2:#6a90aa;--t3:#253545;
+  --fH:'Chakra Petch',sans-serif;--fM:'Fira Code',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t2);font-family:var(--fM);overflow-x:hidden;cursor:none;line-height:1.7}
+a{text-decoration:none;color:inherit}
+button{border:none;background:none;cursor:none;font-family:inherit}
+::selection{background:var(--c1);color:#000}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--c1)}
+
+/* CURSOR */
+#dot{position:fixed;z-index:9999;pointer-events:none;width:7px;height:7px;background:var(--c1);border-radius:50%;transform:translate(-50%,-50%)}
+#ring{position:fixed;z-index:9998;pointer-events:none;width:34px;height:34px;border:1px solid rgba(0,220,255,.38);border-radius:50%;transform:translate(-50%,-50%);transition:all .16s}
+
+/* KEYFRAMES */
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scanH{0%{top:0}100%{top:100%}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes glowH{0%,100%{text-shadow:0 0 30px rgba(0,220,255,.25)}50%{text-shadow:0 0 70px rgba(0,220,255,.6),0 0 110px rgba(0,220,255,.15)}}
+@keyframes matrixFall{0%{transform:translateY(-100%);opacity:1}85%{opacity:.4}100%{transform:translateY(2000%);opacity:0}}
+
+/* LAYOUT */
+.sec{padding:7rem 5%}
+.wrap{max-width:1180px;margin:0 auto}
+.lbl{font-family:var(--fM);font-size:.58rem;letter-spacing:.25em;color:var(--c1);display:flex;align-items:center;gap:.5rem;margin-bottom:.65rem;text-transform:uppercase}
+
+
+/* CARDS */
+.glass{background:var(--surf);border:1px solid var(--b1);position:relative;overflow:hidden;transition:border-color .28s,box-shadow .28s}
+.glass::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c1),transparent);animation:scanH 6s linear infinite;pointer-events:none}
+.glass:hover{border-color:rgba(0,220,255,.28);box-shadow:0 4px 32px rgba(0,220,255,.07)}
+.term{background:rgba(5,8,15,.97);border:1px solid var(--b1);position:relative;overflow:hidden}
+.term::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c1),transparent);animation:scanH 6s linear infinite;pointer-events:none;z-index:2}
+.tbar{background:rgba(5,8,15,.9);border-bottom:1px solid var(--b2);padding:.45rem 1rem;display:flex;align-items:center;gap:.38rem;flex-shrink:0}
+.tdot{width:9px;height:9px;border-radius:50%}
+.ttl{font-family:var(--fM);font-size:.56rem;color:var(--t3);letter-spacing:.1em;margin:0 auto}
+.tag{font-family:var(--fM);font-size:.56rem;color:var(--c1);border:1px solid rgba(0,220,255,.2);padding:.13rem .52rem;background:rgba(0,220,255,.04);letter-spacing:.04em}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(5,8,15,.96);border-bottom:1px solid var(--b1);backdrop-filter:blur(24px);padding:.6rem 5%;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+#nav.vis{transform:translateY(0)}
+/* SIDE NAV */
+#snav{position:fixed;right:1.8rem;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;gap:.9rem}
+.sn{display:flex;align-items:center;justify-content:flex-end;gap:.5rem;cursor:none;opacity:.28;transition:opacity .2s}
+.sn.on{opacity:1}
+.sn-d{width:4px;height:4px;border-radius:50%;border:1px solid var(--t3);transition:all .2s;flex-shrink:0}
+.sn.on .sn-d{background:var(--c1);border-color:var(--c1);box-shadow:0 0 8px rgba(0,220,255,.7);width:6px;height:6px}
+.sn-l{font-family:var(--fM);font-size:.46rem;color:var(--c1);letter-spacing:.1em;opacity:0;transition:opacity .2s}
+.sn.on .sn-l{opacity:1}
+</style>
 </head>
 <body>
+<div id="dot"></div>
+<div id="ring"></div>
+<div id="snav"></div>
+<nav id="nav">
+  <a href="#hero" style="display:flex;align-items:center;gap:.7rem">
+    <div style="width:32px;height:32px;border:1px solid rgba(0,220,255,.35);display:flex;align-items:center;justify-content:center;font-family:var(--fH);font-size:.7rem;font-weight:700;color:var(--c1);letter-spacing:.04em">GK</div>
+    <div>
+      <div style="font-family:var(--fH);font-size:.72rem;font-weight:700;color:var(--t1);letter-spacing:.06em;line-height:1"> Gopalakrishnan S</div>
+      <div style="font-family:var(--fM);font-size:.5rem;color:var(--c1);letter-spacing:.12em">Cyber Security</div>
+    </div>
+  </a>
+  <div id="nav-links" style="display:flex;align-items:center;gap:.08rem"></div>
+  <div style="display:flex;align-items:center;gap:.5rem;font-family:var(--fM);font-size:.52rem;color:var(--t3)">
+    <span style="width:5px;height:5px;background:var(--c2);border-radius:50%;animation:pdot 2s infinite;display:inline-block"></span>Online
+  </div>
+</nav>
 <div id="root"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-const { useState, useEffect, useRef, useCallback } = React;
+const {useState,useEffect,useRef}=React;
 
-/* ── TOKENS ── */
-const DARK = {
-  bg:"#07070e", bg2:"#0d0d1a", card:"#10101f", card2:"#161628",
-  teal:"#00ddb3", coral:"#ff3d5a", gold:"#ffc840",
-  white:"#eeeaf8", muted:"#5a5a8a", text:"#b8b4d0",
-  border:"rgba(0,221,179,0.14)", navBg:"rgba(7,7,14,0.92)", shadow:"0 4px 24px rgba(0,0,0,0.6)"
-};
-const LIGHT = {
-  bg:"#f0f4f8", bg2:"#e2e8f0", card:"#ffffff", card2:"#f8fafc",
-  teal:"#00b896", coral:"#e8264a", gold:"#d4a017",
-  white:"#1a202c", muted:"#718096", text:"#4a5568",
-  border:"rgba(0,184,150,0.25)", navBg:"rgba(240,244,248,0.95)", shadow:"0 4px 24px rgba(0,0,0,0.12)"
-};
-let T = {...DARK};
-const ThemeCtx = React.createContext({dark:true,toggle:()=>{}});
 
-/* ── DATA ── */
-const DATA = {
+const EMAILJS_SERVICE  = "service_na3y5cs";  
+const EMAILJS_TEMPLATE = "template_dxq7mgd";  
+const EMAILJS_KEY      = "WJqznEeVFsUI6jf5H";   
+
+/* ══════════════════════ DATA ══════════════════════ */
+const D = {
+  name:"Gopalakrishnan S",
   email:"gopalakrishnansasi10@gmail.com",
   phone:"+91 88254 77381",
   github:"https://github.com/Gopalakrishnan-S29",
   linkedin:"https://www.linkedin.com/in/gopalakrishnan-s-914a1b2ba/",
-  bio:[
-    "Hi! I'm Gopalakrishnan, a cybersecurity enthusiast from Dr. NGP Institute of Technology, Coimbatore, currently a pre-final year engineering student. I am interested in ethical hacking and Vulnerability Assessment & Penetration Testing (VAPT).",
-    "Passionate about offensive and defensive security. Three internships spanning VAPT, ethical hacking, and AI give me a full-spectrum view of how attacks happen and how to stop them.",
-    "I think like an attacker to defend like a pro — every lab, CTF, and project sharpens my edge."
-  ],
-  education:{ degree:"B.E. CSE – Cyber Security (Blockchain)", school:"Dr. N.G.P. Institute of Technology, Coimbatore", year:"2023–2027" },
-  stats:[{v:"3+",l:"Internships"},{v:"3+",l:"Projects"},{v:"5+",l:"Certifications"}],
-  heroStats:[{v:"5+",l:"Certifications"}],
-  skills:[
-    {icon:"🔐", name:"Penetration Testing"},
-    {icon:"⚡", name:"Ethical Hacking"},
-    {icon:"🔍", name:"Vulnerability Assessment"},
-    {icon:"🌐", name:"JavaScript"},
-    {icon:"🛠️", name:"Burp Suite"},
-    {icon:"🛡️", name:"OWASP ZAP"},
-    {icon:"🐉", name:"Kali Linux"},
-    {icon:"📡", name:"Network Security"},
-    {icon:"🕸️", name:"OWASP Top 10"},
-    {icon:"🐍", name:"Python"},
-    {icon:"🦈", name:"Wireshark"},
-    {icon:"💥", name:"Metasploit"},
-    {icon:"📊", name:"Log Analysis"},
-    {icon:"☕", name:"Java"},
-    {icon:"🤖", name:"AI / OpenCV"},
-  ],
-  experience:[
-    {role:"AI Intern",company:"NoviTech R&D Pvt Ltd",date:"Jul–Aug 2025",loc:"Coimbatore, TN",
-      points:["Deployed chatbot using AI platform; mastered conversational workflow.","Built CV apps: object detection, face recognition, object tracking using OpenCV.","Applied Deep Learning — neural networks & image classification.","Created hand gesture recognition and leaf disease detection systems."]},
-    {role:"VAPT Intern",company:"BCBUZZ Technology Pvt Ltd",date:"Jun 2025",loc:"Coimbatore, TN",
-      points:["Web app pentesting following OWASP methodology.","Identified SQL Injection, XSS, and auth vulnerabilities in lab environments.","Reconnaissance & service enumeration using Nmap.","Manual testing with Burp Suite and OWASP ZAP.","Structured VAPT reports with remediation recommendations."]},
-    {role:"Cyber Security Intern",company:"Rinex Technologies Pvt Ltd",date:"Apr–May 2025",loc:"Bengaluru, KA",
-      points:["Learned core pentesting, vulnerability assessment, and offensive security.","Traffic analysis and vulnerability discovery via Burp Suite & Wireshark.","Network scanning and service enumeration in lab environments.","Documented vulnerabilities and mitigation strategies."]}
-  ],
-  projects:[
-    {n:"01",icon:"🛡️",title:"Automated Linux Cyber Defence System",status:"Ongoing",year:"2025–",
-      desc:"Scripts to monitor system logs, detect suspicious activity and automate security auditing tasks for early threat identification.",
-      tags:["Python","Bash","Linux","Log Analysis"],link:"#"},
-    {n:"02",icon:"🔍",title:"CyberSentinel — Network & App Monitor",status:"Active",year:"2025–26",
-      desc:"Toolkit for WiFi analysis, open-port detection, and network visibility. Modules for service enumeration and system hardening.",
-      tags:["Python","Nmap","WiFi Analysis","Network Security"],link:"#"},
-    {n:"03",icon:"🚨",title:"Secure Scan — Intrusion Detection",status:"Completed",year:"2024–25",
-      desc:"CLI utilities for network scanning and security log monitoring with automation scripts for early threat alerting.",
-      tags:["Python","Nmap","CLI","Bash"],link:"#"}
-  ],
-  certs:[
-    {name:"Networking Basics",issuer:"Cisco Academy",year:"2025"},
-    {name:"Practical Cyber Security for Practitioners",issuer:"NPTEL",year:"2025"},
-    {name:"Practical Web Application Security & Testing",issuer:"Tagger Institute",year:"2025"},
-    {name:"SQL Injection Attacks",issuer:"EC-Council",year:"2025"},
-    {name:"NCC 'B' Certificate",issuer:"Ministry of Defence, Govt. of India",year:"2025"}
-  ]
+  location:"Coimbatore, India",
+  bio:"Cybersecurity student focused on Vulnerability Assessment and Penetration Testing (VAPT), web application security, and network security analysis. Skilled in identifying vulnerabilities using Burp Suite, Nmap, and Wireshark, with strong understanding of OWASP Top 10 and Linux environments. Passionate about strengthening practical cybersecurity skills through projects, labs, and internships.",
+  edu:"B.E. Computer Science & Engineering (Cyber Security) · Blockchain Specialization · Dr. N.G.P. Institute of Technology · 2023–2027",
 };
 
-/* ── HOOK ── */
-function useReveal() {
-  const ref = useRef(null);
-  const [vis, setVis] = useState(false);
-  useEffect(() => {
-    const el = ref.current; if (!el) return;
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVis(true); obs.disconnect(); } }, { threshold:0.1 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return [ref, vis];
+const SKILLS = [
+  {group:"Offensive Security",col:"#ff2255",items:[
+    {n:"VAPT / Pen Testing",v:88},{n:"Web App Security",v:85},{n:"Vulnerability Assessment",v:82},{n:"OWASP Top 10",v:90},{n:"SQL Injection",v:86},{n:"XSS & CSRF",v:83},
+  ]},
+  {group:"Security Tools",col:"#00dcff",items:[
+    {n:"Burp Suite",v:82},{n:"Kali Linux",v:86},{n:"Nmap",v:84},{n:"Wireshark",v:78},{n:"OWASP ZAP",v:76},{n:"Metasploit",v:72},
+  ]},
+  {group:"Programming",col:"#ffaa00",items:[
+    {n:"Python",v:82},{n:"Bash / Shell",v:78},{n:"Java",v:77},{n:"JavaScript",v:68},{n:"SQL",v:72},{n:"HTML / CSS",v:90},
+  ]},
+  {group:"Networking & Dev",col:"#00ff88",items:[
+    {n:"TCP/IP & OSI",v:80},{n:"Network Scanning",v:82},{n:"Log Analysis",v:70},{n:"MERN Stack",v:68},{n:"OpenCV / AI",v:72},{n:"Incident Response",v:66},{n:"GitHub",v:70}
+  ]},
+];
+
+const EXP = [
+  {role:"VAPT Intern",company:"BCBUZZ Technology Pvt Ltd",period:"Jun 2025",loc:"Coimbatore, TN",type:"Web App Security",col:"#ff2255",
+   tasks:["Web app pentesting following complete OWASP methodology.","Identified SQL Injection, XSS, and authentication flaws in lab environments.","Reconnaissance and service enumeration using Nmap.","Manual testing with Burp Suite; automated scanning with OWASP ZAP.","Structured VAPT reports with remediation recommendations."]},
+  {role:"Cyber Security & Ethical Hacking Intern",company:"Rinex Technologies Pvt Ltd",period:"Apr–May 2025",loc:"Bengaluru, KA",type:"Core Security",col:"#ffaa00",
+   tasks:["Core pentesting, VA, and offensive security methodologies.","Network scanning and service enumeration in lab environments.","Vulnerability discovery and traffic inspection via Burp Suite & Wireshark.","Documented vulnerabilities with mitigation strategies."]},
+  {role:"Artificial Intelligence Intern",company:"NoviTech R&D Private Limited",period:"Jul–Aug 2025",loc:"Coimbatore, TN",type:"AI / Computer Vision",col:"#9955ff",
+   tasks:["Built chatbot using conversational AI workflows.","Implemented CV pipelines with OpenCV — object detection, face recognition.","Explored deep learning and neural networks with pretrained models.","Built hand gesture recognition and leaf disease detection systems."]},
+  {role:"Web Development Intern",company:"Cognifyz Technologies",period:"Feb–Mar 2026",loc:"Maharashtra, India",type:"Front-End / MERN",col:"#00dcff",
+   tasks:["Developed responsive web pages with HTML5, CSS3, JavaScript.","Built UI components with Bootstrap and Bulma — galleries, slideshows, navbars.","Designed responsive internship landing page using Flexbox and media queries.","Implemented form validation and DOM manipulation for front-end functionality."]},
+];
+
+const PROJECTS = [
+  {id:"01",title:"Automated Linux Cyber Defence System",year:"2026–ongoing",col:"#ff2255",
+   desc:"Bash-based automation scripts monitoring Linux system logs to detect suspicious activities. Implements log analysis mechanisms for potential security threats and automates routine security auditing tasks for host-based security monitoring.",
+   tags:["Python","Bash","Linux","Log Analysis","IDS"],cvss:"8.4",
+   pts:["Real-time system log monitoring with anomaly detection","Automated security audit pipeline replacing manual checks","Configurable threat-level alerting and notifications"]},
+  {id:"02",title:"CyberSentinel — Unified Network & App Monitoring",year:"2025–26",col:"#ffaa00",
+   desc:"Security monitoring toolkit for network visibility, WiFi analysis, and open-port detection. Includes modules for network scanning and service enumeration to identify exposed services, integrated with system hardening checks for defensive security monitoring.",
+   tags:["Python","Nmap","WiFi","Network","Hardening"],cvss:"7.2",
+   pts:["Network visibility with open-port and WiFi analysis","Service enumeration modules with auto-classification","System hardening checks for attack surface reduction"]},
+  {id:"03",title:"Secure Scan — Networking Intrusion Detection",year:"2024–25",col:"#00ff88",
+   desc:"Command-line utilities for network scanning and security log monitoring. Automation scripts detect suspicious network activity and potential intrusion attempts, assisting with early threat identification and structured alert generation.",
+   tags:["Python","Nmap","Bash","CLI","IDS"],cvss:"5.3",
+   pts:["CLI-based network scanning and log monitoring","Automated suspicious activity detection with alerting","Structured reporting pipeline for incident documentation"]},
+];
+
+const CERTS = [
+  {n:"Practical Web Application Security and Testing",by:"Tagger Institute",yr:"2025",col:"#ff2255"},
+  {n:"SQL Injection Attacks",by:"EC-Council",yr:"2025",col:"#ffaa00"},
+  {n:"Practical Cyber Security for Practitioners",by:"NPTEL",yr:"2025",col:"#00dcff"},
+  {n:"Networking Basics",by:"Cisco Academy",yr:"2025",col:"#00ff88"},
+  {n:"NCC 'B' Certificate",by:"Ministry of Defence, Govt. of India",yr:"2025",col:"#9955ff"},
+];
+
+/* ══════════════════════ CURSOR ══════════════════════ */
+function useCursor(){
+  useEffect(()=>{
+    const dot=document.getElementById("dot"),ring=document.getElementById("ring");
+    let rx=0,ry=0,mx=600,my=400,af;
+    const lerp=(a,b,t)=>a+(b-a)*t;
+    const mv=e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px";};
+    const loop=()=>{rx=lerp(rx,mx,.13);ry=lerp(ry,my,.13);ring.style.left=rx+"px";ring.style.top=ry+"px";af=requestAnimationFrame(loop);};
+    window.addEventListener("mousemove",mv);loop();
+    return()=>{window.removeEventListener("mousemove",mv);cancelAnimationFrame(af);};
+  },[]);
 }
 
-/* ── SHARED ── */
-function Chip({ children }) {
-  return <div style={{display:"inline-flex",alignItems:"center",gap:".5rem",fontFamily:"'Fira Code',monospace",fontSize:".68rem",color:T.gold,letterSpacing:".14em",textTransform:"uppercase",marginBottom:".7rem"}}>
-    <span style={{color:T.teal,fontWeight:700}}>//</span> {children}
-  </div>;
+/* ══════════════════════ NAV + SIDENAV (DOM) ══════════════════════ */
+function useNav(active){
+  useEffect(()=>{
+    const nav=document.getElementById("nav");
+    const nl=document.getElementById("nav-links");
+    const sn=document.getElementById("snav");
+    const secs=["about","skills","experience","projects","certs","contact"];
+    nl.innerHTML=secs.map(s=>`<a href="#${s}" style="font-family:var(--fM);font-size:.56rem;padding:.32rem .75rem;color:${active===s?"#000":"var(--t3)"};background:${active===s?"var(--c1)":"transparent"};letter-spacing:.06em;text-transform:uppercase;transition:all .2s;text-decoration:none">${s}</a>`).join("");
+    sn.innerHTML=["hero",...secs].map(s=>`<div class="sn ${active===s?"on":""}" onclick="document.getElementById('${s}').scrollIntoView({behavior:'smooth'})" style="cursor:none"><span class="sn-l">${s}</span><span class="sn-d"></span></div>`).join("");
+    const tog=()=>nav.classList.toggle("vis",window.scrollY>window.innerHeight*.8);
+    window.addEventListener("scroll",tog);
+    return()=>window.removeEventListener("scroll",tog);
+  },[active]);
 }
-function STitle({ children }) {
-  return <h2 style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"clamp(2.2rem,5vw,3.8rem)",color:T.white,letterSpacing:".05em",lineHeight:.95,marginBottom:".8rem",fontWeight:700}}>{children}</h2>;
-}
-function Tag({ children }) {
-  return <span style={{background:"rgba(0,221,179,.08)",border:"1px solid rgba(0,221,179,.2)",borderRadius:"4px",fontSize:".68rem",color:T.teal,padding:".2rem .55rem",fontFamily:"'Fira Code',monospace"}}>{children}</span>;
-}
 
-/* ── PARTICLE CANVAS (full-page bright network) ── */
-function ParticleCanvas() {
-  const canvasRef = useRef(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    let raf;
-    const setSize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-    setSize();
-    window.addEventListener("resize", setSize);
-
-    const N = 180;
-    const pts = Array.from({length:N}, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      vx: (Math.random() - 0.5) * 0.6,
-      vy: (Math.random() - 0.5) * 0.6,
-      r: Math.random() * 2.2 + 0.8,
-      // some nodes are bright "hub" nodes
-      hub: Math.random() < 0.12
-    }));
-
-    function tick() {
-      canvas.width = canvas.width; // clear
-      const W = canvas.width, H = canvas.height;
-
-      for (const p of pts) {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+/* ══════════════════════ MATRIX RAIN CANVAS ══════════════════════ */
+function MatrixCanvas(){
+  const ref=useRef(null);
+  useEffect(()=>{
+    const cv=ref.current;if(!cv)return;
+    const ctx=cv.getContext("2d");
+    const resize=()=>{cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;};
+    resize();
+    const ro=new ResizeObserver(resize);ro.observe(cv);
+    const chars="01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホ<>{}[]|/\\#@$%^&*";
+    const fs=14;
+    let cols=Math.floor(cv.width/fs);
+    let drops=Array(cols).fill(1).map(()=>Math.random()*-100);
+    let af;
+    const draw=()=>{
+      ctx.fillStyle="rgba(5,8,15,.22)";
+      ctx.fillRect(0,0,cv.width,cv.height);
+      cols=Math.floor(cv.width/fs);
+      while(drops.length<cols)drops.push(Math.random()*-100);
+      drops.length=cols;
+      for(let i=0;i<cols;i++){
+        const c=chars[Math.floor(Math.random()*chars.length)];
+        const bright=Math.random()>.92;
+        ctx.fillStyle=bright?"rgba(200,255,255,.9)":i%3===0?"rgba(0,220,255,.55)":"rgba(0,220,255,.18)";
+        ctx.font=fs+"px 'Fira Code',monospace";
+        ctx.fillText(c,i*fs,drops[i]*fs);
+        if(drops[i]*fs>cv.height&&Math.random()>.975)drops[i]=0;
+        drops[i]+=.55;
       }
-
-      const LINK = 160;
-      for (let i = 0; i < N; i++) {
-        for (let j = i + 1; j < N; j++) {
-          const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
-          const d = Math.hypot(dx, dy);
-          if (d < LINK) {
-            const alpha = (1 - d / LINK) * 0.65;
-            ctx.beginPath();
-            ctx.moveTo(pts[i].x, pts[i].y);
-            ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(0,221,179,${alpha})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-      }
-
-      for (const p of pts) {
-        if (p.hub) {
-          // glowing hub
-          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
-          grad.addColorStop(0, "rgba(0,221,179,0.9)");
-          grad.addColorStop(1, "rgba(0,221,179,0)");
-          ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2);
-          ctx.fillStyle = grad; ctx.fill();
-          ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 1.4, 0, Math.PI * 2);
-          ctx.fillStyle = "#00ddb3"; ctx.fill();
-        } else {
-          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(0,221,179,0.85)"; ctx.fill();
-        }
-      }
-
-      raf = requestAnimationFrame(tick);
-    }
-    tick();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", setSize); };
-  }, []);
-  return (
-    <canvas ref={canvasRef} style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",pointerEvents:"none",zIndex:0}}/>
-  );
-}
-
-/* ── NAVBAR ── */
-function Navbar({ active }) {
-  const {dark, toggle} = React.useContext(ThemeCtx);
-  const [pastHero, setPastHero] = useState(false);
-  useEffect(() => {
-    const h = () => {
-      const hero = document.getElementById("hero");
-      const threshold = hero ? hero.offsetHeight - 80 : window.innerHeight - 80;
-      setPastHero(window.scrollY > threshold);
+      af=requestAnimationFrame(draw);
     };
-    window.addEventListener("scroll", h);
-    return () => window.removeEventListener("scroll", h);
-  }, []);
-  const links = ["about","skills","experience","projects","certifications","contact"];
-  return (
-    <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:50,
-      display:"flex",alignItems:"center",justifyContent:"space-between",
-      padding:"1rem 2rem",
-      transform:pastHero?"translateY(0)":"translateY(-100%)",
-      transition:"transform .35s cubic-bezier(.4,0,.2,1)"}}>
-
-      {/* Left: GK branding */}
-      <a href="#hero" style={{display:"flex",alignItems:"center",gap:".75rem",textDecoration:"none"}}>
-        <div style={{width:38,height:38,background:T.teal,borderRadius:8,display:"flex",alignItems:"center",
-          justifyContent:"center",fontFamily:"'Rajdhani',sans-serif",fontWeight:700,fontSize:"1rem",color:T.bg,letterSpacing:".05em",flexShrink:0}}>
-          GK
-        </div>
-        <div style={{lineHeight:1.2}}>
-          <div style={{fontFamily:"'Rajdhani',sans-serif",fontWeight:700,fontSize:".95rem",color:T.white,letterSpacing:".06em"}}>GOPALAKRISHNAN S</div>
-          <div style={{fontFamily:"'Fira Code',monospace",fontSize:".6rem",color:T.teal,letterSpacing:".1em"}}>Cyber Security</div>
-        </div>
-      </a>
-
-      {/* Center: pill nav */}
-      <div style={{display:"flex",alignItems:"center",gap:".3rem",
-        background:T.navBg,backdropFilter:"blur(20px)",
-        border:`1px solid ${T.border}`,borderRadius:100,
-        padding:".4rem .6rem",boxShadow:T.shadow,position:"absolute",left:"50%",transform:"translateX(-50%)"}}>
-        {links.map(l => (
-          <a key={l} href={`#${l}`} style={{
-            fontFamily:"'Fira Code',monospace",fontSize:".7rem",letterSpacing:".06em",
-            textTransform:"capitalize",padding:".45rem 1rem",borderRadius:100,
-            color:active===l?T.bg:T.muted,
-            background:active===l?T.teal:"transparent",
-            fontWeight:active===l?700:400,
-            transition:"all .2s"}}>
-            {l.charAt(0).toUpperCase()+l.slice(1)}
-          </a>
-        ))}
-      </div>
-
-      {/* Right: theme toggle */}
-      <button onClick={toggle} style={{
-        width:38,height:38,borderRadius:"50%",border:`1px solid ${T.border}`,
-        background:T.navBg,backdropFilter:"blur(20px)",cursor:"pointer",
-        display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",
-        transition:"all .2s",boxShadow:T.shadow}}
-        onMouseEnter={e=>{e.currentTarget.style.borderColor=T.teal}}
-        onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border}}>
-        {dark?"☀️":"🌙"}
-      </button>
-    </nav>
-  );
+    draw();
+    return()=>{cancelAnimationFrame(af);ro.disconnect();};
+  },[]);
+  return <canvas ref={ref} style={{position:"absolute",inset:0,width:"100%",height:"100%",zIndex:0,pointerEvents:"none",opacity:.35}}/>;
 }
 
-/* ── HERO ── */
-function Hero() {
-  const roles = ["VAPT Specialist","Ethical Hacker","Bug Hunter","Security Analyst","Defensive Engineer"];
-  const [ri,setRi] = useState(0);
-  const [disp,setDisp] = useState("");
-  const [del,setDel] = useState(false);
-  const [ci,setCi] = useState(0);
-  useEffect(() => {
-    const cur = roles[ri]; const spd = del?35:75;
-    const t = setTimeout(() => {
-      if (!del) { setDisp(cur.slice(0,ci+1)); if(ci+1===cur.length){setTimeout(()=>setDel(true),1400);return;} setCi(c=>c+1); }
-      else { setDisp(cur.slice(0,ci-1)); if(ci-1<0){setDel(false);setRi(r=>(r+1)%roles.length);setCi(0);return;} setCi(c=>c-1); }
-    }, spd);
-    return () => clearTimeout(t);
-  }, [ci,del,ri]);
-
-  return (
-    <section id="hero" style={{minHeight:"100vh",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",
-      padding:"7rem 5% 3rem",position:"relative",overflow:"hidden",textAlign:"center"}}>
-      <ParticleCanvas/>
-      {/* Dark overlay so text is readable */}
-      <div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse at center,rgba(7,7,14,0.25) 0%,rgba(7,7,14,0.55) 60%,rgba(7,7,14,0.82) 100%)",pointerEvents:"none",zIndex:1}}/>
-      <div style={{position:"relative",zIndex:2,maxWidth:760,width:"100%"}}>
-        <div style={{display:"inline-flex",alignItems:"center",gap:".6rem",background:"rgba(255,200,64,.08)",border:"1px solid rgba(255,200,64,.25)",
-          borderRadius:100,padding:".32rem 1rem",fontSize:".72rem",color:T.gold,letterSpacing:".1em",marginBottom:"2rem",fontFamily:"'Fira Code',monospace"}}>
-          <span style={{width:6,height:6,background:T.teal,borderRadius:"50%",display:"inline-block",animation:"pulse 1.5s ease-in-out infinite"}}/>
-          OPEN TO INTERNSHIPS &amp; COLLABS
+/* ══════════════════════ BOOT ══════════════════════ */
+function Boot({onDone}){
+  const[lines,setLines]=useState([]);
+  const[pct,setPct]=useState(0);
+  const[fade,setFade]=useState(false);
+  const seq=[
+    {t:0,  c:"#1a3a50",m:"Initializing Security Terminal..."},
+    {t:300,c:"#1a3a50",m:"Loading kernel modules...................  OK"},
+    {t:560,c:"#1a3a50",m:"Mounting encrypted volumes...............  OK"},
+    {t:800,c:"#00dcff",m:"Running integrity checks..................  PASS"},
+    {t:1020,c:"#1a3a50",m:"Firewall rules applied...................  128 rules"},
+    {t:1250,c:"#ffaa00",m:"Authenticating operator.................."},
+    {t:1530,c:"#00ff88",m:"Identity: GOPALAKRISHNAN S  .............  VERIFIED"},
+    {t:1780,c:"#00ff88",m:"Clearance: SECURITY RESEARCHER  .........  GRANTED"},
+    {t:2020,c:"#00dcff",m:"Launching portfolio......................  READY"},
+  ];
+  useEffect(()=>{
+    seq.forEach(({t,c,m},i)=>setTimeout(()=>{setLines(l=>[...l,{c,m}]);setPct(Math.round((i+1)/seq.length*100));},t));
+    setTimeout(()=>setFade(true),2600);
+    setTimeout(()=>onDone(),3200);
+  },[]);
+  return(
+    <div style={{position:"fixed",inset:0,background:"#05080f",zIndex:9999,display:"flex",flexDirection:"column",justifyContent:"center",padding:"3.5rem 6%",opacity:fade?0:1,transition:"opacity .65s",pointerEvents:fade?"none":"all"}}>
+      <div style={{display:"flex",alignItems:"center",gap:"1rem",marginBottom:"2.8rem"}}>
+        <div style={{width:48,height:48,border:"1px solid rgba(0,220,255,.45)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"var(--fH)",fontSize:"1rem",fontWeight:700,color:"var(--c1)"}}>GK</div>
+        <div>
+          <div style={{fontFamily:"var(--fH)",fontSize:"clamp(.9rem,2.2vw,1.6rem)",fontWeight:700,color:"var(--t1)",letterSpacing:".06em"}}>SECURITY TERMINAL</div>
+          <div style={{fontFamily:"var(--fM)",fontSize:".55rem",color:"var(--t3)",letterSpacing:".14em",marginTop:".18rem"}}>GOPALAKRISHNAN S // CYBERSECURITY RESEARCHER</div>
         </div>
-        <h1 style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"clamp(2rem,5.5vw,7.5rem)",fontWeight:700,lineHeight:.88,letterSpacing:".04em",color:T.white,marginBottom:"1.2rem",whiteSpace:"nowrap"}}>
-          GOPALAKRISHNAN S
-        </h1>
-        <div style={{fontFamily:"'Fira Code',monospace",fontSize:"1rem",color:T.coral,letterSpacing:".12em",height:"1.6rem",marginBottom:"1.4rem"}}>
-          {disp}<span style={{animation:"blink 1s step-end infinite"}}>|</span>
-        </div>
-        <p style={{fontSize:".93rem",color:T.text,maxWidth:560,margin:"0 auto 2.5rem",lineHeight:1.85}}>
-          Cybersecurity student from Coimbatore — hunting bugs, hardening systems and building defensive tools that keep adversaries out.
-        </p>
-        <div style={{display:"flex",gap:"1rem",justifyContent:"center",flexWrap:"wrap",marginBottom:"2.5rem"}}>
-          <a href="#projects" style={{padding:".78rem 2rem",background:T.teal,color:T.bg,borderRadius:4,fontWeight:700,fontSize:".86rem",transition:"all .25s"}}
-            onMouseEnter={e=>{e.target.style.background=T.gold;e.target.style.transform="translateY(-2px)"}}
-            onMouseLeave={e=>{e.target.style.background=T.teal;e.target.style.transform=""}}>View Projects →</a>
-          <a href="#contact" style={{padding:".78rem 2rem",background:"transparent",color:T.white,borderRadius:4,fontWeight:500,fontSize:".86rem",border:`1px solid ${T.border}`,transition:"all .25s"}}
-            onMouseEnter={e=>{e.target.style.borderColor=T.teal;e.target.style.color=T.teal}}
-            onMouseLeave={e=>{e.target.style.borderColor=T.border;e.target.style.color=T.white}}>Get In Touch</a>
-        </div>
-        {/* SCROLL indicator below buttons */}
-        <a href="#about" style={{display:"flex",flexDirection:"column",alignItems:"center",gap:".5rem",opacity:.85,textDecoration:"none",cursor:"pointer",transition:"opacity .2s"}}
-          onMouseEnter={e=>e.currentTarget.style.opacity="1"} onMouseLeave={e=>e.currentTarget.style.opacity=".85"}>
-          <div style={{width:1,height:40,background:`linear-gradient(to bottom,transparent,${T.teal})`}}/>
-          <span style={{fontFamily:"'Fira Code',monospace",fontSize:".58rem",color:T.teal,letterSpacing:".28em",textTransform:"uppercase"}}>SCROLL</span>
-          <div style={{width:1,height:40,background:`linear-gradient(to bottom,${T.teal},transparent)`}}/>
-        </a>
       </div>
-    </section>
-  );
-}
-function Ticker() {
-  const txt = ["VAPT","OWASP Top 10","Burp Suite","Nmap","Wireshark","SQL Injection","XSS","CSRF","Ethical Hacking","Python","Bash","OpenCV","Network Security"].join("  ·  ");
-  return (
-    <div style={{background:T.teal,overflow:"hidden",padding:".5rem 0",whiteSpace:"nowrap"}}>
-      <div style={{display:"inline-flex",animation:"ticker 22s linear infinite"}}>
-        {[txt,txt].map((t,i)=>(
-          <span key={i} style={{fontFamily:"'Fira Code',monospace",fontSize:".72rem",color:T.bg,fontWeight:500,letterSpacing:".1em",textTransform:"uppercase",paddingRight:"4rem"}}>{t}</span>
-        ))}
+      <div style={{maxWidth:580}}>
+        {lines.map((l,i)=><div key={i} style={{fontFamily:"var(--fM)",fontSize:".74rem",color:l.c,marginBottom:".28rem",animation:"fadeUp .2s ease"}}><span style={{color:"#0a1e2e",marginRight:".7rem"}}>$</span>{l.m}</div>)}
+        {!fade&&<span style={{color:"var(--c1)",animation:"blink .8s step-end infinite"}}>▌</span>}
+      </div>
+      <div style={{position:"absolute",bottom:"3rem",left:"6%",right:"6%"}}>
+        <div style={{display:"flex",justifyContent:"space-between",marginBottom:".38rem"}}>
+          <span style={{fontFamily:"var(--fM)",fontSize:".53rem",color:"var(--t3)",letterSpacing:".14em"}}>BOOT PROGRESS</span>
+          <span style={{fontFamily:"var(--fM)",fontSize:".53rem",color:"var(--c1)"}}>{pct}%</span>
+        </div>
+        <div style={{height:"1px",background:"rgba(0,220,255,.1)"}}>
+          <div style={{height:"100%",width:pct+"%",background:"linear-gradient(90deg,var(--c1),var(--c2))",transition:"width .25s ease",boxShadow:"0 0 10px rgba(0,220,255,.6)"}}/>
+        </div>
       </div>
     </div>
   );
 }
 
-/* ── ABOUT (with photo) ── */
-function About() {
-  const [ref,vis] = useReveal();
-  const [imgLoaded,setImgLoaded] = useState(false);
-  const [imgError,setImgError] = useState(false);
-  return (
-    <section id="about" style={{background:T.bg2,padding:"6rem 5%",borderTop:`1px solid ${T.border}`}}>
-      <div style={{maxWidth:1200,margin:"0 auto"}}>
-        {/* <Chip>About Me</Chip> */}
-        <STitle>WHO <span style={{color:T.teal}}>AM I?</span></STitle>
-        <div ref={ref} style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"5rem",alignItems:"center",marginTop:"2.5rem",
-          opacity:vis?1:0,transition:"opacity .65s ease"}}>
-          {/* Text left */}
-          <div style={{animation:vis?"fadeLeft .65s ease both":"none"}}>
-            {DATA.bio.map((p,i) => <p key={i} style={{fontSize:".92rem",color:T.text,lineHeight:1.9,marginBottom:"1.1rem"}}>{p}</p>)}
-            <div style={{marginTop:"2rem",background:T.card,border:`1px solid ${T.border}`,borderLeft:`3px solid ${T.gold}`,borderRadius:6,padding:"1.3rem 1.5rem"}}>
-              <div style={{fontWeight:700,color:T.white,fontSize:".9rem"}}>{DATA.education.degree}</div>
-              <div style={{fontFamily:"'Fira Code',monospace",color:T.teal,fontSize:".78rem",margin:".3rem 0"}}>{DATA.education.school}</div>
-              <div style={{color:T.muted,fontSize:".76rem",display:"flex",gap:"1.5rem"}}><span>{DATA.education.year}</span></div>
+/* ══════════════════════ HERO ══════════════════════ */
+function Hero(){
+  const[typed,setTyped]=useState("");
+  const[ri,setRi]=useState(0);
+  const[del,setDel]=useState(false);
+  const[ci,setCi]=useState(0);
+  const roles=["VAPT Specialist","Ethical Hacker","Bug Hunter","Security Researcher","Defensive Engineer","Web Security Analyst"];
+  useEffect(()=>{
+    const cur=roles[ri],spd=del?26:64;
+    const t=setTimeout(()=>{
+      if(!del){setTyped(cur.slice(0,ci+1));if(ci+1===cur.length){setTimeout(()=>setDel(true),1900);return;}setCi(c=>c+1);}
+      else{setTyped(cur.slice(0,ci-1));if(ci-1<0){setDel(false);setRi(r=>(r+1)%roles.length);setCi(0);return;}setCi(c=>c-1);}
+    },spd);
+    return()=>clearTimeout(t);
+  },[ci,del,ri]);
+
+  return(
+    <section id="hero" style={{minHeight:"100vh",position:"relative",overflow:"hidden",display:"flex",alignItems:"center",justifyContent:"center",padding:"4rem 5%",textAlign:"center"}}>
+      <MatrixCanvas/>
+      {/* Vignette */}
+      <div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 75% 80% at 50% 50%,rgba(5,8,15,.6) 0%,rgba(5,8,15,.92) 100%)",zIndex:1,pointerEvents:"none"}}/>
+      <div style={{position:"absolute",bottom:0,left:0,right:0,height:"30%",background:"linear-gradient(to bottom,transparent,var(--bg))",zIndex:2,pointerEvents:"none"}}/>
+
+      {/* Corner HUD */}
+      {[{t:"top",h:"left",l:"SYS:ARMED"},{t:"top",h:"right",l:"SECURE:ON"},{t:"bottom",h:"left",l:"LOC:CBE,IN"},{t:"bottom",h:"right",l:"STATUS:OK"}].map((c,i)=>(
+        <div key={i} style={{position:"absolute",[c.t]:"2.8rem",[c.h]:"3rem",zIndex:3,opacity:.35,pointerEvents:"none"}}>
+          <div style={{width:28,height:28,position:"relative"}}>
+            <div style={{position:"absolute",top:0,left:0,right:0,height:"2px",background:"var(--c1)"}}/>
+            <div style={{position:"absolute",top:0,[c.h==="left"?"left":"right"]:0,width:"2px",height:"28px",background:"var(--c1)"}}/>
+          </div>
+          <div style={{fontFamily:"var(--fM)",fontSize:".43rem",color:"var(--c1)",letterSpacing:".1em",marginTop:".25rem",textAlign:c.h==="right"?"right":"left"}}>{c.l}</div>
+        </div>
+      ))}
+
+      <div style={{position:"relative",zIndex:4,maxWidth:860,width:"100%",margin:"0 auto",textAlign:"center"}}>
+        {/* Badge */}
+        <div style={{display:"inline-flex",alignItems:"center",gap:".5rem",border:"1px solid rgba(0,220,255,.18)",padding:".28rem 1.1rem",marginBottom:"2.2rem",fontFamily:"var(--fM)",fontSize:".57rem",color:"var(--c1)",letterSpacing:".14em",background:"rgba(0,220,255,.04)"}}>
+          <span style={{width:5,height:5,background:"var(--c2)",borderRadius:"50%",animation:"pdot 2s infinite",display:"inline-block"}}/>
+          Available for Internships &amp; Collaborations
+        </div>
+
+        {/* Name — single line, full */}
+        <h1 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(2rem,5.8vw,5.2rem)",lineHeight:1,letterSpacing:".06em",color:"var(--t1)",marginBottom:"1.3rem",animation:"glowH 5s ease-in-out infinite",whiteSpace:"nowrap",textAlign:"center",width:"100%",display:"block"}}>GOPALAKRISHNAN S
+        </h1>
+
+        {/* Cyan underline */}
+        <div style={{width:"100%",height:"2px",background:"linear-gradient(90deg,transparent,var(--c1),transparent)",marginBottom:"1.5rem",boxShadow:"0 0 12px rgba(0,220,255,.5)"}}/>
+
+        {/* Role typewriter */}
+        <div style={{fontFamily:"var(--fM)",fontSize:"clamp(.72rem,1.8vw,1.1rem)",color:"var(--t2)",letterSpacing:".1em",height:"2.2rem",display:"flex",alignItems:"center",justifyContent:"center",gap:".4rem",marginBottom:"1.5rem"}}>
+          <span style={{color:"var(--c1)",opacity:.45}}>&gt;&nbsp;</span>
+          {typed}
+          <span style={{animation:"blink .75s step-end infinite",color:"var(--c1)"}}>_</span>
+        </div>
+
+        <p style={{fontFamily:"var(--fM)",fontSize:".78rem",color:"var(--t3)",maxWidth:520,margin:"0 auto 3rem",lineHeight:2}}>
+          Cybersecurity student from Coimbatore — hunting bugs,<br/>hardening systems and building tools that make systems harder to break.
+        </p>
+
+        {/* CTAs */}
+        <div style={{display:"flex",gap:".8rem",justifyContent:"center",flexWrap:"wrap",marginBottom:"4rem"}}>
+          {[{href:"#projects",label:"View Projects",p:true},{href:"#about",label:"About Me",p:false},{href:"#contact",label:"Get In Touch",p:false}].map(b=>(
+            <a key={b.href} href={b.href} style={{padding:".68rem 1.8rem",background:b.p?"var(--c1)":"transparent",color:b.p?"#000":"var(--c1)",fontFamily:"var(--fH)",fontSize:".68rem",fontWeight:700,letterSpacing:".1em",border:"1px solid "+(b.p?"var(--c1)":"rgba(0,220,255,.28)"),transition:"all .22s"}}
+              onMouseEnter={e=>{e.currentTarget.style.background=b.p?"#000":"var(--c1)";e.currentTarget.style.color=b.p?"var(--c1)":"#000";e.currentTarget.style.borderColor="var(--c1)";}}
+              onMouseLeave={e=>{e.currentTarget.style.background=b.p?"var(--c1)":"transparent";e.currentTarget.style.color=b.p?"#000":"var(--c1)";e.currentTarget.style.borderColor=b.p?"var(--c1)":"rgba(0,220,255,.28)";}}>
+              {b.label}
+            </a>
+          ))}
+        </div>
+
+        {/* Scroll */}
+        <a href="#about" style={{display:"inline-flex",flexDirection:"column",alignItems:"center",gap:".4rem",opacity:.4,transition:"opacity .2s"}}
+          onMouseEnter={e=>e.currentTarget.style.opacity="1"} onMouseLeave={e=>e.currentTarget.style.opacity=".4"}>
+          <div style={{width:"1px",height:48,background:"linear-gradient(to bottom,transparent,var(--c1))"}}/>
+          <span style={{fontFamily:"var(--fM)",fontSize:".47rem",color:"var(--c1)",letterSpacing:".35em"}}>SCROLL</span>
+          <div style={{width:8,height:8,border:"1px solid var(--c1)",transform:"rotate(45deg)",animation:"floatY 1.8s ease-in-out infinite"}}/>
+        </a>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════ TICKER ══════════════════════ */
+function Ticker(){
+  const items=["VAPT","Burp Suite","Kali Linux","Ethical Hacking","OWASP Top 10","Nmap","Wireshark","SQL Injection","XSS","Python","Network Security","Metasploit","Log Analysis","Bug Bounty","AI Security","MERN Stack","Bash"];
+  const t=items.map(i=>`— ${i} `).join("  ");
+  return(
+    <div style={{background:"var(--bg2)",borderTop:"1px solid var(--b1)",borderBottom:"1px solid var(--b1)",padding:".4rem 0",overflow:"hidden",whiteSpace:"nowrap",position:"relative",zIndex:10}}>
+      <div style={{display:"inline-flex",animation:"ticker 42s linear infinite"}}>
+        {[t,t].map((x,i)=><span key={i} style={{fontFamily:"var(--fM)",fontSize:".58rem",color:"var(--t3)",letterSpacing:".1em",paddingRight:"5rem"}}>{x}</span>)}
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════ REVEAL ══════════════════════ */
+function useReveal(thresh=.07){
+  const ref=useRef(null);const[vis,setVis]=useState(false);
+  useEffect(()=>{
+    const el=ref.current;if(!el)return;
+    const o=new IntersectionObserver(([e])=>{if(e.isIntersecting){setVis(true);o.disconnect();}},{threshold:thresh});
+    o.observe(el);return()=>o.disconnect();
+  },[]);
+  return[ref,vis];
+}
+
+/* ══════════════════════ ABOUT ══════════════════════ */
+function About(){
+  const[ref,vis]=useReveal();
+  const[imgL,setImgL]=useState(false);
+  const[imgE,setImgE]=useState(false);
+  const stats=[{v:4,u:"+",l:"Internships",c:"var(--c1)"},{v:3,u:"+",l:"Projects",c:"var(--c2)"},{v:5,u:"+",l:"Certifications",c:"var(--c4)"}];
+  return(
+    <section className="sec" id="about" style={{borderBottom:"1px solid var(--b1)"}}>
+      <div className="wrap">
+        <div className="lbl"></div>
+        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:"4rem"}}>
+          Security mindset. <span style={{color:"var(--c1)"}}>Built from first principles.</span>
+        </h2>
+
+        <div ref={ref} style={{display:"grid",gridTemplateColumns:"1fr 340px",gap:"4rem",alignItems:"start",opacity:vis?1:0,transition:"opacity .8s"}}>
+
+          {/* Left */}
+          <div>
+            <p style={{fontFamily:"var(--fM)",fontSize:".8rem",color:"var(--t2)",lineHeight:2,marginBottom:"1.5rem"}}>{D.bio}</p>
+            <div style={{fontFamily:"var(--fM)",fontSize:".72rem",color:"var(--t3)",lineHeight:1.9,paddingLeft:"1rem",borderLeft:"2px solid var(--b2)",marginBottom:"2.5rem"}}>
+              <span style={{color:"var(--c1)"}}>→ </span>{D.edu}
             </div>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:".8rem",marginTop:"1.5rem"}}>
-              {DATA.stats.map(s => (
-                <div key={s.l} style={{background:T.card2,border:`1px solid ${T.border}`,borderRadius:6,padding:"1rem .8rem",textAlign:"center",transition:"all .2s"}}
-                  onMouseEnter={e=>{e.currentTarget.style.borderColor=T.teal;e.currentTarget.style.transform="translateY(-2px)"}}
-                  onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border;e.currentTarget.style.transform=""}}>
-                  <div style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"2rem",color:T.teal,lineHeight:1,fontWeight:700}}>{s.v}</div>
-                  <div style={{fontFamily:"'Fira Code',monospace",fontSize:".62rem",color:T.muted,marginTop:".25rem",letterSpacing:".06em"}}>{s.l}</div>
+            {/* Stats */}
+            <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",border:"1px solid var(--b1)"}}>
+              {stats.map((s,i)=>{
+                const[cnt,setCnt]=useState(0);
+                useEffect(()=>{
+                  if(!vis)return;
+                  let c=0;const step=s.v/40;
+                  const t=setInterval(()=>{c=Math.min(c+step,s.v);setCnt(Math.floor(c));if(c>=s.v)clearInterval(t);},25);
+                  return()=>clearInterval(t);
+                },[vis]);
+                return(
+                  <div key={i} style={{borderRight:i<3?"1px solid var(--b1)":"none",padding:"1.4rem .8rem",textAlign:"center",background:"var(--surf)",position:"relative",overflow:"hidden"}}
+                    onMouseEnter={e=>e.currentTarget.style.background="var(--card)"}
+                    onMouseLeave={e=>e.currentTarget.style.background="var(--surf)"}>
+                    <div style={{position:"absolute",top:0,left:0,right:0,height:"2px",background:`linear-gradient(90deg,transparent,${s.c},transparent)`}}/>
+                    <div style={{fontFamily:"var(--fH)",fontSize:"2rem",fontWeight:700,color:s.c,lineHeight:1,letterSpacing:"-.01em"}}>{cnt}{s.u}</div>
+                    <div style={{fontFamily:"var(--fM)",fontSize:".5rem",color:"var(--t3)",marginTop:".35rem",letterSpacing:".14em"}}>{s.l.toUpperCase()}</div>
+                  </div>
+                );
+              })}
+            </div>
+            {/* Quick info rows */}
+            <div style={{marginTop:"2rem",display:"flex",flexDirection:"column",gap:"0"}}>
+              {[{l:"Location",v:"Coimbatore, India"},{l:"Degree",v:"B.E. CSE – Cyber Security"},{l:"Specialization",v:"Blockchain"},{l:"Year",v:"3rd Year · 2023–2027"}].map(r=>(
+                <div key={r.l} style={{display:"flex",gap:"1rem",padding:".6rem 0",borderBottom:"1px solid var(--b1)"}}>
+                  <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)",minWidth:110,letterSpacing:".04em"}}>{r.l}</span>
+                  <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t1)"}}>{r.v}</span>
                 </div>
               ))}
             </div>
           </div>
-          {/* Photo right */}
-          <div style={{display:"flex",justifyContent:"center",animation:vis?"fadeRight .65s ease .1s both":"none"}}>
-            <div style={{position:"relative",width:300,maxWidth:"100%"}}>
-              <div style={{position:"absolute",top:-12,left:-12,right:12,bottom:12,border:`1px solid rgba(0,221,179,.2)`,borderRadius:8}}/>
-              <div style={{position:"absolute",top:12,left:12,right:-12,bottom:-12,border:`1px solid rgba(255,61,90,.15)`,borderRadius:8}}/>
-              <div style={{position:"relative",zIndex:1,borderRadius:8,overflow:"hidden",border:`2px solid ${T.border}`,background:T.card,aspectRatio:"3/4",minHeight:360}}>
-                {!imgLoaded&&!imgError&&(
-                  <div style={{position:"absolute",inset:0,zIndex:3,overflow:"hidden",pointerEvents:"none"}}>
-                    <div style={{position:"absolute",width:"100%",height:2,background:`linear-gradient(90deg,transparent,${T.teal},transparent)`,animation:"scan 2s linear infinite"}}/>
-                  </div>
-                )}
-                <img src="me.jpeg" alt="Gopalakrishnan S"
-                  onLoad={()=>setImgLoaded(true)} onError={()=>setImgError(true)}
-                  referrerPolicy="no-referrer"
-                  style={{width:"100%",height:"100%",objectFit:"cover",display:imgLoaded?"block":"none",filter:"brightness(1.05) contrast(1.04)"}}/>
-                {!imgLoaded&&(
-                  <div style={{width:"100%",height:"100%",minHeight:360,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"1rem"}}>
-                    <span style={{fontSize:"2.5rem",opacity:.25}}>📷</span>
-                    <span style={{fontFamily:"'Fira Code',monospace",fontSize:".68rem",color:T.muted,textAlign:"center",lineHeight:1.7}}>
-                      {imgError?"Place me.jpeg\nin same folder":"Loading..."}
-                    </span>
-                  </div>
-                )}
-                {imgLoaded&&<div style={{position:"absolute",inset:0,background:"linear-gradient(to top,rgba(7,7,14,.65) 0%,transparent 50%)",pointerEvents:"none"}}/>}
+
+          {/* Right — Photo only, no extra content below */}
+          <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
+            {/* Corner bracket decoration */}
+            <div style={{position:"relative",width:"100%",maxWidth:280}}>
+              {[["top","left"],["top","right"],["bottom","left"],["bottom","right"]].map(([vt,hz],i)=>(
+                <div key={i} style={{position:"absolute",width:20,height:20,[vt]:-6,[hz]:-6,borderTop:vt==="top"?"2px solid var(--c1)":undefined,borderBottom:vt==="bottom"?"2px solid var(--c1)":undefined,borderLeft:hz==="left"?"2px solid var(--c1)":undefined,borderRight:hz==="right"?"2px solid var(--c1)":undefined,zIndex:3}}/>
+              ))}
+              {/* Terminal photo card */}
+              <div className="term" style={{width:"100%"}}>
+                <div className="tbar">
+                  {["#ff5f56","#ffbd2e","#27c93f"].map((c,i)=><div key={i} className="tdot" style={{background:c}}/>)}
+                  <span className="ttl">profile.exe</span>
+                </div>
+                {/* Photo area */}
+                <div style={{width:"100%",aspectRatio:"3/4",position:"relative",overflow:"hidden",background:"var(--bg2)"}}>
+                  {!imgL&&(
+                    <div style={{position:"absolute",inset:0,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:".8rem"}}>
+                      <div style={{position:"absolute",width:"100%",height:"2px",background:"linear-gradient(90deg,transparent,var(--c1),transparent)",animation:"scanH 2.4s linear infinite",top:0}}/>
+                      <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)",letterSpacing:".1em"}}>{imgE?"// place me.jpeg here":"// loading..."}</span>
+                    </div>
+                  )}
+                  <img src="me.jpeg" alt="Gopalakrishnan S"
+                    onLoad={()=>setImgL(true)} onError={()=>setImgE(true)}
+                    style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center top",display:imgL?"block":"none"}}/>
+                </div>
+                {/* Name strip */}
+                <div style={{background:"rgba(5,8,15,.97)",borderTop:"1px solid var(--b1)",padding:".7rem 1rem",textAlign:"center"}}>
+                  <div style={{fontFamily:"var(--fH)",fontWeight:700,color:"var(--t1)",fontSize:".8rem",letterSpacing:".06em"}}>GOPALAKRISHNAN S</div>
+                  <div style={{fontFamily:"var(--fM)",fontSize:".54rem",color:"var(--c1)",letterSpacing:".12em",marginTop:".2rem"}}>Cybersecurity Student</div>
+                </div>
               </div>
-              <div style={{position:"absolute",bottom:20,left:"50%",transform:"translateX(-50%)",background:"rgba(7,7,14,.92)",
-                backdropFilter:"blur(12px)",border:`1px solid ${T.border}`,borderRadius:6,padding:".6rem 1.4rem",zIndex:2,whiteSpace:"nowrap",textAlign:"center"}}>
-                <div style={{fontFamily:"'Rajdhani',sans-serif",color:T.white,fontSize:"1rem",letterSpacing:".08em",fontWeight:700}}>GOPALAKRISHNAN S</div>
-                <div style={{fontFamily:"'Fira Code',monospace",color:T.teal,fontSize:".64rem",letterSpacing:".1em"}}>CYBERSECURITY STUDENT</div>
-              </div>
+            </div>
+
+            {/* Social links below photo */}
+            <div style={{display:"flex",gap:".6rem",marginTop:"1.2rem",flexWrap:"wrap",justifyContent:"center"}}>
+              {[{l:"GitHub",href:D.github,col:"var(--c4)"},{l:"LinkedIn",href:D.linkedin,col:"var(--c5)"}].map(s=>(
+                <a key={s.l} href={s.href} target="_blank" rel="noopener noreferrer"
+                  style={{fontFamily:"var(--fM)",fontSize:".58rem",color:s.col,border:`1px solid ${s.col}44`,padding:".25rem .9rem",background:`${s.col}08`,transition:"background .2s",letterSpacing:".06em"}}
+                  onMouseEnter={e=>e.currentTarget.style.background=`${s.col}18`}
+                  onMouseLeave={e=>e.currentTarget.style.background=`${s.col}08`}>
+                  {s.l} →
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -412,24 +483,55 @@ function About() {
   );
 }
 
-/* ── SKILLS ── */
-function Skills() {
-  const [ref,vis] = useReveal();
-  return (
-    <section id="skills" style={{padding:"6rem 5%"}}>
-      <div style={{maxWidth:1200,margin:"0 auto"}}>
-        {/* <Chip>Expertise</Chip> */}
-        <STitle>MY <span style={{color:T.teal}}>SKILLS</span> &amp; TECHNOLOGIES</STitle>
-        <p style={{fontSize:".9rem",color:T.muted,maxWidth:520,lineHeight:1.8,marginBottom:"3rem"}}>Built through internships, self-study, and real-world projects.</p>
-        <div ref={ref} style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:"1rem"}}>
-          {DATA.skills.map((s,i) => (
-            <div key={s.name} style={{background:T.card,border:`1px solid ${T.border}`,borderRadius:10,padding:"1.1rem 1.3rem",display:"flex",alignItems:"center",gap:".85rem",position:"relative",overflow:"hidden",transition:"border-color .25s,transform .25s,box-shadow .25s",
-              opacity:vis?1:0,animation:vis?`fadeUp .45s ease ${i*0.04}s both`:"none"}}
-              onMouseEnter={e=>{e.currentTarget.style.borderColor=T.teal;e.currentTarget.style.transform="translateY(-3px)";e.currentTarget.style.boxShadow="0 8px 24px rgba(0,0,0,.4)"}}
-              onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border;e.currentTarget.style.transform="";e.currentTarget.style.boxShadow=""}}>
-              <div style={{width:40,height:40,background:"rgba(0,221,179,.1)",border:"1px solid rgba(0,221,179,.18)",borderRadius:8,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.15rem",flexShrink:0}}>{s.icon}</div>
-              <span style={{color:T.white,fontWeight:600,fontSize:".85rem"}}>{s.name}</span>
-              <div style={{position:"absolute",bottom:0,left:0,right:0,height:2,background:`linear-gradient(90deg,${T.teal},rgba(0,221,179,0.15),transparent)`}}/>
+/* ══════════════════════ SKILLS — Flip Cards ══════════════════════ */
+function Skills(){
+  const[ref,vis]=useReveal();
+  return(
+    <section className="sec" id="skills" style={{background:"var(--bg2)",borderBottom:"1px solid var(--b1)"}}>
+      <div className="wrap">
+        <div className="lbl">Skills</div>
+        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:".5rem"}}>
+          Technical <span style={{color:"var(--c1)"}}>Capabilities.</span>
+        </h2>
+        
+        <div ref={ref} style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(258px,1fr))",gap:"1.4rem"}}>
+          {SKILLS.map((grp,gi)=>(
+            <div key={gi} style={{height:310,perspective:900,opacity:vis?1:0,animation:vis?`fadeUp .5s ease ${gi*.1}s both`:"none"}}>
+              <div style={{width:"100%",height:"100%",position:"relative",transformStyle:"preserve-3d",transition:"transform .6s cubic-bezier(.4,0,.2,1)"}}
+                onMouseEnter={e=>e.currentTarget.style.transform="rotateY(180deg)"}
+                onMouseLeave={e=>e.currentTarget.style.transform="rotateY(0deg)"}>
+                {/* Front */}
+                <div style={{position:"absolute",inset:0,backfaceVisibility:"hidden",background:"var(--surf)",border:"1px solid var(--b1)",padding:"1.4rem",display:"flex",flexDirection:"column"}}>
+                  <div style={{display:"flex",alignItems:"center",gap:".55rem",marginBottom:"1.3rem",paddingBottom:".9rem",borderBottom:"1px solid var(--b1)"}}>
+                    <div style={{width:3,height:16,background:grp.col,boxShadow:`0 0 8px ${grp.col}`}}/>
+                    <span style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:".82rem",color:"var(--t1)",letterSpacing:".04em"}}>{grp.group}</span>
+                  </div>
+                  <div style={{display:"flex",flexWrap:"wrap",gap:".45rem",flex:1,alignContent:"flex-start"}}>
+                    {grp.items.map(sk=>(
+                      <span key={sk.n} style={{fontFamily:"var(--fM)",fontSize:".6rem",color:grp.col,border:`1px solid ${grp.col}30`,padding:".15rem .55rem",background:`${grp.col}08`,letterSpacing:".03em"}}>{sk.n}</span>
+                    ))}
+                  </div>
+                  <div style={{fontFamily:"var(--fM)",fontSize:".48rem",color:"var(--t3)",marginTop:"auto",paddingTop:".8rem",letterSpacing:".1em",textAlign:"center"}}>↻ HOVER FOR LEVELS</div>
+                </div>
+                {/* Back */}
+                <div style={{position:"absolute",inset:0,backfaceVisibility:"hidden",transform:"rotateY(180deg)",background:"var(--card)",border:"1px solid var(--b1)",padding:"1.3rem 1.4rem",display:"flex",flexDirection:"column",justifyContent:"center"}}>
+                  <div style={{display:"flex",alignItems:"center",gap:".5rem",marginBottom:"1.1rem"}}>
+                    <div style={{width:3,height:13,background:grp.col}}/>
+                    <span style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:".75rem",color:"var(--t1)"}}>{grp.group}</span>
+                  </div>
+                  {grp.items.map(sk=>(
+                    <div key={sk.n} style={{marginBottom:".55rem"}}>
+                      <div style={{display:"flex",justifyContent:"space-between",marginBottom:".22rem"}}>
+                        <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t2)"}}>{sk.n}</span>
+                        <span style={{fontFamily:"var(--fM)",fontSize:".56rem",color:grp.col,fontWeight:600}}>{sk.v}%</span>
+                      </div>
+                      <div style={{height:"2px",background:"var(--b1)"}}>
+                        <div style={{height:"100%",width:sk.v+"%",background:grp.col,boxShadow:`0 0 5px ${grp.col}80`}}/>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -438,41 +540,52 @@ function Skills() {
   );
 }
 
-/* ── EXPERIENCE ── */
-function Experience() {
-  const [active,setActive] = useState(0);
-  const [ref,vis] = useReveal();
-  const e = DATA.experience[active];
-  return (
-    <section id="experience" style={{background:T.bg2,padding:"6rem 5%",borderTop:`1px solid ${T.border}`,borderBottom:`1px solid ${T.border}`}}>
-      <div style={{maxWidth:1200,margin:"0 auto"}}>
-        {/* <Chip>Experience</Chip> */}
-        <STitle>WORK <span style={{color:T.teal}}>TIMELINE</span></STitle>
-        <p style={{fontSize:".9rem",color:T.muted,maxWidth:500,lineHeight:1.8,marginBottom:"3rem"}}>Three internships across AI, VAPT, and Ethical Hacking.</p>
-        <div ref={ref} style={{display:"grid",gridTemplateColumns:"260px 1fr",gap:"3rem",opacity:vis?1:0,transform:vis?"translateY(0)":"translateY(24px)",transition:"all .65s ease"}}>
-          <div style={{display:"flex",flexDirection:"column",gap:".5rem"}}>
-            {DATA.experience.map((ex,i) => (
-              <button key={i} onClick={()=>setActive(i)}
-                style={{padding:"1rem 1.2rem",borderRadius:6,textAlign:"left",background:active===i?T.card2:"transparent",borderLeft:`3px solid ${active===i?T.teal:"transparent"}`,transition:"all .2s"}}
-                onMouseEnter={e=>{if(active!==i)e.currentTarget.style.background=T.card}}
-                onMouseLeave={e=>{if(active!==i)e.currentTarget.style.background="transparent"}}>
-                <div style={{fontSize:".86rem",fontWeight:600,color:T.white}}>{ex.role}</div>
-                <div style={{fontFamily:"'Fira Code',monospace",fontSize:".72rem",color:T.muted,marginTop:".2rem"}}>{ex.company}</div>
-                <div style={{fontFamily:"'Fira Code',monospace",fontSize:".67rem",color:T.gold,marginTop:".3rem"}}>{ex.date}</div>
+/* ══════════════════════ EXPERIENCE ══════════════════════ */
+function Experience(){
+  const[active,setActive]=useState(0);
+  const[ref,vis]=useReveal();
+  const e=EXP[active];
+  return(
+    <section className="sec" id="experience" style={{borderBottom:"1px solid var(--b1)"}}>
+      <div className="wrap">
+        <div className="lbl">Experience</div>
+        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:"4rem"}}>
+          Real-World <span style={{color:"var(--c1)"}}>Engagements.</span>
+        </h2>
+        <div ref={ref} style={{display:"grid",gridTemplateColumns:"270px 1fr",gap:"2.5rem",opacity:vis?1:0,transition:"opacity .8s"}}>
+          <div style={{display:"flex",flexDirection:"column",gap:".4rem"}}>
+            {EXP.map((ex,i)=>(
+              <button key={i} onClick={()=>setActive(i)} style={{padding:"1rem 1.1rem",textAlign:"left",background:active===i?`${ex.col}0d`:"transparent",border:`1px solid ${active===i?ex.col+"44":"var(--b1)"}`,borderLeft:`3px solid ${active===i?ex.col:"transparent"}`,transition:"all .22s",cursor:"none"}}>
+                <div style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:".72rem",color:"var(--t1)",marginBottom:".25rem"}}>{ex.role}</div>
+                <div style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)",marginBottom:".2rem"}}>{ex.company}</div>
+                <div style={{fontFamily:"var(--fM)",fontSize:".56rem",color:ex.col,letterSpacing:".06em"}}>{ex.period}</div>
               </button>
             ))}
           </div>
-          <div key={active} style={{animation:"fadeUp .35s ease"}}>
-            <div style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"2.1rem",color:T.white,letterSpacing:".04em",fontWeight:700}}>{e.role}</div>
-            <div style={{fontFamily:"'Fira Code',monospace",fontSize:".82rem",color:T.teal,margin:".3rem 0"}}>{e.company}</div>
-            <div style={{fontSize:".76rem",color:T.muted,display:"flex",gap:"1rem",marginBottom:"1.2rem"}}><span>📅 {e.date}</span><span>📍 {e.loc}</span></div>
-            <ul style={{listStyle:"none"}}>
-              {e.points.map((pt,i) => (
-                <li key={i} style={{fontSize:".87rem",color:T.text,lineHeight:1.8,padding:".5rem 0 .5rem 1.4rem",position:"relative",borderBottom:"1px solid rgba(255,255,255,.04)"}}>
-                  <span style={{position:"absolute",left:0,color:T.gold,fontSize:".74rem",top:".6rem"}}>▸</span>{pt}
-                </li>
-              ))}
-            </ul>
+          <div key={active} className="term" style={{animation:"fadeUp .28s ease"}}>
+            <div className="tbar">
+              {["#ff5f56","#ffbd2e","#27c93f"].map((c,i)=><div key={i} className="tdot" style={{background:c}}/>)}
+              <span className="ttl">{e.company.toLowerCase().replace(/[^a-z]/g,"_")}.log</span>
+            </div>
+            <div style={{padding:"2rem"}}>
+              <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",flexWrap:"wrap",gap:".8rem",marginBottom:"1rem"}}>
+                <h3 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"1.25rem",color:"var(--t1)",letterSpacing:".03em"}}>{e.role}</h3>
+                <span style={{fontFamily:"var(--fM)",fontSize:".57rem",color:e.col,border:`1px solid ${e.col}44`,padding:".13rem .6rem",background:`${e.col}08`,letterSpacing:".08em"}}>{e.type}</span>
+              </div>
+              <div style={{display:"flex",gap:"1.5rem",marginBottom:"1.8rem",flexWrap:"wrap"}}>
+                <span style={{fontFamily:"var(--fM)",fontSize:".63rem",color:e.col}}>@ {e.company}</span>
+                <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)"}}>{e.period}</span>
+                <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)"}}>📍 {e.loc}</span>
+              </div>
+              <div style={{borderTop:"1px solid var(--b1)",paddingTop:"1.5rem"}}>
+                {e.tasks.map((t,i)=>(
+                  <div key={i} style={{display:"flex",gap:".8rem",marginBottom:".85rem"}}>
+                    <span style={{color:e.col,fontSize:".65rem",flexShrink:0,marginTop:".12rem"}}>→</span>
+                    <span style={{fontFamily:"var(--fM)",fontSize:".74rem",color:"var(--t2)",lineHeight:1.9}}>{t}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -480,38 +593,92 @@ function Experience() {
   );
 }
 
-/* ── PROJECTS ── */
-function Projects() {
-  const [ref,vis] = useReveal();
-  return (
-    <section id="projects" style={{padding:"6rem 5%"}}>
-      <div style={{maxWidth:1200,margin:"0 auto"}}>
-        {/*<Chip>Projects</Chip>*/}
-        <STitle>SECURITY <span style={{color:T.coral}}>PROJECTS</span></STitle>
-        <p style={{fontSize:".9rem",color:T.muted,maxWidth:500,lineHeight:1.8,marginBottom:"3rem"}}>Hands-on tools built around real-world cybersecurity use cases.</p>
-        <div ref={ref} style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(340px,1fr))",gap:"1.5rem"}}>
-          {DATA.projects.map((p,i) => (
-            <div key={p.n} style={{background:T.card,border:`1px solid ${T.border}`,borderRadius:14,padding:"2rem",position:"relative",overflow:"hidden",transition:"all .3s",
-              opacity:vis?1:0,animation:vis?`fadeUp .5s ease ${i*0.1}s both`:"none"}}
-              onMouseEnter={e=>{e.currentTarget.style.borderColor="rgba(0,221,179,0.45)";e.currentTarget.style.transform="translateY(-6px)";e.currentTarget.style.boxShadow="0 20px 50px rgba(0,0,0,.55)"}}
-              onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border;e.currentTarget.style.transform="";e.currentTarget.style.boxShadow=""}}>
-              {/* Watermark number */}
-              <div style={{position:"absolute",top:".2rem",right:".8rem",fontFamily:"'Rajdhani',sans-serif",fontSize:"5.5rem",color:"rgba(0,221,179,.07)",lineHeight:1,pointerEvents:"none",fontWeight:700}}>{p.n}</div>
-              {/* Icon + header row */}
-              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"1.2rem"}}>
-                <div style={{width:50,height:50,background:"rgba(0,221,179,.12)",border:"1px solid rgba(0,221,179,.25)",borderRadius:10,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.5rem"}}>{p.icon}</div>
+/* ══════════════════════ PROJECTS (no status/severity badges) ══════════════════════ */
+function Projects(){
+  const[ref,vis]=useReveal();
+  const[open,setOpen]=useState(null);
+  return(
+    <section className="sec" id="projects" style={{background:"var(--bg2)",borderBottom:"1px solid var(--b1)"}}>
+      <div className="wrap">
+        <div className="lbl">Projects</div>
+        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:".5rem"}}>
+          Security <span style={{color:"var(--c1)"}}>Projects.</span>
+        </h2>
+       
+        <div ref={ref} style={{border:"1px solid var(--b1)",opacity:vis?1:0,transition:"opacity .8s"}}>
+          {PROJECTS.map((p,i)=>{
+            const isOpen=open===i;
+            return(
+              <div key={i} style={{background:isOpen?`${p.col}07`:"var(--surf)",borderBottom:i<PROJECTS.length-1?"1px solid var(--b1)":"none",transition:"background .25s",cursor:"none"}}
+                onClick={()=>setOpen(isOpen?null:i)}>
+                {/* Row header */}
+                <div style={{padding:"1.6rem 2rem",display:"flex",alignItems:"center",gap:"1.5rem",flexWrap:"wrap",animation:vis?`fadeUp .45s ease ${i*.1}s both`:"none"}}>
+                  <span style={{fontFamily:"var(--fM)",fontSize:".54rem",color:"var(--t3)",width:22,flexShrink:0}}>{p.id}</span>
+                  <div style={{width:"3px",height:42,background:p.col,boxShadow:`0 0 10px ${p.col}70`,flexShrink:0}}/>
+                  <div style={{flex:1,minWidth:200}}>
+                    <div style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:".98rem",color:"var(--t1)",marginBottom:".28rem",letterSpacing:".03em"}}>{p.title}</div>
+                    {!isOpen&&<div style={{fontFamily:"var(--fM)",fontSize:".65rem",color:"var(--t3)",lineHeight:1.6}}>{p.desc.slice(0,90)}...</div>}
+                  </div>
+                  <div style={{display:"flex",gap:"1rem",alignItems:"center",flexShrink:0}}>
+                    <span style={{fontFamily:"var(--fM)",fontSize:".56rem",color:"var(--t3)"}}>{p.year}</span>
+                    <div style={{width:20,textAlign:"center",fontFamily:"var(--fM)",fontSize:".85rem",color:p.col,transition:"transform .22s",transform:isOpen?"rotate(45deg)":"none"}}>+</div>
+                  </div>
+                </div>
+                {/* Expanded */}
+                {isOpen&&(
+                  <div style={{padding:"0 2rem 2rem",animation:"fadeUp .25s ease"}}>
+                    <div style={{borderTop:"1px solid var(--b1)",paddingTop:"1.8rem",display:"grid",gridTemplateColumns:"1fr 1fr",gap:"2.5rem"}}>
+                      <div>
+                        
+                        <p style={{fontFamily:"var(--fM)",fontSize:".73rem",color:"var(--t2)",lineHeight:1.95,marginBottom:"1.5rem"}}>{p.desc}</p>
+                        
+                        {p.pts.map((h,hi)=>(
+                          <div key={hi} style={{display:"flex",gap:".6rem",marginBottom:".6rem"}}>
+                            <span style={{color:p.col,fontSize:".65rem",flexShrink:0}}>→</span>
+                            <span style={{fontFamily:"var(--fM)",fontSize:".7rem",color:"var(--t2)",lineHeight:1.7}}>{h}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div>
+                        
+                        <div style={{display:"flex",flexWrap:"wrap",gap:".4rem",marginBottom:"2rem"}}>
+                          {p.tags.map(t=><span key={t} className="tag">{t}</span>)}
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-              {/* Status badge */}
-              <div style={{display:"inline-block",fontFamily:"'Fira Code',monospace",fontSize:".63rem",color:T.teal,border:`1px solid rgba(0,221,179,.3)`,borderRadius:100,padding:".2rem .7rem",marginBottom:"1rem",letterSpacing:".08em",textTransform:"uppercase"}}>
-                {p.status} · {p.year}
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════ CERTS ══════════════════════ */
+function Certs(){
+  const[ref,vis]=useReveal();
+  return(
+    <section className="sec" id="certs" style={{borderBottom:"1px solid var(--b1)"}}>
+      <div className="wrap">
+        <div className="lbl">Certifications</div>
+        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:"4rem"}}>
+          Verified <span style={{color:"var(--c1)"}}>Credentials.</span>
+        </h2>
+        <div ref={ref} style={{border:"1px solid var(--b1)",opacity:vis?1:0,transition:"opacity .8s"}}>
+          {CERTS.map((c,i)=>(
+            <div key={i} style={{display:"flex",alignItems:"center",gap:"1.5rem",padding:"1.2rem 1.8rem",borderBottom:i<CERTS.length-1?"1px solid var(--b1)":"none",background:"var(--surf)",transition:"background .2s",animation:vis?`fadeUp .4s ease ${i*.07}s both`:"none"}}
+              onMouseEnter={e=>e.currentTarget.style.background="var(--card)"}
+              onMouseLeave={e=>e.currentTarget.style.background="var(--surf)"}>
+              <div style={{width:36,height:36,border:`1px solid ${c.col}44`,background:`${c.col}07`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem",flexShrink:0}}>🛡</div>
+              <div style={{flex:1,minWidth:0}}>
+                <div style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:".78rem",color:"var(--t1)",letterSpacing:".03em",marginBottom:".2rem"}}>{c.n}</div>
+                <div style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)"}}>{c.by}</div>
               </div>
-              <div style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"1.55rem",color:T.white,letterSpacing:".03em",lineHeight:1.2,marginBottom:".8rem",fontWeight:700}}>{p.title}</div>
-              <div style={{fontSize:".84rem",color:T.text,lineHeight:1.8,marginBottom:"1.3rem"}}>{p.desc}</div>
-              {/* Tags */}
-              <div style={{display:"flex",flexWrap:"wrap",gap:".4rem",marginBottom:"1.3rem"}}>
-                {p.tags.map(t=><Tag key={t}>{t}</Tag>)}
-              </div>
-              
+              <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:c.col,flexShrink:0}}>{c.yr}</span>
             </div>
           ))}
         </div>
@@ -520,111 +687,110 @@ function Projects() {
   );
 }
 
-/* ── CERTIFICATIONS ── */
-function Certifications() {
-  const [ref,vis] = useReveal();
-  return (
-    <section id="certifications" style={{background:T.bg2,padding:"6rem 5%",borderTop:`1px solid ${T.border}`,borderBottom:`1px solid ${T.border}`}}>
-      <div style={{maxWidth:1200,margin:"0 auto"}}>
-       {/* <Chip>Certifications</Chip> */}
-        <STitle>VERIFIED <span style={{color:T.gold}}>SKILLS</span></STitle>
-        <p style={{fontSize:".9rem",color:T.muted,maxWidth:500,lineHeight:1.8,marginBottom:"3rem"}}>Industry-recognized credentials validating hands-on expertise.</p>
-        <div ref={ref} style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:"1rem"}}>
-          {DATA.certs.map((c,i) => (
-            <div key={c.name} style={{background:T.card,border:`1px solid ${T.border}`,borderRadius:6,padding:"1.2rem 1.5rem",display:"flex",alignItems:"flex-start",gap:"1rem",transition:"all .2s",
-              opacity:vis?1:0,animation:vis?`fadeLeft .5s ease ${i*0.08}s both`:"none"}}
-              onMouseEnter={e=>{e.currentTarget.style.borderColor=T.gold;e.currentTarget.style.transform="translateX(4px)"}}
-              onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border;e.currentTarget.style.transform=""}}>
-              <div style={{width:38,height:38,background:"rgba(255,200,64,.1)",border:"1px solid rgba(255,200,64,.3)",borderRadius:6,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.1rem",flexShrink:0}}>🏅</div>
-              <div>
-                <div style={{fontSize:".84rem",color:T.white,fontWeight:600,lineHeight:1.4}}>{c.name}</div>
-                <div style={{fontFamily:"'Fira Code',monospace",fontSize:".68rem",color:T.muted,marginTop:".25rem"}}>{c.issuer} · {c.year}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+/* ══════════════════════ CONTACT — EmailJS (no mail client) ══════════════════════ */
+function Contact(){
+  const[ref,vis]=useReveal();
+  const[form,setForm]=useState({name:"",email:"",subject:"",message:""});
+  const[status,setStatus]=useState("idle"); 
+  // idle | sending | sent | error
+  const inp={width:"100%",background:"var(--bg)",border:"1px solid var(--b1)",padding:".72rem 1rem",color:"var(--t1)",fontFamily:"var(--fM)",fontSize:".74rem",outline:"none",transition:"border-color .2s",borderRadius:0,letterSpacing:".02em"};
 
-/* ── CONTACT ── */
-function Contact() {
-  const [ref,vis] = useReveal();
-  const [form,setForm] = useState({name:"",email:"",subject:"",message:""});
-  const [sent,setSent] = useState(false);
-
-  const handleSend = () => {
-    if(!form.name||!form.email||!form.message) return;
-    const mailtoLink=`mailto:${DATA.email}?subject=${encodeURIComponent(form.subject||"Portfolio Contact")}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
-    window.location.href=mailtoLink;
-    setSent(true); setTimeout(()=>setSent(false),3000);
+  const send=async()=>{
+    if(!form.name||!form.email||!form.message)return;
+    setStatus("sending");
+    try{
+      // Initialize EmailJS (safe to call multiple times)
+      if(window.emailjs){
+        window.emailjs.init(EMAILJS_KEY);
+        await window.emailjs.send(EMAILJS_SERVICE,EMAILJS_TEMPLATE,{
+          from_name:form.name,
+          from_email:form.email,
+          subject:form.subject||"Portfolio Contact",
+          message:form.message,
+          to_email:D.email,
+        });
+        setStatus("sent");
+        setForm({name:"",email:"",subject:"",message:""});
+        setTimeout(()=>setStatus("idle"),4000);
+      }else{
+        // EmailJS SDK not loaded — fallback note
+        setStatus("error");
+        setTimeout(()=>setStatus("idle"),4000);
+      }
+    }catch(err){
+      console.error("EmailJS error:",err);
+      setStatus("error");
+      setTimeout(()=>setStatus("idle"),4000);
+    }
   };
 
-  const links = [
-    {icon:"✉️",lbl:"Email",val:DATA.email,href:`mailto:${DATA.email}`},
-    {icon:"📞",lbl:"Phone",val:DATA.phone,href:`tel:${DATA.phone.replace(/\s/g,"")}`},
-    {icon:"⌨️",lbl:"GitHub",val:"Gopalakrishnan-S29",href:DATA.github,ext:true},
-    {icon:"💼",lbl:"LinkedIn",val:"Gopalakrishnan-S",href:DATA.linkedin,ext:true}
+  const links=[
+    {icon:"✉",lbl:"Email",val:D.email,href:`mailto:${D.email}`,col:"var(--c1)"},
+    {icon:"☎",lbl:"Phone",val:D.phone,href:`tel:${D.phone.replace(/\s/g,"")}`,col:"var(--c2)"},
+    {icon:"⌨",lbl:"GitHub",val:"Gopalakrishnan-S29",href:D.github,col:"var(--c4)",ext:true},
+    {icon:"◈",lbl:"LinkedIn",val:"gopalakrishnan-s",href:D.linkedin,col:"var(--c5)",ext:true},
   ];
 
-  const inputStyle = {
-    width:"100%",background:"rgba(16,16,31,0.85)",border:`1px solid ${T.border}`,
-    borderRadius:8,padding:".9rem 1.1rem",color:T.white,fontSize:".88rem",
-    fontFamily:"'Outfit',sans-serif",outline:"none",transition:"border-color .2s",display:"block"
-  };
+  const btnBg=status==="sent"?"rgba(0,255,136,.14)":status==="error"?"rgba(255,34,85,.14)":status==="sending"?"var(--bg)":"var(--c1)";
+  const btnCol=status==="sent"?"var(--c2)":status==="error"?"var(--c3)":status==="sending"?"var(--c1)":"#000";
+  const btnTxt=status==="sent"?"✓ Message Sent Successfully":status==="error"?"✗ Failed — Check EmailJS Config":status==="sending"?"Sending...":"Send Message";
 
-  return (
-    <section id="contact" style={{padding:"6rem 5%"}}>
-      <div style={{maxWidth:1200,margin:"0 auto"}}>
-        {/* Ready to Collaborate banner */}
-        <div style={{background:"linear-gradient(135deg,rgba(0,221,179,.1) 0%,rgba(255,61,90,.06) 100%)",border:`1px solid rgba(0,221,179,.25)`,borderRadius:14,padding:"3rem",textAlign:"center",marginBottom:"4rem"}}>
-          <div style={{fontSize:"3rem",marginBottom:"1rem"}}>🔐</div>
-          <h3 style={{fontFamily:"'Rajdhani',sans-serif",fontSize:"2.2rem",color:T.white,letterSpacing:".05em",marginBottom:".8rem",fontWeight:700}}>READY TO COLLABORATE?</h3>
-          <p style={{fontSize:".88rem",color:T.muted,lineHeight:1.8}}>Security audit, internship opportunity, or just a chat about cybersecurity — I'm all ears.</p>
-        </div>
-        {/* Two columns */}
-        <div ref={ref} style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4rem",alignItems:"start",
-          opacity:vis?1:0,transform:vis?"translateY(0)":"translateY(24px)",transition:"all .65s ease"}}>
-          {/* Left: info */}
-          <div style={{paddingTop:"0"}}>
-            <Chip>Contact</Chip>
-            <STitle>LET'S <span style={{color:T.teal}}>CONNECT</span></STitle>
-            <p style={{fontSize:".9rem",color:T.muted,lineHeight:1.8,marginBottom:"2rem"}}>
-              Open to internships, collaborations, bug bounty programs, and cybersecurity opportunities.
+  return(
+    <section className="sec" id="contact" style={{background:"var(--bg2)"}}>
+      <div className="wrap">
+        <div className="lbl">Contact</div>
+        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:"4rem"}}>
+          Let's Work <span style={{color:"var(--c1)"}}>Together.</span>
+        </h2>
+        <div ref={ref} style={{display:"grid",gridTemplateColumns:"1fr 1.4fr",gap:"4rem",alignItems:"start",opacity:vis?1:0,transition:"opacity .8s"}}>
+          <div>
+            <p style={{fontFamily:"var(--fM)",fontSize:".78rem",color:"var(--t3)",lineHeight:2,marginBottom:"2.5rem"}}>
+              Open to internships, bug bounty collaborations, security research, and any cybersecurity work worth doing. Reach out through any channel below.
             </p>
-            <div style={{display:"flex",flexDirection:"column",gap:".8rem"}}>
-              {links.map(l => (
+            <div style={{display:"flex",flexDirection:"column",gap:".4rem"}}>
+              {links.map(l=>(
                 <a key={l.lbl} href={l.href} target={l.ext?"_blank":undefined} rel={l.ext?"noopener noreferrer":undefined}
-                  style={{display:"flex",alignItems:"center",gap:"1rem",padding:"1rem 1.2rem",background:T.card,border:`1px solid ${T.border}`,borderRadius:6,color:T.text,fontSize:".84rem",transition:"all .2s"}}
-                  onMouseEnter={e=>{e.currentTarget.style.borderColor=T.teal;e.currentTarget.style.transform="translateX(4px)";e.currentTarget.style.color=T.white}}
-                  onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border;e.currentTarget.style.transform="";e.currentTarget.style.color=T.text}}>
-                  <div style={{width:36,height:36,background:"rgba(0,221,179,.1)",borderRadius:6,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem",flexShrink:0}}>{l.icon}</div>
+                  style={{display:"flex",alignItems:"center",gap:"1rem",padding:".9rem 1.1rem",border:"1px solid var(--b1)",background:"var(--surf)",color:"var(--t2)",transition:"all .2s"}}
+                  onMouseEnter={e=>{e.currentTarget.style.borderColor=`${l.col}44`;e.currentTarget.style.color="var(--t1)";}}
+                  onMouseLeave={e=>{e.currentTarget.style.borderColor="var(--b1)";e.currentTarget.style.color="var(--t2)";}}>
+                  <span style={{color:l.col,fontSize:"1rem",width:18,textAlign:"center",flexShrink:0}}>{l.icon}</span>
                   <div>
-                    <div style={{fontFamily:"'Fira Code',monospace",color:T.muted,fontSize:".66rem",letterSpacing:".06em"}}>{l.lbl}</div>
-                    <div style={{color:T.white,fontSize:".8rem"}}>{l.val}</div>
+                    <div style={{fontFamily:"var(--fM)",fontSize:".52rem",color:"var(--t3)",letterSpacing:".14em",marginBottom:".12rem"}}>{l.lbl.toUpperCase()}</div>
+                    <div style={{fontFamily:"var(--fM)",fontSize:".7rem"}}>{l.val}</div>
                   </div>
                 </a>
               ))}
             </div>
           </div>
-          {/* Right: Contact form */}
-          <div style={{background:T.card,border:`1px solid ${T.border}`,borderRadius:14,padding:"2.5rem"}}>
-            <div style={{display:"flex",flexDirection:"column",gap:"1rem"}}>
-              <input placeholder="Your Name" value={form.name} onChange={e=>setForm({...form,name:e.target.value})}
-                style={inputStyle} onFocus={e=>e.target.style.borderColor=T.teal} onBlur={e=>e.target.style.borderColor=T.border}/>
-              <input placeholder="Your Email" type="email" value={form.email} onChange={e=>setForm({...form,email:e.target.value})}
-                style={inputStyle} onFocus={e=>e.target.style.borderColor=T.teal} onBlur={e=>e.target.style.borderColor=T.border}/>
-              <input placeholder="Subject" value={form.subject} onChange={e=>setForm({...form,subject:e.target.value})}
-                style={inputStyle} onFocus={e=>e.target.style.borderColor=T.teal} onBlur={e=>e.target.style.borderColor=T.border}/>
-              <textarea placeholder="Your Message..." rows={5} value={form.message} onChange={e=>setForm({...form,message:e.target.value})}
-                style={{...inputStyle,resize:"vertical"}} onFocus={e=>e.target.style.borderColor=T.teal} onBlur={e=>e.target.style.borderColor=T.border}/>
-              <button onClick={handleSend}
-                style={{width:"100%",padding:"1rem",background:T.teal,color:T.bg,borderRadius:8,fontWeight:700,fontSize:"1rem",cursor:"pointer",border:"none",display:"flex",alignItems:"center",justifyContent:"center",gap:".6rem",transition:"all .25s",fontFamily:"'Outfit',sans-serif"}}
-                onMouseEnter={e=>{e.currentTarget.style.background=T.gold;e.currentTarget.style.transform="translateY(-2px)"}}
-                onMouseLeave={e=>{e.currentTarget.style.background=T.teal;e.currentTarget.style.transform=""}}>
-                {sent?"✓ Opening Mail...":"Send Message ✉️"}
+
+          {/* Form */}
+          <div className="term">
+            <div className="tbar">
+              {["#ff5f56","#ffbd2e","#27c93f"].map((c,i)=><div key={i} className="tdot" style={{background:c}}/>)}
+              <span className="ttl">send_message.sh</span>
+            </div>
+            <div style={{padding:"1.8rem",display:"flex",flexDirection:"column",gap:"1rem"}}>
+              {[["name","Name"],["email","Email"],["subject","Subject (optional)"]].map(([k,lbl])=>(
+                <div key={k}>
+                 
+                  <input value={form[k]} onChange={e=>setForm({...form,[k]:e.target.value})} style={inp}
+                    placeholder={`Your ${lbl.toLowerCase()}...`}
+                    onFocus={e=>e.target.style.borderColor="var(--c1)"}
+                    onBlur={e=>e.target.style.borderColor="var(--b1)"}/>
+                </div>
+              ))}
+              <div>
+                <textarea rows={5} value={form.message} onChange={e=>setForm({...form,message:e.target.value})} style={{...inp,resize:"vertical"}}
+                  placeholder="Your message..."
+                  onFocus={e=>e.target.style.borderColor="var(--c1)"}
+                  onBlur={e=>e.target.style.borderColor="var(--b1)"}/>
+              </div>
+              <button onClick={send} disabled={status==="sending"} style={{padding:".88rem",background:btnBg,color:btnCol,fontFamily:"var(--fH)",fontSize:".7rem",fontWeight:700,letterSpacing:".12em",cursor:"none",border:`1px solid ${status==="sent"?"rgba(0,255,136,.35)":status==="error"?"rgba(255,34,85,.35)":"var(--c1)"}`,transition:"all .25s",width:"100%"}}
+                onMouseEnter={e=>{if(status==="idle"){e.currentTarget.style.background="#000";e.currentTarget.style.color="var(--c1)";}}}
+                onMouseLeave={e=>{if(status==="idle"){e.currentTarget.style.background="var(--c1)";e.currentTarget.style.color="#000";}}}>
+                {btnTxt}
               </button>
+             
             </div>
           </div>
         </div>
@@ -633,133 +799,59 @@ function Contact() {
   );
 }
 
-/* ── FOOTER ── */
-function Footer() {
-  return (
-    <footer style={{padding:"2rem 5%",borderTop:`1px solid ${T.border}`,display:"flex",alignItems:"center",justifyContent:"space-between",maxWidth:1200,margin:"0 auto"}}>
-      <span style={{fontFamily:"'Fira Code',monospace",fontSize:".72rem",color:T.muted}}>© 2025 Gopalakrishnan S · Coimbatore, India</span>
+/* ══════════════════════ FOOTER ══════════════════════ */
+function Footer(){
+  const[ts,setTs]=useState("");
+  useEffect(()=>{
+    const tick=()=>setTs(new Date().toUTCString().slice(0,25));
+    tick();const t=setInterval(tick,1000);return()=>clearInterval(t);
+  },[]);
+  return(
+    <footer style={{padding:"2rem 5%",borderTop:"1px solid var(--b1)",display:"flex",alignItems:"center",justifyContent:"space-between",maxWidth:1180,margin:"0 auto",flexWrap:"wrap",gap:"1rem"}}>
+      <span style={{fontFamily:"var(--fM)",fontSize:".56rem",color:"var(--t3)"}}>© 2026 Gopalakrishnan S · <span style={{color:"var(--c1)"}}>Coimbatore, India</span></span>
+      <span style={{fontFamily:"var(--fM)",fontSize:".54rem",color:"var(--t3)"}}>{ts}<span style={{animation:"blink 1s step-end infinite",color:"var(--c1)",marginLeft:".4rem"}}>▌</span></span>
       <div style={{display:"flex",gap:"1.5rem"}}>
         {["about","projects","contact"].map(l=>(
-          <a key={l} href={`#${l}`} style={{fontFamily:"'Fira Code',monospace",fontSize:".72rem",color:T.muted,textTransform:"uppercase",letterSpacing:".06em",transition:"color .2s"}}
-            onMouseEnter={e=>e.target.style.color=T.teal} onMouseLeave={e=>e.target.style.color=T.muted}>{l}</a>
+          <a key={l} href={`#${l}`} style={{fontFamily:"var(--fM)",fontSize:".56rem",color:"var(--t3)",letterSpacing:".08em",textTransform:"uppercase",transition:"color .2s"}}
+            onMouseEnter={e=>e.target.style.color="var(--c1)"} onMouseLeave={e=>e.target.style.color="var(--t3)"}>{l}</a>
         ))}
       </div>
     </footer>
   );
 }
 
-/* ── CONTEXT MENU ── */
-function ContextMenu({ pos, visible, onClose }) {
-  const items = [
-    {label:"🏠 Home",     action:()=>window.scrollTo({top:0,behavior:"smooth"})},
-    {label:"👤 About",    action:()=>document.getElementById("about")?.scrollIntoView({behavior:"smooth"})},
-    {label:"🔍 Projects", action:()=>document.getElementById("projects")?.scrollIntoView({behavior:"smooth"})},
-    {label:"✉️ Contact",  action:()=>document.getElementById("contact")?.scrollIntoView({behavior:"smooth"})},
-    {sep:true},
-    {label:"🖨️ Print",   action:()=>window.print()}
-  ];
-  if (!visible) return null;
-  return (
-    <div style={{position:"fixed",left:pos.x,top:pos.y,zIndex:9999,background:T.card2,border:`1px solid ${T.border}`,borderRadius:8,padding:".4rem",minWidth:178,boxShadow:"0 12px 40px rgba(0,0,0,.8)",backdropFilter:"blur(20px)"}}>
-      {items.map((item,i)=>item.sep
-        ? <div key={i} style={{height:1,background:T.border,margin:".3rem .4rem"}}/>
-        : <div key={i} onClick={()=>{item.action();onClose();}}
-            style={{padding:".52rem .9rem",fontSize:".76rem",color:T.text,borderRadius:6,display:"flex",alignItems:"center",gap:".6rem",transition:"background .15s,color .15s",cursor:"default"}}
-            onMouseEnter={e=>{e.currentTarget.style.background="rgba(0,221,179,.12)";e.currentTarget.style.color=T.teal}}
-            onMouseLeave={e=>{e.currentTarget.style.background="transparent";e.currentTarget.style.color=T.text}}>
-            {item.label}
-          </div>
-      )}
-    </div>
-  );
-}
-
-/* ── APP ── */
-function App() {
-  const [activeSection,setActiveSection] = useState("hero");
-  const [ctx,setCtx] = useState({visible:false,pos:{x:0,y:0}});
-  const [dark,setDark] = useState(true);
-
-  const toggle = () => {
-    setDark(d => {
-      const next = !d;
-      const theme = next ? DARK : LIGHT;
-      Object.assign(T, theme);
-      document.body.style.background = theme.bg;
-      document.body.style.color = theme.text;
-      return next;
-    });
-  };
-
-  // Apply initial theme
-  useEffect(() => { Object.assign(T, DARK); document.body.style.background = DARK.bg; }, []);
-
-  useEffect(() => {
-    // A05: Security meta headers
-    [
-      {httpEquiv:"X-Content-Type-Options",content:"nosniff"},
-      {name:"referrer",content:"strict-origin-when-cross-origin"},
-      {httpEquiv:"Permissions-Policy",content:"geolocation=(), microphone=(), camera=()"}
-    ].forEach(attrs => {
-      const sel = attrs.httpEquiv?`meta[http-equiv="${attrs.httpEquiv}"]`:`meta[name="${attrs.name}"]`;
-      if (!document.querySelector(sel)) {
-        const m = document.createElement("meta");
-        Object.entries(attrs).forEach(([k,v])=>m.setAttribute(k==="httpEquiv"?"http-equiv":k,v));
-        document.head.appendChild(m);
-      }
-    });
-    // A09: suppress console
-    const noop=()=>{};
-    ["log","info","debug","trace","warn"].forEach(m=>{try{console[m]=noop}catch(_){}});
-    // A04: block devtools hotkeys
-    const block = e => {
-      if(e.key==="F12"||(e.ctrlKey&&e.shiftKey&&["I","J","C"].includes(e.key))||(e.ctrlKey&&e.key==="U"))
-        e.preventDefault();
-    };
-    document.addEventListener("keydown",block);
-    return ()=>document.removeEventListener("keydown",block);
-  },[]);
-
-  const handleContextMenu = useCallback(e => {
-    e.preventDefault();
-    setCtx({visible:true,pos:{x:Math.min(e.clientX,window.innerWidth-195),y:Math.min(e.clientY,window.innerHeight-200)}});
-  },[]);
-
+/* ══════════════════════ APP ══════════════════════ */
+function App(){
+  const[booted,setBooted]=useState(false);
+  const[active,setActive]=useState("hero");
+  useCursor();
+  useNav(active);
   useEffect(()=>{
-    const close=()=>setCtx(c=>({...c,visible:false}));
-    document.addEventListener("click",close);
-    document.addEventListener("scroll",close);
-    return()=>{document.removeEventListener("click",close);document.removeEventListener("scroll",close)};
-  },[]);
-
-  useEffect(()=>{
-    const ids=["hero","about","skills","experience","projects","certifications","contact"];
-    const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)setActiveSection(e.target.id);}),{threshold:.4});
+    if(!booted)return;
+    const ids=["hero","about","skills","experience","projects","certs","contact"];
+    const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)setActive(e.target.id);}),{threshold:.22});
     ids.forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el);});
     return()=>obs.disconnect();
-  },[]);
-
-  return (
-    <ThemeCtx.Provider value={{dark,toggle}}>
-    <div onContextMenu={handleContextMenu} style={{userSelect:"none",WebkitUserSelect:"none",background:T.bg,minHeight:"100vh",transition:"background .3s,color .3s"}}>
-      <ContextMenu pos={ctx.pos} visible={ctx.visible} onClose={()=>setCtx(c=>({...c,visible:false}))}/>
-      <Navbar active={activeSection}/>
-      <Hero/>
-      <Ticker/>
-      <About/>
-      <Skills/>
-      <Experience/>
-      <Projects/>
-      <Certifications/>
-      <Contact/>
-      <Footer/>
-    </div>
-    </ThemeCtx.Provider>
+  },[booted]);
+  return(
+    <>
+      {!booted&&<Boot onDone={()=>setBooted(true)}/>}
+      <div style={{opacity:booted?1:0,transition:"opacity .7s .1s"}}>
+        <Hero/>
+        <Ticker/>
+        <About/>
+        <Skills/>
+        <Experience/>
+        <Projects/>
+        <Certs/>
+        <Contact/>
+        <Footer/>
+      </div>
+    </>
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App/>);
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>
