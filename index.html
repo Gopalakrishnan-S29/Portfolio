@@ -3,854 +3,777 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Gopalakrishnan S — Cybersecurity Researcher</title>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-
+<title>Gopalakrishnan S — Cybersecurity</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#05080f;color:#6a90aa;font-family:'Fira Code',monospace;overflow-x:hidden;line-height:1.7}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{border:none;background:none;font-family:inherit}
+textarea,input{font-family:inherit}
+::selection{background:#00dcff;color:#000}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-track{background:#05080f}
+::-webkit-scrollbar-thumb{background:#00dcff}
+
 :root{
   --bg:#05080f;--bg2:#080d1a;--surf:#0b1120;--card:#0e1428;
   --b1:rgba(0,220,255,.13);--b2:rgba(0,220,255,.06);
   --c1:#00dcff;--c2:#00ff88;--c3:#ff2255;--c4:#ffaa00;--c5:#9955ff;
   --t1:#cce8f5;--t2:#6a90aa;--t3:#253545;
   --fH:'Chakra Petch',sans-serif;--fM:'Fira Code',monospace;
+  --nh:56px;
 }
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--t2);font-family:var(--fM);overflow-x:hidden;cursor:none;line-height:1.7}
-a{text-decoration:none;color:inherit}
-button{border:none;background:none;cursor:none;font-family:inherit}
-::selection{background:var(--c1);color:#000}
-::-webkit-scrollbar{width:2px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--c1)}
 
 /* CURSOR */
-#dot{position:fixed;z-index:9999;pointer-events:none;width:7px;height:7px;background:var(--c1);border-radius:50%;transform:translate(-50%,-50%)}
-#ring{position:fixed;z-index:9998;pointer-events:none;width:34px;height:34px;border:1px solid rgba(0,220,255,.38);border-radius:50%;transform:translate(-50%,-50%);transition:all .16s}
+@media(pointer:fine){
+  body{cursor:none}
+  #cd{position:fixed;z-index:9999;pointer-events:none;width:7px;height:7px;background:var(--c1);border-radius:50%;transform:translate(-50%,-50%);top:-20px;left:-20px}
+  #cr{position:fixed;z-index:9998;pointer-events:none;width:34px;height:34px;border:1px solid rgba(0,220,255,.38);border-radius:50%;transform:translate(-50%,-50%);transition:all .14s;top:-20px;left:-20px}
+}
 
 /* KEYFRAMES */
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@keyframes scanH{0%{top:0}100%{top:100%}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes glowH{0%,100%{text-shadow:0 0 30px rgba(0,220,255,.25)}50%{text-shadow:0 0 70px rgba(0,220,255,.6),0 0 110px rgba(0,220,255,.15)}}
-@keyframes matrixFall{0%{transform:translateY(-100%);opacity:1}85%{opacity:.4}100%{transform:translateY(2000%);opacity:0}}
-
-/* LAYOUT */
-.sec{padding:7rem 5%}
-.wrap{max-width:1180px;margin:0 auto}
-.lbl{font-family:var(--fM);font-size:.58rem;letter-spacing:.25em;color:var(--c1);display:flex;align-items:center;gap:.5rem;margin-bottom:.65rem;text-transform:uppercase}
-
-
-/* CARDS */
-.glass{background:var(--surf);border:1px solid var(--b1);position:relative;overflow:hidden;transition:border-color .28s,box-shadow .28s}
-.glass::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c1),transparent);animation:scanH 6s linear infinite;pointer-events:none}
-.glass:hover{border-color:rgba(0,220,255,.28);box-shadow:0 4px 32px rgba(0,220,255,.07)}
-.term{background:rgba(5,8,15,.97);border:1px solid var(--b1);position:relative;overflow:hidden}
-.term::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c1),transparent);animation:scanH 6s linear infinite;pointer-events:none;z-index:2}
-.tbar{background:rgba(5,8,15,.9);border-bottom:1px solid var(--b2);padding:.45rem 1rem;display:flex;align-items:center;gap:.38rem;flex-shrink:0}
-.tdot{width:9px;height:9px;border-radius:50%}
-.ttl{font-family:var(--fM);font-size:.56rem;color:var(--t3);letter-spacing:.1em;margin:0 auto}
-.tag{font-family:var(--fM);font-size:.56rem;color:var(--c1);border:1px solid rgba(0,220,255,.2);padding:.13rem .52rem;background:rgba(0,220,255,.04);letter-spacing:.04em}
+@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.7)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes glow{0%,100%{text-shadow:0 0 30px rgba(0,220,255,.2)}50%{text-shadow:0 0 60px rgba(0,220,255,.55)}}
+@keyframes scanLine{0%{top:0}100%{top:100%}}
+@keyframes menuIn{from{opacity:0;transform:translateX(100%)}to{opacity:1;transform:translateX(0)}}
 
 /* NAV */
-#nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(5,8,15,.96);border-bottom:1px solid var(--b1);backdrop-filter:blur(24px);padding:.6rem 5%;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nh);background:rgba(5,8,15,.96);border-bottom:1px solid var(--b1);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between;padding:0 5%;transform:translateY(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
 #nav.vis{transform:translateY(0)}
+.nlogo{width:36px;height:36px;border:1px solid rgba(0,220,255,.35);display:flex;align-items:center;justify-content:center;font-family:var(--fH);font-size:.75rem;font-weight:700;color:var(--c1);flex-shrink:0}
+.nlinks{display:none;align-items:center;gap:2px}
+.nlinks a{font-family:var(--fM);font-size:.53rem;padding:.28rem .68rem;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;transition:all .2s}
+.nlinks a.on{background:var(--c1);color:#000}
+.nright{display:flex;align-items:center;gap:.7rem}
+.nresume{font-family:var(--fM);font-size:.5rem;color:var(--c2);border:1px solid rgba(0,255,136,.28);padding:.25rem .65rem;letter-spacing:.08em;transition:all .2s}
+.nresume:hover{background:var(--c2);color:#000}
+.nstatus{display:flex;align-items:center;gap:.4rem;font-family:var(--fM);font-size:.5rem;color:var(--t3)}
+.nstatus i{width:5px;height:5px;background:var(--c2);border-radius:50%;animation:pdot 2s infinite;display:inline-block;font-style:normal}
+.ham{display:flex;flex-direction:column;gap:5px;padding:4px;cursor:pointer}
+.ham span{width:22px;height:1.5px;background:var(--c1);display:block;transition:all .22s}
+
+/* MOBILE MENU */
+#mmenu{display:none;position:fixed;inset:0;background:rgba(5,8,15,.97);z-index:450;flex-direction:column;align-items:center;justify-content:center;gap:1.8rem}
+#mmenu.open{display:flex;animation:menuIn .25s ease}
+#mmenu a{font-family:var(--fH);font-size:1.5rem;font-weight:700;color:var(--t1);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;cursor:pointer}
+#mmenu a:hover{color:var(--c1)}
+#mmenu .mx{position:absolute;top:1.2rem;right:1.5rem;font-size:1.3rem;color:var(--c1);cursor:pointer;font-family:var(--fM)}
+#mmenu .mr{font-family:var(--fM);font-size:.78rem;color:var(--c2);border:1px solid rgba(0,255,136,.3);padding:.45rem 1.4rem;letter-spacing:.1em;margin-top:.5rem}
+
 /* SIDE NAV */
-#snav{position:fixed;right:1.8rem;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;gap:.9rem}
-.sn{display:flex;align-items:center;justify-content:flex-end;gap:.5rem;cursor:none;opacity:.28;transition:opacity .2s}
-.sn.on{opacity:1}
-.sn-d{width:4px;height:4px;border-radius:50%;border:1px solid var(--t3);transition:all .2s;flex-shrink:0}
-.sn.on .sn-d{background:var(--c1);border-color:var(--c1);box-shadow:0 0 8px rgba(0,220,255,.7);width:6px;height:6px}
-.sn-l{font-family:var(--fM);font-size:.46rem;color:var(--c1);letter-spacing:.1em;opacity:0;transition:opacity .2s}
-.sn.on .sn-l{opacity:1}
+#snav{display:none;position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);z-index:400;flex-direction:column;gap:.9rem}
+.sdot{width:5px;height:5px;border-radius:50%;border:1px solid var(--t3);cursor:pointer;transition:all .2s;opacity:.3}
+.sdot.on{background:var(--c1);border-color:var(--c1);box-shadow:0 0 8px rgba(0,220,255,.7);width:7px;height:7px;opacity:1}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .65s,transform .65s}
+.rv.on{opacity:1;transform:translateY(0)}
+
+/* LAYOUT */
+.sec{padding:4.5rem 5%}
+.wrap{max-width:1180px;margin:0 auto;width:100%}
+.lbl{font-family:var(--fM);font-size:.54rem;letter-spacing:.25em;color:var(--c1);display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;text-transform:uppercase}
+.lbl::before{content:'';color:var(--c2);font-weight:600}
+.stitle{font-family:var(--fH);font-weight:700;font-size:clamp(1.6rem,4vw,2.8rem);color:var(--t1);letter-spacing:.03em;margin-bottom:2.5rem;line-height:1.15}
+.stitle span{color:var(--c1)}
+
+/* TERM */
+.term{background:rgba(5,8,15,.97);border:1px solid var(--b1);position:relative;overflow:hidden}
+.term::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c1),transparent);animation:scanLine 6s linear infinite;pointer-events:none;z-index:2}
+.tbar{background:rgba(5,8,15,.9);border-bottom:1px solid var(--b2);padding:.42rem .9rem;display:flex;align-items:center;gap:.38rem;flex-shrink:0}
+.tdot{width:9px;height:9px;border-radius:50%}
+.ttl{font-family:var(--fM);font-size:.53rem;color:var(--t3);letter-spacing:.1em;margin:0 auto}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.62rem 1.5rem;font-family:var(--fH);font-size:.65rem;font-weight:700;letter-spacing:.1em;border:1px solid;transition:all .22s;cursor:pointer;white-space:nowrap}
+.bp{background:var(--c1);color:#000;border-color:var(--c1)}.bp:hover{background:#000;color:var(--c1)}
+.bo{background:transparent;color:var(--c1);border-color:rgba(0,220,255,.28)}.bo:hover{background:var(--c1);color:#000}
+.bg{background:transparent;color:var(--c2);border-color:rgba(0,255,136,.28)}.bg:hover{background:var(--c2);color:#000}
+
+/* TICKER */
+.tick-w{background:var(--bg2);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1);padding:.38rem 0;overflow:hidden;white-space:nowrap}
+.tick-i{display:inline-flex;animation:ticker 42s linear infinite}
+.tick-s{font-family:var(--fM);font-size:.55rem;color:var(--t3);letter-spacing:.1em;padding-right:4rem}
+
+/* HERO */
+#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:calc(var(--nh) + 2.5rem) 5% 4rem;text-align:center}
+#mc{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.36}
+.hvg{position:absolute;inset:0;background:radial-gradient(ellipse 75% 80% at 50% 50%,rgba(5,8,15,.55) 0%,rgba(5,8,15,.92) 100%);z-index:1;pointer-events:none}
+.hfb{position:absolute;bottom:0;left:0;right:0;height:25%;background:linear-gradient(transparent,#05080f);z-index:2;pointer-events:none}
+.hcon{position:relative;z-index:4;max-width:860px;width:100%;margin:0 auto}
+.hbadge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(0,220,255,.18);padding:.25rem .95rem;margin-bottom:1.8rem;font-family:var(--fM);font-size:.53rem;color:var(--c1);letter-spacing:.14em;background:rgba(0,220,255,.04)}
+.hbadge i{width:5px;height:5px;background:var(--c2);border-radius:50%;animation:pdot 2s infinite;display:inline-block;font-style:normal}
+.hname{font-family:var(--fH);font-weight:700;font-size:clamp(1.8rem,6.5vw,5.4rem);line-height:1;letter-spacing:.05em;color:var(--t1);margin-bottom:1.1rem;animation:glow 5s ease-in-out infinite}
+.hline{width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--c1),transparent);margin-bottom:1.3rem;box-shadow:0 0 10px rgba(0,220,255,.45)}
+.hrole{font-family:var(--fM);font-size:clamp(.65rem,1.8vw,1rem);color:var(--t2);letter-spacing:.1em;min-height:2rem;display:flex;align-items:center;justify-content:center;gap:.4rem;margin-bottom:1.3rem}
+.hprompt{color:var(--c1);opacity:.4}
+.hdesc{font-family:var(--fM);font-size:.74rem;color:var(--t3);max-width:460px;margin:0 auto 2.5rem;line-height:2}
+.hctas{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;margin-bottom:3.5rem}
+.hscroll{display:inline-flex;flex-direction:column;align-items:center;gap:.4rem;opacity:.4;transition:opacity .2s}
+.hscroll:hover{opacity:1}
+.hsl{width:1px;height:42px;background:linear-gradient(transparent,var(--c1))}
+.hst{font-family:var(--fM);font-size:.43rem;color:var(--c1);letter-spacing:.35em}
+.hsb{width:8px;height:8px;border:1px solid var(--c1);transform:rotate(45deg);animation:floatY 1.8s ease-in-out infinite}
+
+/* HUD corners — hidden on mobile */
+.hud{position:absolute;z-index:3;pointer-events:none;opacity:.35;display:none}
+.htl{top:2.5rem;left:3rem}.htr{top:2.5rem;right:3rem}.hbl{bottom:2.5rem;left:3rem}.hbr{bottom:2.5rem;right:3rem}
+.hb{width:20px;height:20px;position:relative}
+.hb::before,.hb::after{content:'';position:absolute;background:var(--c1)}
+.hb::before{top:0;width:100%;height:2px;left:0}
+.htl .hb::after,.hbl .hb::after{top:0;left:0;width:2px;height:100%}
+.htr .hb::after,.hbr .hb::after{top:0;right:0;width:2px;height:100%}
+.hbl .hb::before,.hbr .hb::before{bottom:0;top:auto}
+.hbl .hb::after,.hbr .hb::after{bottom:0;top:auto}
+.hlbl{font-family:var(--fM);font-size:.4rem;color:var(--c1);letter-spacing:.1em;margin-top:.22rem}
+.htr .hlbl,.hbr .hlbl{text-align:right}
+
+/* ABOUT */
+.agrid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:start}
+.abio{font-family:var(--fM);font-size:.76rem;color:var(--t2);line-height:2;margin-bottom:1.3rem}
+.aedu{font-family:var(--fM);font-size:.68rem;color:var(--t3);line-height:1.9;padding-left:.9rem;border-left:2px solid var(--b2);margin-bottom:2rem}
+.aedu span{color:var(--c1)}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--b1)}
+.sbox{padding:1.1rem .6rem;text-align:center;background:var(--surf);position:relative;overflow:hidden;transition:background .2s;border-right:1px solid var(--b1)}
+.sbox:last-child{border-right:none}
+.sbox:hover{background:var(--card)}
+.stop{position:absolute;top:0;left:0;right:0;height:2px}
+.sval{font-family:var(--fH);font-size:1.8rem;font-weight:700;line-height:1}
+.slbl{font-family:var(--fM);font-size:.47rem;color:var(--t3);margin-top:.3rem;letter-spacing:.14em}
+.irow{display:flex;gap:.8rem;padding:.52rem 0;border-bottom:1px solid var(--b1)}
+.ikey{font-family:var(--fM);font-size:.58rem;color:var(--t3);min-width:100px}
+.ival{font-family:var(--fM);font-size:.58rem;color:var(--t1)}
+.pwrap{position:relative}
+.pbr{position:absolute;width:16px;height:16px;z-index:3}
+.pbr::before,.pbr::after{content:'';position:absolute;background:var(--c1)}
+.ptl{top:-5px;left:-5px}.ptl::before{top:0;left:0;width:100%;height:2px}.ptl::after{top:0;left:0;height:100%;width:2px}
+.ptr{top:-5px;right:-5px}.ptr::before{top:0;right:0;width:100%;height:2px}.ptr::after{top:0;right:0;height:100%;width:2px}
+.pbl{bottom:-5px;left:-5px}.pbl::before{bottom:0;left:0;width:100%;height:2px}.pbl::after{bottom:0;left:0;height:100%;width:2px}
+.pbr2{bottom:-5px;right:-5px}.pbr2::before{bottom:0;right:0;width:100%;height:2px}.pbr2::after{bottom:0;right:0;height:100%;width:2px}
+.pimg{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block}
+.pph{width:100%;aspect-ratio:3/4;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:var(--fM);font-size:.58rem;color:var(--t3)}
+.pname{background:rgba(5,8,15,.97);border-top:1px solid var(--b1);padding:.6rem .9rem;text-align:center}
+.pnm{font-family:var(--fH);font-weight:700;color:var(--t1);font-size:.76rem;letter-spacing:.06em}
+.pns{font-family:var(--fM);font-size:.51rem;color:var(--c1);letter-spacing:.12em;margin-top:.18rem}
+
+/* SKILLS */
+.skgrid{display:grid;grid-template-columns:1fr;gap:1.1rem}
+.skcard{background:var(--surf);border:1px solid var(--b1);overflow:hidden;transition:border-color .3s,box-shadow .3s}
+.skcard:hover{border-color:rgba(0,220,255,.22);box-shadow:0 0 22px rgba(0,220,255,.06)}
+.sktop{height:2px}
+.skhdr{padding:.85rem 1rem .6rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--b1)}
+.skbar{width:3px;height:14px;flex-shrink:0}
+.skname{font-family:var(--fH);font-weight:700;font-size:.78rem;color:var(--t1);letter-spacing:.04em}
+.skcnt{margin-left:auto;font-family:var(--fM);font-size:.44rem;letter-spacing:.14em;opacity:.6}
+.skcv{width:100%;display:block}
+
+/* EXPERIENCE */
+.exgrid{display:grid;grid-template-columns:1fr;gap:1.3rem}
+.extabs{display:grid;grid-template-columns:1fr 1fr;gap:.35rem}
+.extab{padding:.8rem .9rem;text-align:left;border:1px solid var(--b1);border-left:3px solid transparent;transition:all .22s;background:transparent;cursor:pointer}
+.extab.on{background:rgba(0,0,0,.2)}
+.etrl{font-family:var(--fH);font-weight:700;font-size:.68rem;color:var(--t1);margin-bottom:.2rem}
+.etrco{font-family:var(--fM);font-size:.55rem;color:var(--t3);margin-bottom:.16rem}
+.etrp{font-family:var(--fM);font-size:.52rem;letter-spacing:.06em}
+.edtl{animation:fadeUp .25s ease}
+.edp{padding:1.5rem}
+.edhd{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.6rem;margin-bottom:.8rem}
+.edrole{font-family:var(--fH);font-weight:700;font-size:1.15rem;color:var(--t1);letter-spacing:.02em}
+.edbadge{font-family:var(--fM);font-size:.53rem;border:1px solid;padding:.11rem .55rem;letter-spacing:.08em;flex-shrink:0}
+.edmeta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.3rem}
+.edmeta span{font-family:var(--fM);font-size:.58rem;color:var(--t3)}
+.edtasks{border-top:1px solid var(--b1);padding-top:1.2rem}
+.etask{display:flex;gap:.7rem;margin-bottom:.75rem}
+.etarrow{font-size:.6rem;flex-shrink:0;margin-top:.12rem}
+.ettext{font-family:var(--fM);font-size:.7rem;color:var(--t2);line-height:1.9}
+
+/* PROJECTS */
+.pcard{background:var(--surf);border:1px solid var(--b1)}
+.prow{border-bottom:1px solid var(--b1);transition:background .22s;cursor:pointer}
+.prow:last-child{border-bottom:none}
+.prowh{padding:1.2rem 1.4rem;display:flex;align-items:center;gap:1.1rem}
+.pnum{font-family:var(--fM);font-size:.5rem;color:var(--t3);width:18px;flex-shrink:0}
+.pvbar{width:3px;height:38px;flex-shrink:0}
+.pinfo{flex:1;min-width:0}
+.ptitle{font-family:var(--fH);font-weight:700;font-size:.88rem;color:var(--t1);margin-bottom:.22rem}
+.pprev{font-family:var(--fM);font-size:.61rem;color:var(--t3);line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pmeta{display:flex;align-items:center;gap:.8rem;flex-shrink:0}
+.pyear{font-family:var(--fM);font-size:.52rem;color:var(--t3)}
+.ptog{font-family:var(--fM);font-size:.8rem;transition:transform .22s}
+.pexp{padding:0 1.4rem 1.6rem;animation:fadeUp .22s ease}
+.pexpg{display:grid;grid-template-columns:1fr;gap:1.6rem;border-top:1px solid var(--b1);padding-top:1.4rem}
+.pelbl{font-family:var(--fM);font-size:.5rem;color:var(--t3);letter-spacing:.14em;margin-bottom:.7rem}
+.pdesc{font-family:var(--fM);font-size:.69rem;color:var(--t2);line-height:1.95;margin-bottom:1.2rem}
+.phi{display:flex;gap:.55rem;margin-bottom:.55rem}
+.phiarr{font-size:.62rem;flex-shrink:0}
+.phitxt{font-family:var(--fM);font-size:.66rem;color:var(--t2);line-height:1.7}
+.tags{display:flex;flex-wrap:wrap;gap:.32rem;margin-bottom:1.3rem}
+.tag{font-family:var(--fM);font-size:.52rem;color:var(--c1);border:1px solid rgba(0,220,255,.2);padding:.11rem .48rem;background:rgba(0,220,255,.04)}
+
+/* CERTS */
+.crow{display:flex;align-items:center;gap:1.1rem;padding:1rem 1.4rem;border-bottom:1px solid var(--b1);background:var(--surf);transition:background .2s}
+.crow:last-child{border-bottom:none}
+.crow:hover{background:var(--card)}
+.cicon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;border:1px solid}
+.cinfo{flex:1;min-width:0}
+.cname{font-family:var(--fH);font-weight:700;font-size:.73rem;color:var(--t1);margin-bottom:.16rem}
+.cby{font-family:var(--fM);font-size:.56rem;color:var(--t3)}
+.cyr{font-family:var(--fM);font-size:.56rem;flex-shrink:0}
+
+/* CONTACT */
+.ctgrid{display:grid;grid-template-columns:1fr;gap:2rem;align-items:start}
+.ctlinks{display:flex;flex-direction:column;gap:.38rem;margin-top:1.3rem}
+.ctlink{display:flex;align-items:center;gap:.9rem;padding:.8rem .95rem;border:1px solid var(--b1);background:var(--surf);color:var(--t2);transition:all .2s}
+.ctlink:hover{color:var(--t1)}
+.cti{font-size:.95rem;width:17px;text-align:center;flex-shrink:0}
+.ctl{font-family:var(--fM);font-size:.48rem;color:var(--t3);letter-spacing:.14em;margin-bottom:.1rem}
+.ctv{font-family:var(--fM);font-size:.65rem}
+.flbl{font-family:var(--fM);font-size:.48rem;color:var(--t3);letter-spacing:.14em;margin-bottom:.26rem}
+.fi{width:100%;background:var(--bg);border:1px solid var(--b1);padding:.65rem .88rem;color:var(--t1);font-family:var(--fM);font-size:.7rem;outline:none;transition:border-color .2s;border-radius:0}
+.fi:focus{border-color:var(--c1)}
+.fg{margin-bottom:.85rem}
+.fsub{width:100%;padding:.82rem;background:var(--c1);color:#000;font-family:var(--fH);font-size:.66rem;font-weight:700;letter-spacing:.12em;border:1px solid var(--c1);transition:all .25s;cursor:pointer;margin-top:.2rem}
+.fsub:hover{background:#000;color:var(--c1)}
+.fsub.fsd{background:var(--bg);color:var(--c1);border-color:var(--c1)}
+.fsub.fok{background:rgba(0,255,136,.12);color:var(--c2);border-color:rgba(0,255,136,.35)}
+.fsub.fer{background:rgba(255,34,85,.12);color:var(--c3);border-color:rgba(255,34,85,.35)}
+
+/* FOOTER */
+footer{padding:1.7rem 5%;border-top:1px solid var(--b1)}
+.fin{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.7rem}
+.fc{font-family:var(--fM);font-size:.52rem;color:var(--t3)}
+.fc span{color:var(--c1)}
+.ft{font-family:var(--fM);font-size:.5rem;color:var(--t3)}
+.fl{display:flex;gap:1.2rem}
+.fl a{font-family:var(--fM);font-size:.52rem;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.fl a:hover{color:var(--c1)}
+
+/* BOOT */
+#boot{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;justify-content:center;padding:3rem 6%;transition:opacity .6s}
+#boot.fd{opacity:0;pointer-events:none}
+.blogo{display:flex;align-items:center;gap:.9rem;margin-bottom:2.4rem}
+.blo{width:44px;height:44px;border:1px solid rgba(0,220,255,.45);display:flex;align-items:center;justify-content:center;font-family:var(--fH);font-size:.9rem;font-weight:700;color:var(--c1);flex-shrink:0}
+.blt{font-family:var(--fH);font-size:clamp(.8rem,2.5vw,1.35rem);font-weight:700;color:var(--t1);letter-spacing:.06em}
+.bls{font-family:var(--fM);font-size:.52rem;color:var(--t3);letter-spacing:.14em;margin-top:.14rem}
+.bline{font-family:var(--fM);font-size:.7rem;margin-bottom:.25rem;animation:fadeUp .2s ease}
+.bline .pr{color:var(--t3);margin-right:.6rem}
+.bpw{position:absolute;bottom:2.6rem;left:6%;right:6%}
+.bpm{display:flex;justify-content:space-between;margin-bottom:.34rem}
+.bpl{font-family:var(--fM);font-size:.5rem;color:var(--t3);letter-spacing:.14em}
+.bpp{font-family:var(--fM);font-size:.5rem;color:var(--c1)}
+.btr{height:1px;background:rgba(0,220,255,.1)}
+.bfi{height:100%;background:linear-gradient(90deg,var(--c1),var(--c2));box-shadow:0 0 8px rgba(0,220,255,.5);transition:width .22s}
+
+/* RESPONSIVE BREAKPOINTS */
+@media(min-width:640px){
+  .hctas{gap:.7rem}
+  .agrid{grid-template-columns:1fr 1fr;gap:3rem}
+  .skgrid{grid-template-columns:repeat(2,1fr)}
+  .extabs{grid-template-columns:1fr;gap:.35rem}
+}
+@media(min-width:768px){
+  .sec{padding:6rem 5%}
+  .agrid{grid-template-columns:1fr 300px;gap:3.5rem}
+  .exgrid{grid-template-columns:240px 1fr;gap:2.2rem;align-items:start}
+  .extabs{grid-template-columns:1fr}
+  .ctgrid{grid-template-columns:1fr 1.3fr;gap:3.5rem}
+  .pexpg{grid-template-columns:1fr 1fr}
+  .prowh{padding:1.4rem 1.8rem}
+  .pexp{padding:0 1.8rem 1.8rem}
+  .pprev{display:block}
+}
+@media(min-width:1024px){
+  .sec{padding:7rem 5%}
+  .nlinks{display:flex}
+  .ham{display:none}
+  #snav{display:flex}
+  .hud{display:block}
+  .agrid{grid-template-columns:1fr 320px;gap:4.5rem}
+  .exgrid{grid-template-columns:260px 1fr;gap:2.5rem}
+}
+@media(max-width:639px){
+  .hname{white-space:normal;word-break:break-word}
+  .hctas{flex-direction:column;align-items:center}
+  .btn{width:100%;max-width:270px;justify-content:center}
+  .extabs{grid-template-columns:1fr 1fr}
+  .etrco{display:none}
+  footer .fin{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:400px){
+  .extabs{grid-template-columns:1fr}
+}
+@media(pointer:coarse){
+  #cd,#cr{display:none!important}
+}
 </style>
 </head>
 <body>
-<div id="dot"></div>
-<div id="ring"></div>
+
+<!-- BOOT -->
+<div id="boot">
+  <div class="blogo">
+    <div class="blo">GK</div>
+    <div><div class="blt">SECURITY TERMINAL</div><div class="bls">GOPALAKRISHNAN S // CYBERSECURITY RESEARCHER</div></div>
+  </div>
+  <div id="blines" style="max-width:560px"></div>
+  <div class="bpw">
+    <div class="bpm"><span class="bpl">BOOT PROGRESS</span><span class="bpp" id="bpct">0%</span></div>
+    <div class="btr"><div class="bfi" id="bfill" style="width:0"></div></div>
+  </div>
+</div>
+
+<!-- CURSOR -->
+<div id="cd"></div><div id="cr"></div>
+
+<!-- SIDE NAV -->
 <div id="snav"></div>
+
+<!-- NAV -->
 <nav id="nav">
-  <a href="#hero" style="display:flex;align-items:center;gap:.7rem">
-    <div style="width:32px;height:32px;border:1px solid rgba(0,220,255,.35);display:flex;align-items:center;justify-content:center;font-family:var(--fH);font-size:.7rem;font-weight:700;color:var(--c1);letter-spacing:.04em">GK</div>
-    <div>
-      <div style="font-family:var(--fH);font-size:.72rem;font-weight:700;color:var(--t1);letter-spacing:.06em;line-height:1"> Gopalakrishnan S</div>
-      <div style="font-family:var(--fM);font-size:.5rem;color:var(--c1);letter-spacing:.12em">Cyber Security</div>
-    </div>
-  </a>
-  <div id="nav-links" style="display:flex;align-items:center;gap:.08rem"></div>
-  <div style="display:flex;align-items:center;gap:.5rem;font-family:var(--fM);font-size:.52rem;color:var(--t3)">
-    <span style="width:5px;height:5px;background:var(--c2);border-radius:50%;animation:pdot 2s infinite;display:inline-block"></span>Online
+  <a href="#hero" class="nlogo">GK</a>
+  <div class="nlinks" id="nlinks"></div>
+  <div class="nright">
+    <a href="Gopalakrishnan_S Resume.pdf" download class="nresume">↓ RESUME</a>
+    <div class="nstatus"><i></i>Online</div>
+    <div class="ham" id="hambtn" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
 </nav>
-<div id="root"></div>
 
-<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<script type="text/babel">
-const {useState,useEffect,useRef}=React;
+<!-- MOBILE MENU -->
+<div id="mmenu">
+  <div class="mx" onclick="toggleMenu()">✕</div>
+  <a href="#about"      onclick="toggleMenu()">About</a>
+  <a href="#skills"     onclick="toggleMenu()">Skills</a>
+  <a href="#experience" onclick="toggleMenu()">Experience</a>
+  <a href="#projects"   onclick="toggleMenu()">Projects</a>
+  <a href="#certs"      onclick="toggleMenu()">Certs</a>
+  <a href="#contact"    onclick="toggleMenu()">Contact</a>
+  <a href="Gopalakrishnan_S Resume.pdf" download class="mr">↓ Download Resume</a>
+</div>
 
+<!-- HERO -->
+<section id="hero">
+  <canvas id="mc"></canvas>
+  <div class="hvg"></div><div class="hfb"></div>
+  <div class="hud htl"><div class="hb"></div><div class="hlbl">SYS:ARMED</div></div>
+  <div class="hud htr"><div class="hb"></div><div class="hlbl">SECURE:ON</div></div>
+  <div class="hud hbl"><div class="hb"></div><div class="hlbl">LOC:CBE,IN</div></div>
+  <div class="hud hbr"><div class="hb"></div><div class="hlbl">STATUS:OK</div></div>
+  <div class="hcon">
+    <div class="hbadge"><i></i>Available for Internships &amp; Collaborations</div>
+    <h1 class="hname">GOPALAKRISHNAN S</h1>
+    <div class="hline"></div>
+    <div class="hrole"><span class="hprompt">&gt;&nbsp;</span><span id="tw"></span><span style="animation:blink .75s step-end infinite;color:var(--c1)">_</span></div>
+    <p class="hdesc">Cybersecurity student from Coimbatore — hunting bugs,<br>hardening systems and building tools that make them harder to break.</p>
+    <div class="hctas">
+      <a href="#projects" class="btn bp">View Projects</a>
+      <a href="#about"    class="btn bo">About Me</a>
+      <a href="#contact"  class="btn bo">Get In Touch</a>
+      <a href="Gopalakrishnan_S Resume.pdf" download class="btn bg">↓ Resume</a>
+    </div>
+    <a href="#about" class="hscroll"><div class="hsl"></div><span class="hst">SCROLL</span><div class="hsb"></div></a>
+  </div>
+</section>
 
-const WEB3FORMS_KEY = "64fb0b4e-4083-4ebe-9f06-9214021c1d24";
+<!-- TICKER -->
+<div class="tick-w"><div class="tick-i" id="ticker"></div></div>
 
-/* ══════════════════════ DATA ══════════════════════ */
-const D = {
-  name:"Gopalakrishnan S",
-  email:"gopalakrishnansasi10@gmail.com",
-  phone:"+91 88254 77381",
-  github:"https://github.com/Gopalakrishnan-S29",
-  linkedin:"https://www.linkedin.com/in/gopalakrishnan-s-914a1b2ba/",
-  location:"Coimbatore, India",
-  bio:"Cybersecurity student focused on Vulnerability Assessment and Penetration Testing (VAPT), web application security, and network security analysis. Skilled in identifying vulnerabilities using Burp Suite, Nmap, and Wireshark, with strong understanding of OWASP Top 10 and Linux environments. Passionate about strengthening practical cybersecurity skills through projects, labs, and internships.",
-  edu:"B.E. Computer Science & Engineering (Cyber Security) · Blockchain Specialization · Dr. N.G.P. Institute of Technology · 2023–2027",
+<!-- ABOUT -->
+<section class="sec" id="about" style="border-bottom:1px solid var(--b1)">
+  <div class="wrap">
+    <div class="lbl">About Me</div>
+    <h2 class="stitle">Security mindset. <span>Built from first principles.</span></h2>
+    <div class="agrid rv" id="rabout">
+      <div>
+        <p class="abio">Cybersecurity student focused on Vulnerability Assessment and Penetration Testing (VAPT), web application security, and network security analysis. Skilled in identifying vulnerabilities using Burp Suite, Nmap, and Wireshark, with strong understanding of OWASP Top 10 and Linux environments. Passionate about strengthening practical cybersecurity skills through projects, labs, and internships.</p>
+        <div class="aedu"><span>→ </span>B.E. Computer Science &amp; Engineering (Cyber Security) · Blockchain Specialization · Dr. N.G.P. Institute of Technology · 2023–2027</div>
+        <div class="sgrid">
+          <div class="sbox"><div class="stop" style="background:linear-gradient(90deg,transparent,var(--c1),transparent)"></div><div class="sval" style="color:var(--c1)" id="s0">0+</div><div class="slbl">INTERNSHIPS</div></div>
+          <div class="sbox"><div class="stop" style="background:linear-gradient(90deg,transparent,var(--c2),transparent)"></div><div class="sval" style="color:var(--c2)" id="s1">0+</div><div class="slbl">PROJECTS</div></div>
+          <div class="sbox"><div class="stop" style="background:linear-gradient(90deg,transparent,var(--c4),transparent)"></div><div class="sval" style="color:var(--c4)" id="s2">0+</div><div class="slbl">CERTS</div></div>
+        </div>
+        <div style="margin-top:1.5rem">
+          <div class="irow"><span class="ikey">Location</span><span class="ival">Coimbatore, India</span></div>
+          <div class="irow"><span class="ikey">Degree</span><span class="ival">B.E. CSE – Cyber Security</span></div>
+          <div class="irow"><span class="ikey">Specialization</span><span class="ival">Blockchain</span></div>
+          <div class="irow"><span class="ikey">Year</span><span class="ival">3rd Year · 2023–2027</span></div>
+        </div>
+      </div>
+      <div class="pwrap">
+        <div class="pbr ptl"></div><div class="pbr ptr"></div><div class="pbr pbl"></div><div class="pbr pbr2"></div>
+        <div class="term">
+          <div class="tbar"><div class="tdot" style="background:#ff5f56"></div><div class="tdot" style="background:#ffbd2e"></div><div class="tdot" style="background:#27c93f"></div><span class="ttl">profile.exe</span></div>
+          <img src="me.jpeg" alt="Gopalakrishnan S" class="pimg" onerror="this.style.display='none';document.getElementById('pph').style.display='flex'"/>
+          <div class="pph" id="pph" style="display:none">me.jpeg</div>
+          <div class="pname"><div class="pnm">GOPALAKRISHNAN S</div><div class="pns">Cybersecurity Student</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="sec" id="skills" style="background:var(--bg2);border-bottom:1px solid var(--b1)">
+  <div class="wrap">
+    <div class="lbl">Skills</div>
+    <h2 class="stitle">Technical <span>Capabilities.</span></h2>
+    <div class="skgrid rv" id="skgrid"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="sec" id="experience" style="border-bottom:1px solid var(--b1)">
+  <div class="wrap">
+    <div class="lbl">Experience</div>
+    <h2 class="stitle">Real-World <span>Engagements.</span></h2>
+    <div class="exgrid rv" id="rexp">
+      <div class="extabs" id="extabs"></div>
+      <div id="exdetail"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="sec" id="projects" style="background:var(--bg2);border-bottom:1px solid var(--b1)">
+  <div class="wrap">
+    <div class="lbl">Projects</div>
+    <h2 class="stitle">Security <span>Projects.</span></h2>
+    
+    <div class="pcard rv" id="rprojlist"></div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section class="sec" id="certs" style="border-bottom:1px solid var(--b1)">
+  <div class="wrap">
+    <div class="lbl">Certifications</div>
+    <h2 class="stitle">Verified <span>Credentials.</span></h2>
+    <div style="border:1px solid var(--b1)" class="rv" id="rcerts"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="lbl">Contact</div>
+    <h2 class="stitle">Let's Work <span>Together.</span></h2>
+    <div class="ctgrid rv" id="rcontact">
+      <div>
+        <p style="font-family:var(--fM);font-size:.74rem;color:var(--t3);line-height:2">Open to internships, bug bounty collaborations, security research, and any cybersecurity work worth doing.</p>
+        <div class="ctlinks" id="ctlinks"></div>
+      </div>
+      <div class="term">
+        <div class="tbar"><div class="tdot" style="background:#ff5f56"></div><div class="tdot" style="background:#ffbd2e"></div><div class="tdot" style="background:#27c93f"></div><span class="ttl">send_message.sh</span></div>
+        <div style="padding:1.4rem">
+          <div class="fg"><div class="flbl">// NAME</div><input id="fn" class="fi" placeholder="Your name..."/></div>
+          <div class="fg"><div class="flbl">// EMAIL</div><input id="fe" class="fi" type="email" placeholder="Your email..."/></div>
+          <div class="fg"><div class="flbl">// SUBJECT (OPTIONAL)</div><input id="fs" class="fi" placeholder="Subject..."/></div>
+          <div class="fg"><div class="flbl">// MESSAGE</div><textarea id="fm" class="fi" rows="4" placeholder="Your message..." style="resize:vertical"></textarea></div>
+          <button class="fsub" id="fsub" onclick="sendMsg()">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fin">
+    <span class="fc">© 2026 Gopalakrishnan S · <span>Coimbatore, India</span></span>
+    <span class="ft" id="ftime"></span>
+    <div class="fl"><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+/* ─── DATA ─── */
+const D={email:'gopalakrishnansasi10@gmail.com',phone:'+91 88254 77381',github:'https://github.com/Gopalakrishnan-S29',linkedin:'https://www.linkedin.com/in/gopalakrishnan-s-914a1b2ba/'};
+const W3K='64fb0b4e-4083-4ebe-9f06-9214021c1d24';
+
+const SKILLS=[
+  {g:'Offensive Security',c:'#ff2255',i:[{n:'VAPT / Pen Testing',v:88},{n:'Web App Security',v:85},{n:'Vulnerability Assessment',v:82},{n:'OWASP Top 10',v:90},{n:'SQL Injection',v:86},{n:'XSS & CSRF',v:83}]},
+  {g:'Security Tools',c:'#00dcff',i:[{n:'Burp Suite',v:82},{n:'Kali Linux',v:86},{n:'Nmap',v:84},{n:'Wireshark',v:78},{n:'OWASP ZAP',v:76},{n:'Metasploit',v:72}]},
+  {g:'Programming',c:'#ffaa00',i:[{n:'Python',v:82},{n:'Bash / Shell',v:78},{n:'Java',v:87},{n:'JavaScript',v:78},{n:'SQL',v:72},{n:'HTML / CSS',v:90}]},
+  {g:'Networking & Dev',c:'#00ff88',i:[{n:'TCP/IP & OSI',v:80},{n:'Network Scanning',v:82},{n:'Log Analysis',v:70},{n:'MERN Stack',v:50},{n:'OpenCV / AI',v:60},{n:'Incident Response',v:73}]},
+];
+const EXP=[
+  {r:'VAPT Intern',co:'BCBUZZ Technology Pvt Ltd',p:'Jun 2025',l:'Coimbatore, TN',t:'Web App Security',c:'#ff2255',ts:['Web app pentesting following complete OWASP methodology.','Identified SQL Injection, XSS, and authentication flaws in lab environments.','Reconnaissance and service enumeration using Nmap.','Manual testing with Burp Suite; automated scanning with OWASP ZAP.','Structured VAPT reports with remediation recommendations.']},
+  {r:'Cyber Security & Ethical Hacking Intern',co:'Rinex Technologies Pvt Ltd',p:'Apr–May 2025',l:'Bengaluru, KA',t:'Core Security',c:'#ffaa00',ts:['Core pentesting, VA, and offensive security methodologies.','Network scanning and service enumeration in lab environments.','Vulnerability discovery and traffic inspection via Burp Suite & Wireshark.','Documented vulnerabilities with mitigation strategies.']},
+  {r:'Artificial Intelligence Intern',co:'NoviTech R&D Pvt Ltd',p:'Jul–Aug 2025',l:'Coimbatore, TN',t:'AI / CV',c:'#9955ff',ts:['Built chatbot using conversational AI workflows.','Implemented CV pipelines with OpenCV — object detection, face recognition.','Explored deep learning and neural networks with pretrained models.','Built hand gesture recognition and leaf disease detection systems.']},
+  {r:'Web Development Intern',co:'Cognifyz Technologies',p:'Feb–Mar 2026',l:'Maharashtra, India',t:'Front-End / MERN',c:'#00dcff',ts:['Developed responsive web pages with HTML5, CSS3, JavaScript.','Built UI components with Bootstrap and Bulma — galleries, slideshows, navbars.','Designed responsive landing page using Flexbox and media queries.','Implemented form validation and DOM manipulation.']},
+];
+const PROJS=[
+  {id:'01',title:'Automated Linux Cyber Defence System',year:'2026–',c:'#ff2255',desc:'Bash-based automation scripts monitoring Linux system logs to detect suspicious activities. Implements log analysis for security threats and automates routine security auditing tasks.',tags:['Python','Bash','Linux','Log Analysis','IDS'],pts:['Real-time system log monitoring with anomaly detection','Automated security audit pipeline replacing manual checks','Configurable threat-level alerting and notifications']},
+  {id:'02',title:'CyberSentinel — Unified Network & App Monitoring',year:'2025–26',c:'#ffaa00',desc:'Security monitoring toolkit for network visibility, WiFi analysis, and open-port detection. Modules for network scanning and service enumeration with integrated system hardening checks.',tags:['Python','Nmap','WiFi','Network','Hardening'],pts:['Network visibility with open-port and WiFi analysis','Service enumeration modules with auto-classification','System hardening checks for attack surface reduction']},
+  {id:'03',title:'Secure Scan — Networking Intrusion Detection',year:'2024–25',c:'#00ff88',desc:'Command-line utilities for network scanning and security log monitoring. Automation scripts detect suspicious network activity with structured alert generation.',tags:['Python','Nmap','Bash','CLI','IDS'],pts:['CLI-based network scanning and log monitoring','Automated suspicious activity detection with alerting','Structured reporting pipeline for incident documentation']},
+];
+const CERTS=[
+  {n:'Practical Web Application Security and Testing',by:'Tagger Institute',yr:'2025',c:'#ff2255'},
+  {n:'SQL Injection Attacks',by:'EC-Council',yr:'2025',c:'#ffaa00'},
+  {n:'Practical Cyber Security for Practitioners',by:'NPTEL',yr:'2025',c:'#00dcff'},
+  {n:'Networking Basics',by:'Cisco Academy',yr:'2025',c:'#00ff88'},
+  {n:"NCC 'C' Certificate",by:'Ministry of Defence, Govt. of India',yr:'2026',c:'#9955ff'},
+];
+
+/* ─── BOOT ─── */
+(()=>{
+  const seq=[
+    {c:'#1a3a50',m:'Initializing Security Terminal...'},
+    {c:'#1a3a50',m:'Loading kernel modules...................  OK'},
+    {c:'#1a3a50',m:'Mounting encrypted volumes...............  OK'},
+    {c:'#00dcff',m:'Running integrity checks..................  PASS'},
+    {c:'#1a3a50',m:'Firewall rules applied...................  128 rules'},
+    {c:'#ffaa00',m:'Authenticating operator..................'},
+    {c:'#00ff88',m:'Identity: GOPALAKRISHNAN S  .............  VERIFIED'},
+    {c:'#00ff88',m:'Clearance: SECURITY RESEARCHER  .........  GRANTED'},
+    {c:'#00dcff',m:'Launching portfolio......................  READY'},
+  ];
+  const bl=document.getElementById('blines'),bf=document.getElementById('bfill'),bp=document.getElementById('bpct'),boot=document.getElementById('boot');
+  seq.forEach(({c,m},i)=>setTimeout(()=>{
+    const d=document.createElement('div');d.className='bline';
+    d.innerHTML=`<span class="pr">$</span><span style="color:${c}">${m}</span>`;
+    bl.appendChild(d);const p=Math.round((i+1)/seq.length*100);
+    bf.style.width=p+'%';bp.textContent=p+'%';
+  },i*280));
+  setTimeout(()=>boot.classList.add('fd'),seq.length*280+400);
+  setTimeout(()=>boot.style.display='none',seq.length*280+1050);
+})();
+
+/* ─── CURSOR ─── */
+(()=>{
+  const dot=document.getElementById('cd'),ring=document.getElementById('cr');
+  if(!dot||!ring)return;
+  let rx=0,ry=0,mx=600,my=300;
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  (function L(){rx=lerp(rx,mx,.13);ry=lerp(ry,my,.13);ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(L);})();
+})();
+
+/* ─── MATRIX RAIN ─── */
+(()=>{
+  const cv=document.getElementById('mc'),ctx=cv.getContext('2d');
+  const chars='01アイウエオカキクケコ<>{}[]|/\\#@$%^&*';
+  const fs=14;let drops=[];
+  const rsz=()=>{cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;drops=Array(Math.floor(cv.width/fs)).fill(0).map(()=>Math.random()*-80);};
+  rsz();window.addEventListener('resize',rsz);
+  (function draw(){
+    ctx.fillStyle='rgba(5,8,15,.22)';ctx.fillRect(0,0,cv.width,cv.height);
+    drops.forEach((y,i)=>{
+      const c=chars[Math.floor(Math.random()*chars.length)];
+      const bright=Math.random()>.93;
+      ctx.fillStyle=bright?'rgba(200,255,255,.9)':i%3===0?'rgba(0,220,255,.55)':'rgba(0,220,255,.18)';
+      ctx.font=fs+"px 'Fira Code',monospace";ctx.fillText(c,i*fs,y*fs);
+      if(y*fs>cv.height&&Math.random()>.975)drops[i]=0;drops[i]+=.55;
+    });requestAnimationFrame(draw);
+  })();
+})();
+
+/* ─── TYPEWRITER ─── */
+(()=>{
+  const el=document.getElementById('tw');
+  const roles=['VAPT Specialist','Ethical Hacker','Bug Hunter','Security Researcher','Defensive Engineer'];
+  let ri=0,ci=0,del=false;
+  (function tick(){
+    const cur=roles[ri],spd=del?26:65;
+    setTimeout(()=>{
+      if(!del){el.textContent=cur.slice(0,ci+1);if(ci+1===cur.length)setTimeout(()=>del=true,1900);else ci++;}
+      else{el.textContent=cur.slice(0,ci-1);if(ci-1<0){del=false;ri=(ri+1)%roles.length;ci=0;}else ci--;}
+      tick();
+    },spd);
+  })();
+})();
+
+/* ─── TICKER ─── */
+(()=>{
+  const items=['VAPT','Burp Suite','Kali Linux','Ethical Hacking','OWASP Top 10','Nmap','Wireshark','SQL Injection','XSS','Python','Network Security','Metasploit','Bash','MERN Stack','Bug Bounty','AI Security'];
+  const txt=items.map(i=>`— ${i} `).join('  ');
+  document.getElementById('ticker').innerHTML=[txt,txt].map(t=>`<span class="tick-s">${t}</span>`).join('');
+})();
+
+/* ─── NAV + SIDENAV ─── */
+const SECS=['about','skills','experience','projects','certs','contact'];
+let actSec='hero';
+function buildNav(){
+  document.getElementById('nlinks').innerHTML=SECS.map(s=>`<a href="#${s}" class="nav-link${actSec===s?' on':''}">${s}</a>`).join('');
+  document.getElementById('snav').innerHTML=['hero',...SECS].map(s=>`<div class="sdot${actSec===s?' on':''}" onclick="document.getElementById('${s}').scrollIntoView({behavior:'smooth'})"></div>`).join('');
+}
+buildNav();
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('vis',window.scrollY>window.innerHeight*.7);
+  ['hero',...SECS].forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    const r=el.getBoundingClientRect();
+    if(r.top<=window.innerHeight*.4&&r.bottom>0){actSec=id;buildNav();}
+  });
+});
+window.toggleMenu=()=>document.getElementById('mmenu').classList.toggle('open');
+
+/* ─── REVEAL ─── */
+new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');}),{threshold:.06}).observe&&
+document.querySelectorAll('.rv').forEach(el=>new IntersectionObserver(([e])=>{if(e.isIntersecting)e.target.classList.add('on');},{threshold:.06}).observe(el));
+
+/* ─── STAT COUNTERS ─── */
+(()=>{
+  const tgts=[{id:'s0',v:4,s:'+'},{id:'s1',v:3,s:'+'},{id:'s2',v:5,s:'+'}];
+  const ob=new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting)return;
+    tgts.forEach(({id,v,s})=>{let c=0;const step=v/40;const t=setInterval(()=>{c=Math.min(c+step,v);document.getElementById(id).textContent=Math.floor(c)+s;if(c>=v)clearInterval(t);},25);});
+    ob.disconnect();
+  },{threshold:.3});
+  const el=document.getElementById('rabout');if(el)ob.observe(el);
+})();
+
+/* ─── SKILLS GLITCH CANVAS ─── */
+(()=>{
+  const grid=document.getElementById('skgrid');if(!grid)return;
+  const CHARS='$%#@!?<>/\\|[]{}*&^~01ABCDEFabcdef';
+
+  SKILLS.forEach((grp,gi)=>{
+    const card=document.createElement('div');card.className='skcard';
+    card.innerHTML=`<div class="sktop" style="background:linear-gradient(90deg,transparent,${grp.c},transparent)"></div>
+      <div class="skhdr">
+        <div class="skbar" style="background:${grp.c};box-shadow:0 0 8px ${grp.c}"></div>
+        <span class="skname">${grp.g}</span>
+        <span class="skcnt" style="color:${grp.c}">${grp.i.length} SKILLS</span>
+      </div>
+      <div style="padding:.3rem 0 .5rem"><canvas class="skcv"></canvas></div>`;
+    grid.appendChild(card);
+
+    const cv=card.querySelector('canvas');
+    let started=false;
+    const glitch=(str,rev)=>str.split('').map((ch,i)=>i<rev?ch:CHARS[Math.floor(Math.random()*CHARS.length)]).join('');
+    const ease=t=>t<.5?2*t*t:1-(Math.pow(-2*t+2,2)/2);
+    const hexRgb=hex=>{const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return`${r},${g},${b}`;};
+    const rgb=hexRgb(grp.c);
+    const ROW=26;
+
+    function rsz(){cv.width=cv.parentElement.offsetWidth||280;cv.height=grp.i.length*ROW+8;cv.style.height=cv.height+'px';}
+    rsz();window.addEventListener('resize',rsz);
+
+    function run(){
+      const ctx=cv.getContext('2d');let frame=0;
+      (function draw(){
+        ctx.clearRect(0,0,cv.width,cv.height);
+        grp.i.forEach((sk,i)=>{
+          const y=i*ROW+4;
+          const start=i*16;
+          const rev=Math.max(0,Math.floor((frame-start)*sk.n.length/38));
+          const done=rev>=sk.n.length;
+          const barT=ease(Math.max(0,Math.min(1,(frame-(start+22))/52)));
+          if(i>0){ctx.strokeStyle=`rgba(${rgb},.07)`;ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(0,y-3);ctx.lineTo(cv.width,y-3);ctx.stroke();}
+          const a=done?1:(0.5+Math.random()*.4);
+          ctx.fillStyle=done?grp.c:`rgba(${rgb},${a})`;
+          ctx.font=`500 11px 'Fira Code',monospace`;
+          ctx.fillText(frame>start?glitch(sk.n,rev):'????',10,y+12);
+          if(frame>start&&!done){
+            ctx.fillStyle=`rgba(${rgb},.48)`;ctx.font=`500 9px 'Fira Code',monospace`;
+            ctx.textAlign='right';ctx.fillText('DECRYPTING...',cv.width-8,y+12);ctx.textAlign='left';
+          }
+          if(barT>0.02){
+            ctx.fillStyle=grp.c;ctx.font=`700 10px 'Fira Code',monospace`;
+            ctx.textAlign='right';ctx.fillText(Math.round(sk.v*barT)+'%',cv.width-8,y+12);ctx.textAlign='left';
+          }
+          const bx=10,by=y+17,bw=cv.width-20,bh=3;
+          ctx.fillStyle=`rgba(${rgb},.1)`;ctx.fillRect(bx,by,bw,bh);
+          if(barT>0){
+            const fl=!done&&Math.random()>.45?.65:1;ctx.globalAlpha=fl;
+            const filled=Math.floor(bw*(sk.v/100)*barT);
+            for(let px=0;px<filled;px+=3){ctx.fillStyle=px>filled-10?`rgba(${rgb},1)`:`rgba(${rgb},.72)`;ctx.fillRect(bx+px,by,2,bh);}
+            ctx.shadowColor=grp.c;ctx.shadowBlur=8;ctx.fillStyle=grp.c;ctx.fillRect(bx+filled-2,by-1,3,bh+2);ctx.shadowBlur=0;ctx.globalAlpha=1;
+          }
+        });
+        frame++;requestAnimationFrame(draw);
+      })();
+    }
+
+    new IntersectionObserver(([e])=>{
+      if(e.isIntersecting&&!started){started=true;setTimeout(()=>run(),gi*130);}
+    },{threshold:.1}).observe(card);
+  });
+})();
+
+/* ─── EXPERIENCE ─── */
+(()=>{
+  let act=0;
+  const tabs=document.getElementById('extabs'),det=document.getElementById('exdetail');
+  function rTabs(){tabs.innerHTML=EXP.map((e,i)=>`
+    <button class="extab${i===act?' on':''}" style="border-left-color:${i===act?e.c:'transparent'};${i===act?`background:${e.c}0d;border-color:${e.c}44;`:''}" onclick="expSel(${i})">
+      <div class="etrl">${e.r}</div><div class="etrco">${e.co}</div><div class="etrp" style="color:${e.c}">${e.p}</div>
+    </button>`).join('');}
+  function rDet(){const e=EXP[act];det.innerHTML=`
+    <div class="term edtl"><div class="tbar"><div class="tdot" style="background:#ff5f56"></div><div class="tdot" style="background:#ffbd2e"></div><div class="tdot" style="background:#27c93f"></div><span class="ttl">${e.co.toLowerCase().replace(/[^a-z]/g,'_')}.log</span></div>
+    <div class="edp"><div class="edhd"><div class="edrole">${e.r}</div><div class="edbadge" style="color:${e.c};border-color:${e.c}44;background:${e.c}08">${e.t}</div></div>
+    <div class="edmeta"><span style="color:${e.c}">@ ${e.co}</span><span>${e.p}</span><span>📍 ${e.l}</span></div>
+    <div class="edtasks">${e.ts.map(t=>`<div class="etask"><span class="etarrow" style="color:${e.c}">→</span><span class="ettext">${t}</span></div>`).join('')}</div></div></div>`;}
+  window.expSel=i=>{act=i;rTabs();rDet();};rTabs();rDet();
+})();
+
+/* ─── PROJECTS ─── */
+(()=>{
+  const list=document.getElementById('rprojlist');if(!list)return;
+  let open=null;
+  function render(){list.innerHTML=PROJS.map((p,i)=>`
+    <div class="prow" style="${open===i?`background:${p.c}07`:''}" onclick="projTog(${i})">
+      <div class="prowh">
+        <span class="pnum">${p.id}</span>
+        <div class="pvbar" style="background:${p.c};box-shadow:0 0 10px ${p.c}70"></div>
+        <div class="pinfo"><div class="ptitle">${p.title}</div>${open!==i?`<div class="pprev">${p.desc.slice(0,80)}...</div>`:''}</div>
+        <div class="pmeta"><span class="pyear">${p.year}</span><span class="ptog" style="color:${p.c};transform:${open===i?'rotate(45deg)':'none'}">+</span></div>
+      </div>
+      ${open===i?`<div class="pexp"><div class="pexpg">
+        <div><div class="pelbl"> DESCRIPTION</div><p class="pdesc">${p.desc}</p><div class="pelbl">HIGHLIGHTS</div>${p.pts.map(h=>`<div class="phi"><span class="phiarr" style="color:${p.c}">→</span><span class="phitxt">${h}</span></div>`).join('')}</div>
+        <div><div class="pelbl">TECH STACK</div><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+         
+        </div></div></div>`:''}
+    </div>`).join('');}
+  window.projTog=i=>{open=open===i?null:i;render();};render();
+})();
+
+/* ─── CERTS ─── */
+document.getElementById('rcerts').innerHTML=CERTS.map(c=>`
+  <div class="crow"><div class="cicon" style="color:${c.c};border-color:${c.c}44;background:${c.c}07">🛡</div>
+  <div class="cinfo"><div class="cname">${c.n}</div><div class="cby">${c.by}</div></div>
+  <span class="cyr" style="color:${c.c}">${c.yr}</span></div>`).join('');
+
+/* ─── CONTACT LINKS ─── */
+document.getElementById('ctlinks').innerHTML=[
+  {ic:'✉',l:'Email',v:D.email,h:`mailto:${D.email}`,c:'var(--c1)'},
+  {ic:'☎',l:'Phone',v:D.phone,h:`tel:${D.phone.replace(/\s/g,'')}`,c:'var(--c2)'},
+  {ic:'⌨',l:'GitHub',v:'Gopalakrishnan-S29',h:D.github,c:'var(--c4)',ext:true},
+  {ic:'◈',l:'LinkedIn',v:'gopalakrishnan-s',h:D.linkedin,c:'var(--c5)',ext:true},
+].map(l=>`<a class="ctlink" href="${l.h}" ${l.ext?'target="_blank" rel="noopener"':''} onmouseenter="this.style.borderColor='${l.c.replace('var(--','').replace(')','')===l.c?l.c+'44':l.c}44'" onmouseleave="this.style.borderColor='var(--b1)'"><span class="cti" style="color:${l.c}">${l.ic}</span><div><div class="ctl">${l.l.toUpperCase()}</div><div class="ctv">${l.v}</div></div></a>`).join('');
+
+/* ─── SEND MESSAGE ─── */
+window.sendMsg=async()=>{
+  const name=document.getElementById('fn').value.trim(),email=document.getElementById('fe').value.trim(),
+        subj=document.getElementById('fs').value.trim(),msg=document.getElementById('fm').value.trim();
+  const btn=document.getElementById('fsub');
+  if(!name||!email||!msg)return;
+  btn.className='fsub fsd';btn.textContent='Sending...';
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({access_key:W3K,name,email,subject:subj||`Portfolio Contact from ${name}`,message:msg})});
+    const data=await res.json();
+    if(data.success){
+      btn.className='fsub fok';btn.textContent='✓ Message Sent Successfully';
+      ['fn','fe','fs','fm'].forEach(id=>document.getElementById(id).value='');
+      setTimeout(()=>{btn.className='fsub';btn.textContent='Send Message';},4000);
+    } else throw 0;
+  } catch{
+    btn.className='fsub fer';btn.textContent='✗ Failed — Try Again';
+    setTimeout(()=>{btn.className='fsub';btn.textContent='Send Message';},4000);
+  }
 };
 
-const SKILLS = [
-  {group:"Offensive Security",col:"#ff2255",items:[
-    {n:"VAPT / Pen Testing",v:88},{n:"Web App Security",v:85},{n:"Vulnerability Assessment",v:82},{n:"OWASP Top 10",v:90},{n:"SQL Injection",v:86},{n:"XSS & CSRF",v:83},
-  ]},
-  {group:"Security Tools",col:"#00dcff",items:[
-    {n:"Burp Suite",v:82},{n:"Kali Linux",v:86},{n:"Nmap",v:84},{n:"Wireshark",v:78},{n:"OWASP ZAP",v:76},{n:"Metasploit",v:72},
-  ]},
-  {group:"Programming",col:"#ffaa00",items:[
-    {n:"Python",v:82},{n:"Bash / Shell",v:78},{n:"Java",v:77},{n:"JavaScript",v:68},{n:"SQL",v:72},{n:"HTML / CSS",v:90},
-  ]},
-  {group:"Networking & Dev",col:"#00ff88",items:[
-    {n:"TCP/IP & OSI",v:80},{n:"Network Scanning",v:82},{n:"Log Analysis",v:70},{n:"MERN Stack",v:68},{n:"OpenCV / AI",v:72},{n:"Incident Response",v:66},{n:"GitHub",v:70}
-  ]},
-];
-
-const EXP = [
-  {role:"VAPT Intern",company:"BCBUZZ Technology Pvt Ltd",period:"Jun 2025",loc:"Coimbatore, TN",type:"Web App Security",col:"#ff2255",
-   tasks:["Web app pentesting following complete OWASP methodology.","Identified SQL Injection, XSS, and authentication flaws in lab environments.","Reconnaissance and service enumeration using Nmap.","Manual testing with Burp Suite; automated scanning with OWASP ZAP.","Structured VAPT reports with remediation recommendations."]},
-  {role:"Cyber Security & Ethical Hacking Intern",company:"Rinex Technologies Pvt Ltd",period:"Apr–May 2025",loc:"Bengaluru, KA",type:"Core Security",col:"#ffaa00",
-   tasks:["Core pentesting, VA, and offensive security methodologies.","Network scanning and service enumeration in lab environments.","Vulnerability discovery and traffic inspection via Burp Suite & Wireshark.","Documented vulnerabilities with mitigation strategies."]},
-  {role:"Artificial Intelligence Intern",company:"NoviTech R&D Private Limited",period:"Jul–Aug 2025",loc:"Coimbatore, TN",type:"AI / Computer Vision",col:"#9955ff",
-   tasks:["Built chatbot using conversational AI workflows.","Implemented CV pipelines with OpenCV — object detection, face recognition.","Explored deep learning and neural networks with pretrained models.","Built hand gesture recognition and leaf disease detection systems."]},
-  {role:"Web Development Intern",company:"Cognifyz Technologies",period:"Feb–Mar 2026",loc:"Maharashtra, India",type:"Front-End / MERN",col:"#00dcff",
-   tasks:["Developed responsive web pages with HTML5, CSS3, JavaScript.","Built UI components with Bootstrap and Bulma — galleries, slideshows, navbars.","Designed responsive internship landing page using Flexbox and media queries.","Implemented form validation and DOM manipulation for front-end functionality."]},
-];
-
-const PROJECTS = [
-  {id:"01",title:"Automated Linux Cyber Defence System",year:"2026–ongoing",col:"#ff2255",
-   desc:"Bash-based automation scripts monitoring Linux system logs to detect suspicious activities. Implements log analysis mechanisms for potential security threats and automates routine security auditing tasks for host-based security monitoring.",
-   tags:["Python","Bash","Linux","Log Analysis","IDS"],cvss:"8.4",
-   pts:["Real-time system log monitoring with anomaly detection","Automated security audit pipeline replacing manual checks","Configurable threat-level alerting and notifications"]},
-  {id:"02",title:"CyberSentinel — Unified Network & App Monitoring",year:"2025–26",col:"#ffaa00",
-   desc:"Security monitoring toolkit for network visibility, WiFi analysis, and open-port detection. Includes modules for network scanning and service enumeration to identify exposed services, integrated with system hardening checks for defensive security monitoring.",
-   tags:["Python","Nmap","WiFi","Network","Hardening"],cvss:"7.2",
-   pts:["Network visibility with open-port and WiFi analysis","Service enumeration modules with auto-classification","System hardening checks for attack surface reduction"]},
-  {id:"03",title:"Secure Scan — Networking Intrusion Detection",year:"2024–25",col:"#00ff88",
-   desc:"Command-line utilities for network scanning and security log monitoring. Automation scripts detect suspicious network activity and potential intrusion attempts, assisting with early threat identification and structured alert generation.",
-   tags:["Python","Nmap","Bash","CLI","IDS"],cvss:"5.3",
-   pts:["CLI-based network scanning and log monitoring","Automated suspicious activity detection with alerting","Structured reporting pipeline for incident documentation"]},
-];
-
-const CERTS = [
-  {n:"Practical Web Application Security and Testing",by:"Tagger Institute",yr:"2025",col:"#ff2255"},
-  {n:"SQL Injection Attacks",by:"EC-Council",yr:"2025",col:"#ffaa00"},
-  {n:"Practical Cyber Security for Practitioners",by:"NPTEL",yr:"2025",col:"#00dcff"},
-  {n:"Networking Basics",by:"Cisco Academy",yr:"2025",col:"#00ff88"},
-  {n:"NCC 'B' Certificate",by:"Ministry of Defence, Govt. of India",yr:"2025",col:"#9955ff"},
-];
-
-/* ══════════════════════ CURSOR ══════════════════════ */
-function useCursor(){
-  useEffect(()=>{
-    const dot=document.getElementById("dot"),ring=document.getElementById("ring");
-    let rx=0,ry=0,mx=600,my=400,af;
-    const lerp=(a,b,t)=>a+(b-a)*t;
-    const mv=e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px";};
-    const loop=()=>{rx=lerp(rx,mx,.13);ry=lerp(ry,my,.13);ring.style.left=rx+"px";ring.style.top=ry+"px";af=requestAnimationFrame(loop);};
-    window.addEventListener("mousemove",mv);loop();
-    return()=>{window.removeEventListener("mousemove",mv);cancelAnimationFrame(af);};
-  },[]);
-}
-
-/* ══════════════════════ NAV + SIDENAV (DOM) ══════════════════════ */
-function useNav(active){
-  useEffect(()=>{
-    const nav=document.getElementById("nav");
-    const nl=document.getElementById("nav-links");
-    const sn=document.getElementById("snav");
-    const secs=["about","skills","experience","projects","certs","contact"];
-    nl.innerHTML=secs.map(s=>`<a href="#${s}" style="font-family:var(--fM);font-size:.56rem;padding:.32rem .75rem;color:${active===s?"#000":"var(--t3)"};background:${active===s?"var(--c1)":"transparent"};letter-spacing:.06em;text-transform:uppercase;transition:all .2s;text-decoration:none">${s}</a>`).join("");
-    sn.innerHTML=["hero",...secs].map(s=>`<div class="sn ${active===s?"on":""}" onclick="document.getElementById('${s}').scrollIntoView({behavior:'smooth'})" style="cursor:none"><span class="sn-l">${s}</span><span class="sn-d"></span></div>`).join("");
-    const tog=()=>nav.classList.toggle("vis",window.scrollY>window.innerHeight*.8);
-    window.addEventListener("scroll",tog);
-    return()=>window.removeEventListener("scroll",tog);
-  },[active]);
-}
-
-/* ══════════════════════ MATRIX RAIN CANVAS ══════════════════════ */
-function MatrixCanvas(){
-  const ref=useRef(null);
-  useEffect(()=>{
-    const cv=ref.current;if(!cv)return;
-    const ctx=cv.getContext("2d");
-    const resize=()=>{cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;};
-    resize();
-    const ro=new ResizeObserver(resize);ro.observe(cv);
-    const chars="01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホ<>{}[]|/\\#@$%^&*";
-    const fs=14;
-    let cols=Math.floor(cv.width/fs);
-    let drops=Array(cols).fill(1).map(()=>Math.random()*-100);
-    let af;
-    const draw=()=>{
-      ctx.fillStyle="rgba(5,8,15,.22)";
-      ctx.fillRect(0,0,cv.width,cv.height);
-      cols=Math.floor(cv.width/fs);
-      while(drops.length<cols)drops.push(Math.random()*-100);
-      drops.length=cols;
-      for(let i=0;i<cols;i++){
-        const c=chars[Math.floor(Math.random()*chars.length)];
-        const bright=Math.random()>.92;
-        ctx.fillStyle=bright?"rgba(200,255,255,.9)":i%3===0?"rgba(0,220,255,.55)":"rgba(0,220,255,.18)";
-        ctx.font=fs+"px 'Fira Code',monospace";
-        ctx.fillText(c,i*fs,drops[i]*fs);
-        if(drops[i]*fs>cv.height&&Math.random()>.975)drops[i]=0;
-        drops[i]+=.55;
-      }
-      af=requestAnimationFrame(draw);
-    };
-    draw();
-    return()=>{cancelAnimationFrame(af);ro.disconnect();};
-  },[]);
-  return <canvas ref={ref} style={{position:"absolute",inset:0,width:"100%",height:"100%",zIndex:0,pointerEvents:"none",opacity:.35}}/>;
-}
-
-/* ══════════════════════ BOOT ══════════════════════ */
-function Boot({onDone}){
-  const[lines,setLines]=useState([]);
-  const[pct,setPct]=useState(0);
-  const[fade,setFade]=useState(false);
-  const seq=[
-    {t:0,  c:"#1a3a50",m:"Initializing Security Terminal..."},
-    {t:300,c:"#1a3a50",m:"Loading kernel modules...................  OK"},
-    {t:560,c:"#1a3a50",m:"Mounting encrypted volumes...............  OK"},
-    {t:800,c:"#00dcff",m:"Running integrity checks..................  PASS"},
-    {t:1020,c:"#1a3a50",m:"Firewall rules applied...................  128 rules"},
-    {t:1250,c:"#ffaa00",m:"Authenticating operator.................."},
-    {t:1530,c:"#00ff88",m:"Identity: GOPALAKRISHNAN S  .............  VERIFIED"},
-    {t:1780,c:"#00ff88",m:"Clearance: SECURITY RESEARCHER  .........  GRANTED"},
-    {t:2020,c:"#00dcff",m:"Launching portfolio......................  READY"},
-  ];
-  useEffect(()=>{
-    seq.forEach(({t,c,m},i)=>setTimeout(()=>{setLines(l=>[...l,{c,m}]);setPct(Math.round((i+1)/seq.length*100));},t));
-    setTimeout(()=>setFade(true),2600);
-    setTimeout(()=>onDone(),3200);
-  },[]);
-  return(
-    <div style={{position:"fixed",inset:0,background:"#05080f",zIndex:9999,display:"flex",flexDirection:"column",justifyContent:"center",padding:"3.5rem 6%",opacity:fade?0:1,transition:"opacity .65s",pointerEvents:fade?"none":"all"}}>
-      <div style={{display:"flex",alignItems:"center",gap:"1rem",marginBottom:"2.8rem"}}>
-        <div style={{width:48,height:48,border:"1px solid rgba(0,220,255,.45)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"var(--fH)",fontSize:"1rem",fontWeight:700,color:"var(--c1)"}}>GK</div>
-        <div>
-          <div style={{fontFamily:"var(--fH)",fontSize:"clamp(.9rem,2.2vw,1.6rem)",fontWeight:700,color:"var(--t1)",letterSpacing:".06em"}}>SECURITY TERMINAL</div>
-          <div style={{fontFamily:"var(--fM)",fontSize:".55rem",color:"var(--t3)",letterSpacing:".14em",marginTop:".18rem"}}>GOPALAKRISHNAN S // CYBERSECURITY RESEARCHER</div>
-        </div>
-      </div>
-      <div style={{maxWidth:580}}>
-        {lines.map((l,i)=><div key={i} style={{fontFamily:"var(--fM)",fontSize:".74rem",color:l.c,marginBottom:".28rem",animation:"fadeUp .2s ease"}}><span style={{color:"#0a1e2e",marginRight:".7rem"}}>$</span>{l.m}</div>)}
-        {!fade&&<span style={{color:"var(--c1)",animation:"blink .8s step-end infinite"}}>▌</span>}
-      </div>
-      <div style={{position:"absolute",bottom:"3rem",left:"6%",right:"6%"}}>
-        <div style={{display:"flex",justifyContent:"space-between",marginBottom:".38rem"}}>
-          <span style={{fontFamily:"var(--fM)",fontSize:".53rem",color:"var(--t3)",letterSpacing:".14em"}}>BOOT PROGRESS</span>
-          <span style={{fontFamily:"var(--fM)",fontSize:".53rem",color:"var(--c1)"}}>{pct}%</span>
-        </div>
-        <div style={{height:"1px",background:"rgba(0,220,255,.1)"}}>
-          <div style={{height:"100%",width:pct+"%",background:"linear-gradient(90deg,var(--c1),var(--c2))",transition:"width .25s ease",boxShadow:"0 0 10px rgba(0,220,255,.6)"}}/>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ══════════════════════ HERO ══════════════════════ */
-function Hero(){
-  const[typed,setTyped]=useState("");
-  const[ri,setRi]=useState(0);
-  const[del,setDel]=useState(false);
-  const[ci,setCi]=useState(0);
-  const roles=["VAPT Specialist","Ethical Hacker","Bug Hunter","Security Researcher","Defensive Engineer","Web Security Analyst"];
-  useEffect(()=>{
-    const cur=roles[ri],spd=del?26:64;
-    const t=setTimeout(()=>{
-      if(!del){setTyped(cur.slice(0,ci+1));if(ci+1===cur.length){setTimeout(()=>setDel(true),1900);return;}setCi(c=>c+1);}
-      else{setTyped(cur.slice(0,ci-1));if(ci-1<0){setDel(false);setRi(r=>(r+1)%roles.length);setCi(0);return;}setCi(c=>c-1);}
-    },spd);
-    return()=>clearTimeout(t);
-  },[ci,del,ri]);
-
-  return(
-    <section id="hero" style={{minHeight:"100vh",position:"relative",overflow:"hidden",display:"flex",alignItems:"center",justifyContent:"center",padding:"4rem 5%",textAlign:"center"}}>
-      <MatrixCanvas/>
-      {/* Vignette */}
-      <div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 75% 80% at 50% 50%,rgba(5,8,15,.6) 0%,rgba(5,8,15,.92) 100%)",zIndex:1,pointerEvents:"none"}}/>
-      <div style={{position:"absolute",bottom:0,left:0,right:0,height:"30%",background:"linear-gradient(to bottom,transparent,var(--bg))",zIndex:2,pointerEvents:"none"}}/>
-
-      {/* Corner HUD */}
-      {[{t:"top",h:"left",l:"SYS:ARMED"},{t:"top",h:"right",l:"SECURE:ON"},{t:"bottom",h:"left",l:"LOC:CBE,IN"},{t:"bottom",h:"right",l:"STATUS:OK"}].map((c,i)=>(
-        <div key={i} style={{position:"absolute",[c.t]:"2.8rem",[c.h]:"3rem",zIndex:3,opacity:.35,pointerEvents:"none"}}>
-          <div style={{width:28,height:28,position:"relative"}}>
-            <div style={{position:"absolute",top:0,left:0,right:0,height:"2px",background:"var(--c1)"}}/>
-            <div style={{position:"absolute",top:0,[c.h==="left"?"left":"right"]:0,width:"2px",height:"28px",background:"var(--c1)"}}/>
-          </div>
-          <div style={{fontFamily:"var(--fM)",fontSize:".43rem",color:"var(--c1)",letterSpacing:".1em",marginTop:".25rem",textAlign:c.h==="right"?"right":"left"}}>{c.l}</div>
-        </div>
-      ))}
-
-      <div style={{position:"relative",zIndex:4,maxWidth:860,width:"100%",margin:"0 auto",textAlign:"center"}}>
-        {/* Badge */}
-        <div style={{display:"inline-flex",alignItems:"center",gap:".5rem",border:"1px solid rgba(0,220,255,.18)",padding:".28rem 1.1rem",marginBottom:"2.2rem",fontFamily:"var(--fM)",fontSize:".57rem",color:"var(--c1)",letterSpacing:".14em",background:"rgba(0,220,255,.04)"}}>
-          <span style={{width:5,height:5,background:"var(--c2)",borderRadius:"50%",animation:"pdot 2s infinite",display:"inline-block"}}/>
-          Available for Internships &amp; Collaborations
-        </div>
-
-        {/* Name — single line, full */}
-        <h1 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(2rem,5.8vw,5.2rem)",lineHeight:1,letterSpacing:".06em",color:"var(--t1)",marginBottom:"1.3rem",animation:"glowH 5s ease-in-out infinite",whiteSpace:"nowrap",textAlign:"center",width:"100%",display:"block"}}>GOPALAKRISHNAN S
-        </h1>
-
-        {/* Cyan underline */}
-        <div style={{width:"100%",height:"2px",background:"linear-gradient(90deg,transparent,var(--c1),transparent)",marginBottom:"1.5rem",boxShadow:"0 0 12px rgba(0,220,255,.5)"}}/>
-
-        {/* Role typewriter */}
-        <div style={{fontFamily:"var(--fM)",fontSize:"clamp(.72rem,1.8vw,1.1rem)",color:"var(--t2)",letterSpacing:".1em",height:"2.2rem",display:"flex",alignItems:"center",justifyContent:"center",gap:".4rem",marginBottom:"1.5rem"}}>
-          <span style={{color:"var(--c1)",opacity:.45}}>&gt;&nbsp;</span>
-          {typed}
-          <span style={{animation:"blink .75s step-end infinite",color:"var(--c1)"}}>_</span>
-        </div>
-
-        <p style={{fontFamily:"var(--fM)",fontSize:".78rem",color:"var(--t3)",maxWidth:520,margin:"0 auto 3rem",lineHeight:2}}>
-          Cybersecurity student from Coimbatore — hunting bugs,<br/>hardening systems and building tools that make systems harder to break.
-        </p>
-
-        {/* CTAs */}
-        <div style={{display:"flex",gap:".8rem",justifyContent:"center",flexWrap:"wrap",marginBottom:"4rem"}}>
-          {[{href:"#projects",label:"View Projects",p:true},{href:"#about",label:"About Me",p:false},{href:"#contact",label:"Get In Touch",p:false}].map(b=>(
-            <a key={b.href} href={b.href} style={{padding:".68rem 1.8rem",background:b.p?"var(--c1)":"transparent",color:b.p?"#000":"var(--c1)",fontFamily:"var(--fH)",fontSize:".68rem",fontWeight:700,letterSpacing:".1em",border:"1px solid "+(b.p?"var(--c1)":"rgba(0,220,255,.28)"),transition:"all .22s"}}
-              onMouseEnter={e=>{e.currentTarget.style.background=b.p?"#000":"var(--c1)";e.currentTarget.style.color=b.p?"var(--c1)":"#000";e.currentTarget.style.borderColor="var(--c1)";}}
-              onMouseLeave={e=>{e.currentTarget.style.background=b.p?"var(--c1)":"transparent";e.currentTarget.style.color=b.p?"#000":"var(--c1)";e.currentTarget.style.borderColor=b.p?"var(--c1)":"rgba(0,220,255,.28)";}}>
-              {b.label}
-            </a>
-          ))}
-        </div>
-
-        {/* Scroll */}
-        <a href="#about" style={{display:"inline-flex",flexDirection:"column",alignItems:"center",gap:".4rem",opacity:.4,transition:"opacity .2s"}}
-          onMouseEnter={e=>e.currentTarget.style.opacity="1"} onMouseLeave={e=>e.currentTarget.style.opacity=".4"}>
-          <div style={{width:"1px",height:48,background:"linear-gradient(to bottom,transparent,var(--c1))"}}/>
-          <span style={{fontFamily:"var(--fM)",fontSize:".47rem",color:"var(--c1)",letterSpacing:".35em"}}>SCROLL</span>
-          <div style={{width:8,height:8,border:"1px solid var(--c1)",transform:"rotate(45deg)",animation:"floatY 1.8s ease-in-out infinite"}}/>
-        </a>
-      </div>
-    </section>
-  );
-}
-
-/* ══════════════════════ TICKER ══════════════════════ */
-function Ticker(){
-  const items=["VAPT","Burp Suite","Kali Linux","Ethical Hacking","OWASP Top 10","Nmap","Wireshark","SQL Injection","XSS","Python","Network Security","Metasploit","Log Analysis","Bug Bounty","AI Security","MERN Stack","Bash"];
-  const t=items.map(i=>`— ${i} `).join("  ");
-  return(
-    <div style={{background:"var(--bg2)",borderTop:"1px solid var(--b1)",borderBottom:"1px solid var(--b1)",padding:".4rem 0",overflow:"hidden",whiteSpace:"nowrap",position:"relative",zIndex:10}}>
-      <div style={{display:"inline-flex",animation:"ticker 42s linear infinite"}}>
-        {[t,t].map((x,i)=><span key={i} style={{fontFamily:"var(--fM)",fontSize:".58rem",color:"var(--t3)",letterSpacing:".1em",paddingRight:"5rem"}}>{x}</span>)}
-      </div>
-    </div>
-  );
-}
-
-/* ══════════════════════ REVEAL ══════════════════════ */
-function useReveal(thresh=.07){
-  const ref=useRef(null);const[vis,setVis]=useState(false);
-  useEffect(()=>{
-    const el=ref.current;if(!el)return;
-    const o=new IntersectionObserver(([e])=>{if(e.isIntersecting){setVis(true);o.disconnect();}},{threshold:thresh});
-    o.observe(el);return()=>o.disconnect();
-  },[]);
-  return[ref,vis];
-}
-
-/* ══════════════════════ ABOUT ══════════════════════ */
-function About(){
-  const[ref,vis]=useReveal();
-  const[imgL,setImgL]=useState(false);
-  const[imgE,setImgE]=useState(false);
-  const stats=[{v:4,u:"+",l:"Internships",c:"var(--c1)"},{v:3,u:"+",l:"Projects",c:"var(--c2)"},{v:5,u:"+",l:"Certifications",c:"var(--c4)"}];
-  return(
-    <section className="sec" id="about" style={{borderBottom:"1px solid var(--b1)"}}>
-      <div className="wrap">
-        <div className="lbl"></div>
-        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:"4rem"}}>
-          Security mindset. <span style={{color:"var(--c1)"}}>Built from first principles.</span>
-        </h2>
-
-        <div ref={ref} style={{display:"grid",gridTemplateColumns:"1fr 340px",gap:"4rem",alignItems:"start",opacity:vis?1:0,transition:"opacity .8s"}}>
-
-          {/* Left */}
-          <div>
-            <p style={{fontFamily:"var(--fM)",fontSize:".8rem",color:"var(--t2)",lineHeight:2,marginBottom:"1.5rem"}}>{D.bio}</p>
-            <div style={{fontFamily:"var(--fM)",fontSize:".72rem",color:"var(--t3)",lineHeight:1.9,paddingLeft:"1rem",borderLeft:"2px solid var(--b2)",marginBottom:"2.5rem"}}>
-              <span style={{color:"var(--c1)"}}>→ </span>{D.edu}
-            </div>
-            {/* Stats */}
-            <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",border:"1px solid var(--b1)"}}>
-              {stats.map((s,i)=>{
-                const[cnt,setCnt]=useState(0);
-                useEffect(()=>{
-                  if(!vis)return;
-                  let c=0;const step=s.v/40;
-                  const t=setInterval(()=>{c=Math.min(c+step,s.v);setCnt(Math.floor(c));if(c>=s.v)clearInterval(t);},25);
-                  return()=>clearInterval(t);
-                },[vis]);
-                return(
-                  <div key={i} style={{borderRight:i<3?"1px solid var(--b1)":"none",padding:"1.4rem .8rem",textAlign:"center",background:"var(--surf)",position:"relative",overflow:"hidden"}}
-                    onMouseEnter={e=>e.currentTarget.style.background="var(--card)"}
-                    onMouseLeave={e=>e.currentTarget.style.background="var(--surf)"}>
-                    <div style={{position:"absolute",top:0,left:0,right:0,height:"2px",background:`linear-gradient(90deg,transparent,${s.c},transparent)`}}/>
-                    <div style={{fontFamily:"var(--fH)",fontSize:"2rem",fontWeight:700,color:s.c,lineHeight:1,letterSpacing:"-.01em"}}>{cnt}{s.u}</div>
-                    <div style={{fontFamily:"var(--fM)",fontSize:".5rem",color:"var(--t3)",marginTop:".35rem",letterSpacing:".14em"}}>{s.l.toUpperCase()}</div>
-                  </div>
-                );
-              })}
-            </div>
-            {/* Quick info rows */}
-            <div style={{marginTop:"2rem",display:"flex",flexDirection:"column",gap:"0"}}>
-              {[{l:"Location",v:"Coimbatore, India"},{l:"Degree",v:"B.E. CSE – Cyber Security"},{l:"Specialization",v:"Blockchain"},{l:"Year",v:"3rd Year · 2023–2027"}].map(r=>(
-                <div key={r.l} style={{display:"flex",gap:"1rem",padding:".6rem 0",borderBottom:"1px solid var(--b1)"}}>
-                  <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)",minWidth:110,letterSpacing:".04em"}}>{r.l}</span>
-                  <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t1)"}}>{r.v}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right — Photo only, no extra content below */}
-          <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
-            {/* Corner bracket decoration */}
-            <div style={{position:"relative",width:"100%",maxWidth:280}}>
-              {[["top","left"],["top","right"],["bottom","left"],["bottom","right"]].map(([vt,hz],i)=>(
-                <div key={i} style={{position:"absolute",width:20,height:20,[vt]:-6,[hz]:-6,borderTop:vt==="top"?"2px solid var(--c1)":undefined,borderBottom:vt==="bottom"?"2px solid var(--c1)":undefined,borderLeft:hz==="left"?"2px solid var(--c1)":undefined,borderRight:hz==="right"?"2px solid var(--c1)":undefined,zIndex:3}}/>
-              ))}
-              {/* Terminal photo card */}
-              <div className="term" style={{width:"100%"}}>
-                <div className="tbar">
-                  {["#ff5f56","#ffbd2e","#27c93f"].map((c,i)=><div key={i} className="tdot" style={{background:c}}/>)}
-                  <span className="ttl">profile.exe</span>
-                </div>
-                {/* Photo area */}
-                <div style={{width:"100%",aspectRatio:"3/4",position:"relative",overflow:"hidden",background:"var(--bg2)"}}>
-                  {!imgL&&(
-                    <div style={{position:"absolute",inset:0,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:".8rem"}}>
-                      <div style={{position:"absolute",width:"100%",height:"2px",background:"linear-gradient(90deg,transparent,var(--c1),transparent)",animation:"scanH 2.4s linear infinite",top:0}}/>
-                      <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)",letterSpacing:".1em"}}>{imgE?"// place me.jpeg here":"// loading..."}</span>
-                    </div>
-                  )}
-                  <img src="me.jpeg" alt="Gopalakrishnan S"
-                    onLoad={()=>setImgL(true)} onError={()=>setImgE(true)}
-                    style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center top",display:imgL?"block":"none"}}/>
-                </div>
-                {/* Name strip */}
-                <div style={{background:"rgba(5,8,15,.97)",borderTop:"1px solid var(--b1)",padding:".7rem 1rem",textAlign:"center"}}>
-                  <div style={{fontFamily:"var(--fH)",fontWeight:700,color:"var(--t1)",fontSize:".8rem",letterSpacing:".06em"}}>GOPALAKRISHNAN S</div>
-                  <div style={{fontFamily:"var(--fM)",fontSize:".54rem",color:"var(--c1)",letterSpacing:".12em",marginTop:".2rem"}}>Cybersecurity Student</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Social links below photo */}
-            <div style={{display:"flex",gap:".6rem",marginTop:"1.2rem",flexWrap:"wrap",justifyContent:"center"}}>
-              {[{l:"GitHub",href:D.github,col:"var(--c4)"},{l:"LinkedIn",href:D.linkedin,col:"var(--c5)"}].map(s=>(
-                <a key={s.l} href={s.href} target="_blank" rel="noopener noreferrer"
-                  style={{fontFamily:"var(--fM)",fontSize:".58rem",color:s.col,border:`1px solid ${s.col}44`,padding:".25rem .9rem",background:`${s.col}08`,transition:"background .2s",letterSpacing:".06em"}}
-                  onMouseEnter={e=>e.currentTarget.style.background=`${s.col}18`}
-                  onMouseLeave={e=>e.currentTarget.style.background=`${s.col}08`}>
-                  {s.l} →
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ══════════════════════ SKILLS — Flip Cards ══════════════════════ */
-function Skills(){
-  const[ref,vis]=useReveal();
-  return(
-    <section className="sec" id="skills" style={{background:"var(--bg2)",borderBottom:"1px solid var(--b1)"}}>
-      <div className="wrap">
-        <div className="lbl">Skills</div>
-        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:".5rem"}}>
-          Technical <span style={{color:"var(--c1)"}}>Capabilities.</span>
-        </h2>
-        
-        <div ref={ref} style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(258px,1fr))",gap:"1.4rem"}}>
-          {SKILLS.map((grp,gi)=>(
-            <div key={gi} style={{height:310,perspective:900,opacity:vis?1:0,animation:vis?`fadeUp .5s ease ${gi*.1}s both`:"none"}}>
-              <div style={{width:"100%",height:"100%",position:"relative",transformStyle:"preserve-3d",transition:"transform .6s cubic-bezier(.4,0,.2,1)"}}
-                onMouseEnter={e=>e.currentTarget.style.transform="rotateY(180deg)"}
-                onMouseLeave={e=>e.currentTarget.style.transform="rotateY(0deg)"}>
-                {/* Front */}
-                <div style={{position:"absolute",inset:0,backfaceVisibility:"hidden",background:"var(--surf)",border:"1px solid var(--b1)",padding:"1.4rem",display:"flex",flexDirection:"column"}}>
-                  <div style={{display:"flex",alignItems:"center",gap:".55rem",marginBottom:"1.3rem",paddingBottom:".9rem",borderBottom:"1px solid var(--b1)"}}>
-                    <div style={{width:3,height:16,background:grp.col,boxShadow:`0 0 8px ${grp.col}`}}/>
-                    <span style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:".82rem",color:"var(--t1)",letterSpacing:".04em"}}>{grp.group}</span>
-                  </div>
-                  <div style={{display:"flex",flexWrap:"wrap",gap:".45rem",flex:1,alignContent:"flex-start"}}>
-                    {grp.items.map(sk=>(
-                      <span key={sk.n} style={{fontFamily:"var(--fM)",fontSize:".6rem",color:grp.col,border:`1px solid ${grp.col}30`,padding:".15rem .55rem",background:`${grp.col}08`,letterSpacing:".03em"}}>{sk.n}</span>
-                    ))}
-                  </div>
-                  <div style={{fontFamily:"var(--fM)",fontSize:".48rem",color:"var(--t3)",marginTop:"auto",paddingTop:".8rem",letterSpacing:".1em",textAlign:"center"}}>↻ HOVER FOR LEVELS</div>
-                </div>
-                {/* Back */}
-                <div style={{position:"absolute",inset:0,backfaceVisibility:"hidden",transform:"rotateY(180deg)",background:"var(--card)",border:"1px solid var(--b1)",padding:"1.3rem 1.4rem",display:"flex",flexDirection:"column",justifyContent:"center"}}>
-                  <div style={{display:"flex",alignItems:"center",gap:".5rem",marginBottom:"1.1rem"}}>
-                    <div style={{width:3,height:13,background:grp.col}}/>
-                    <span style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:".75rem",color:"var(--t1)"}}>{grp.group}</span>
-                  </div>
-                  {grp.items.map(sk=>(
-                    <div key={sk.n} style={{marginBottom:".55rem"}}>
-                      <div style={{display:"flex",justifyContent:"space-between",marginBottom:".22rem"}}>
-                        <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t2)"}}>{sk.n}</span>
-                        <span style={{fontFamily:"var(--fM)",fontSize:".56rem",color:grp.col,fontWeight:600}}>{sk.v}%</span>
-                      </div>
-                      <div style={{height:"2px",background:"var(--b1)"}}>
-                        <div style={{height:"100%",width:sk.v+"%",background:grp.col,boxShadow:`0 0 5px ${grp.col}80`}}/>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ══════════════════════ EXPERIENCE ══════════════════════ */
-function Experience(){
-  const[active,setActive]=useState(0);
-  const[ref,vis]=useReveal();
-  const e=EXP[active];
-  return(
-    <section className="sec" id="experience" style={{borderBottom:"1px solid var(--b1)"}}>
-      <div className="wrap">
-        <div className="lbl">Experience</div>
-        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:"4rem"}}>
-          Real-World <span style={{color:"var(--c1)"}}>Engagements.</span>
-        </h2>
-        <div ref={ref} style={{display:"grid",gridTemplateColumns:"270px 1fr",gap:"2.5rem",opacity:vis?1:0,transition:"opacity .8s"}}>
-          <div style={{display:"flex",flexDirection:"column",gap:".4rem"}}>
-            {EXP.map((ex,i)=>(
-              <button key={i} onClick={()=>setActive(i)} style={{padding:"1rem 1.1rem",textAlign:"left",background:active===i?`${ex.col}0d`:"transparent",border:`1px solid ${active===i?ex.col+"44":"var(--b1)"}`,borderLeft:`3px solid ${active===i?ex.col:"transparent"}`,transition:"all .22s",cursor:"none"}}>
-                <div style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:".72rem",color:"var(--t1)",marginBottom:".25rem"}}>{ex.role}</div>
-                <div style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)",marginBottom:".2rem"}}>{ex.company}</div>
-                <div style={{fontFamily:"var(--fM)",fontSize:".56rem",color:ex.col,letterSpacing:".06em"}}>{ex.period}</div>
-              </button>
-            ))}
-          </div>
-          <div key={active} className="term" style={{animation:"fadeUp .28s ease"}}>
-            <div className="tbar">
-              {["#ff5f56","#ffbd2e","#27c93f"].map((c,i)=><div key={i} className="tdot" style={{background:c}}/>)}
-              <span className="ttl">{e.company.toLowerCase().replace(/[^a-z]/g,"_")}.log</span>
-            </div>
-            <div style={{padding:"2rem"}}>
-              <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",flexWrap:"wrap",gap:".8rem",marginBottom:"1rem"}}>
-                <h3 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"1.25rem",color:"var(--t1)",letterSpacing:".03em"}}>{e.role}</h3>
-                <span style={{fontFamily:"var(--fM)",fontSize:".57rem",color:e.col,border:`1px solid ${e.col}44`,padding:".13rem .6rem",background:`${e.col}08`,letterSpacing:".08em"}}>{e.type}</span>
-              </div>
-              <div style={{display:"flex",gap:"1.5rem",marginBottom:"1.8rem",flexWrap:"wrap"}}>
-                <span style={{fontFamily:"var(--fM)",fontSize:".63rem",color:e.col}}>@ {e.company}</span>
-                <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)"}}>{e.period}</span>
-                <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)"}}>📍 {e.loc}</span>
-              </div>
-              <div style={{borderTop:"1px solid var(--b1)",paddingTop:"1.5rem"}}>
-                {e.tasks.map((t,i)=>(
-                  <div key={i} style={{display:"flex",gap:".8rem",marginBottom:".85rem"}}>
-                    <span style={{color:e.col,fontSize:".65rem",flexShrink:0,marginTop:".12rem"}}>→</span>
-                    <span style={{fontFamily:"var(--fM)",fontSize:".74rem",color:"var(--t2)",lineHeight:1.9}}>{t}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ══════════════════════ PROJECTS (no status/severity badges) ══════════════════════ */
-function Projects(){
-  const[ref,vis]=useReveal();
-  const[open,setOpen]=useState(null);
-  return(
-    <section className="sec" id="projects" style={{background:"var(--bg2)",borderBottom:"1px solid var(--b1)"}}>
-      <div className="wrap">
-        <div className="lbl">Projects</div>
-        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:".5rem"}}>
-          Security <span style={{color:"var(--c1)"}}>Projects.</span>
-        </h2>
-       
-        <div ref={ref} style={{border:"1px solid var(--b1)",opacity:vis?1:0,transition:"opacity .8s"}}>
-          {PROJECTS.map((p,i)=>{
-            const isOpen=open===i;
-            return(
-              <div key={i} style={{background:isOpen?`${p.col}07`:"var(--surf)",borderBottom:i<PROJECTS.length-1?"1px solid var(--b1)":"none",transition:"background .25s",cursor:"none"}}
-                onClick={()=>setOpen(isOpen?null:i)}>
-                {/* Row header */}
-                <div style={{padding:"1.6rem 2rem",display:"flex",alignItems:"center",gap:"1.5rem",flexWrap:"wrap",animation:vis?`fadeUp .45s ease ${i*.1}s both`:"none"}}>
-                  <span style={{fontFamily:"var(--fM)",fontSize:".54rem",color:"var(--t3)",width:22,flexShrink:0}}>{p.id}</span>
-                  <div style={{width:"3px",height:42,background:p.col,boxShadow:`0 0 10px ${p.col}70`,flexShrink:0}}/>
-                  <div style={{flex:1,minWidth:200}}>
-                    <div style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:".98rem",color:"var(--t1)",marginBottom:".28rem",letterSpacing:".03em"}}>{p.title}</div>
-                    {!isOpen&&<div style={{fontFamily:"var(--fM)",fontSize:".65rem",color:"var(--t3)",lineHeight:1.6}}>{p.desc.slice(0,90)}...</div>}
-                  </div>
-                  <div style={{display:"flex",gap:"1rem",alignItems:"center",flexShrink:0}}>
-                    <span style={{fontFamily:"var(--fM)",fontSize:".56rem",color:"var(--t3)"}}>{p.year}</span>
-                    <div style={{width:20,textAlign:"center",fontFamily:"var(--fM)",fontSize:".85rem",color:p.col,transition:"transform .22s",transform:isOpen?"rotate(45deg)":"none"}}>+</div>
-                  </div>
-                </div>
-                {/* Expanded */}
-                {isOpen&&(
-                  <div style={{padding:"0 2rem 2rem",animation:"fadeUp .25s ease"}}>
-                    <div style={{borderTop:"1px solid var(--b1)",paddingTop:"1.8rem",display:"grid",gridTemplateColumns:"1fr 1fr",gap:"2.5rem"}}>
-                      <div>
-                        
-                        <p style={{fontFamily:"var(--fM)",fontSize:".73rem",color:"var(--t2)",lineHeight:1.95,marginBottom:"1.5rem"}}>{p.desc}</p>
-                        
-                        {p.pts.map((h,hi)=>(
-                          <div key={hi} style={{display:"flex",gap:".6rem",marginBottom:".6rem"}}>
-                            <span style={{color:p.col,fontSize:".65rem",flexShrink:0}}>→</span>
-                            <span style={{fontFamily:"var(--fM)",fontSize:".7rem",color:"var(--t2)",lineHeight:1.7}}>{h}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <div>
-                        
-                        <div style={{display:"flex",flexWrap:"wrap",gap:".4rem",marginBottom:"2rem"}}>
-                          {p.tags.map(t=><span key={t} className="tag">{t}</span>)}
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ══════════════════════ CERTS ══════════════════════ */
-function Certs(){
-  const[ref,vis]=useReveal();
-  return(
-    <section className="sec" id="certs" style={{borderBottom:"1px solid var(--b1)"}}>
-      <div className="wrap">
-        <div className="lbl">Certifications</div>
-        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:"4rem"}}>
-          Verified <span style={{color:"var(--c1)"}}>Credentials.</span>
-        </h2>
-        <div ref={ref} style={{border:"1px solid var(--b1)",opacity:vis?1:0,transition:"opacity .8s"}}>
-          {CERTS.map((c,i)=>(
-            <div key={i} style={{display:"flex",alignItems:"center",gap:"1.5rem",padding:"1.2rem 1.8rem",borderBottom:i<CERTS.length-1?"1px solid var(--b1)":"none",background:"var(--surf)",transition:"background .2s",animation:vis?`fadeUp .4s ease ${i*.07}s both`:"none"}}
-              onMouseEnter={e=>e.currentTarget.style.background="var(--card)"}
-              onMouseLeave={e=>e.currentTarget.style.background="var(--surf)"}>
-              <div style={{width:36,height:36,border:`1px solid ${c.col}44`,background:`${c.col}07`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1rem",flexShrink:0}}>🛡</div>
-              <div style={{flex:1,minWidth:0}}>
-                <div style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:".78rem",color:"var(--t1)",letterSpacing:".03em",marginBottom:".2rem"}}>{c.n}</div>
-                <div style={{fontFamily:"var(--fM)",fontSize:".6rem",color:"var(--t3)"}}>{c.by}</div>
-              </div>
-              <span style={{fontFamily:"var(--fM)",fontSize:".6rem",color:c.col,flexShrink:0}}>{c.yr}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ══════════════════════ CONTACT — Web3Forms (no mail client) ══════════════════════ */
-function Contact(){
-  const[ref,vis]=useReveal();
-  const[form,setForm]=useState({name:"",email:"",subject:"",message:""});
-  const[status,setStatus]=useState("idle"); 
-  // idle | sending | sent | error
-  const inp={width:"100%",background:"var(--bg)",border:"1px solid var(--b1)",padding:".72rem 1rem",color:"var(--t1)",fontFamily:"var(--fM)",fontSize:".74rem",outline:"none",transition:"border-color .2s",borderRadius:0,letterSpacing:".02em"};
-
-  const send=async()=>{
-    if(!form.name||!form.email||!form.message)return;
-    setStatus("sending");
-    try{
-      const res=await fetch("https://api.web3forms.com/submit",{
-        method:"POST",
-        headers:{"Content-Type":"application/json","Accept":"application/json"},
-        body:JSON.stringify({
-          access_key:WEB3FORMS_KEY,
-          name:form.name,
-          email:form.email,
-          subject:form.subject||"Portfolio Contact from "+form.name,
-          message:form.message,
-        }),
-      });
-      const data=await res.json();
-      if(data.success){
-        setStatus("sent");
-        setForm({name:"",email:"",subject:"",message:""});
-        setTimeout(()=>setStatus("idle"),4000);
-      }else{
-        setStatus("error");
-        setTimeout(()=>setStatus("idle"),4000);
-      }
-    }catch(err){
-      console.error("Web3Forms error:",err);
-      setStatus("error");
-      setTimeout(()=>setStatus("idle"),4000);
-    }
-  };
-
-  const links=[
-    {icon:"✉",lbl:"Email",val:D.email,href:`mailto:${D.email}`,col:"var(--c1)"},
-    {icon:"☎",lbl:"Phone",val:D.phone,href:`tel:${D.phone.replace(/\s/g,"")}`,col:"var(--c2)"},
-    {icon:"⌨",lbl:"GitHub",val:"Gopalakrishnan-S29",href:D.github,col:"var(--c4)",ext:true},
-    {icon:"◈",lbl:"LinkedIn",val:"gopalakrishnan-s",href:D.linkedin,col:"var(--c5)",ext:true},
-  ];
-
-  const btnBg=status==="sent"?"rgba(0,255,136,.14)":status==="error"?"rgba(255,34,85,.14)":status==="sending"?"var(--bg)":"var(--c1)";
-  const btnCol=status==="sent"?"var(--c2)":status==="error"?"var(--c3)":status==="sending"?"var(--c1)":"#000";
-  const btnTxt=status==="sent"?"✓ Message Sent Successfully":status==="error"?"✗ Failed — Try Again Later":status==="sending"?"Sending...":"Send Message";
-
-  return(
-    <section className="sec" id="contact" style={{background:"var(--bg2)"}}>
-      <div className="wrap">
-        <div className="lbl">Contact</div>
-        <h2 style={{fontFamily:"var(--fH)",fontWeight:700,fontSize:"clamp(1.8rem,3.5vw,3rem)",color:"var(--t1)",letterSpacing:".04em",marginBottom:"4rem"}}>
-          Let's Work <span style={{color:"var(--c1)"}}>Together.</span>
-        </h2>
-        <div ref={ref} style={{display:"grid",gridTemplateColumns:"1fr 1.4fr",gap:"4rem",alignItems:"start",opacity:vis?1:0,transition:"opacity .8s"}}>
-          <div>
-            <p style={{fontFamily:"var(--fM)",fontSize:".78rem",color:"var(--t3)",lineHeight:2,marginBottom:"2.5rem"}}>
-              Open to internships, bug bounty collaborations, security research, and any cybersecurity work worth doing. Reach out through any channel below.
-            </p>
-            <div style={{display:"flex",flexDirection:"column",gap:".4rem"}}>
-              {links.map(l=>(
-                <a key={l.lbl} href={l.href} target={l.ext?"_blank":undefined} rel={l.ext?"noopener noreferrer":undefined}
-                  style={{display:"flex",alignItems:"center",gap:"1rem",padding:".9rem 1.1rem",border:"1px solid var(--b1)",background:"var(--surf)",color:"var(--t2)",transition:"all .2s"}}
-                  onMouseEnter={e=>{e.currentTarget.style.borderColor=`${l.col}44`;e.currentTarget.style.color="var(--t1)";}}
-                  onMouseLeave={e=>{e.currentTarget.style.borderColor="var(--b1)";e.currentTarget.style.color="var(--t2)";}}>
-                  <span style={{color:l.col,fontSize:"1rem",width:18,textAlign:"center",flexShrink:0}}>{l.icon}</span>
-                  <div>
-                    <div style={{fontFamily:"var(--fM)",fontSize:".52rem",color:"var(--t3)",letterSpacing:".14em",marginBottom:".12rem"}}>{l.lbl.toUpperCase()}</div>
-                    <div style={{fontFamily:"var(--fM)",fontSize:".7rem"}}>{l.val}</div>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Form */}
-          <div className="term">
-            <div className="tbar">
-              {["#ff5f56","#ffbd2e","#27c93f"].map((c,i)=><div key={i} className="tdot" style={{background:c}}/>)}
-              <span className="ttl">send_message.sh</span>
-            </div>
-            <div style={{padding:"1.8rem",display:"flex",flexDirection:"column",gap:"1rem"}}>
-              {[["name","Name"],["email","Email"],["subject","Subject (optional)"]].map(([k,lbl])=>(
-                <div key={k}>
-                 
-                  <input value={form[k]} onChange={e=>setForm({...form,[k]:e.target.value})} style={inp}
-                    placeholder={`Your ${lbl.toLowerCase()}...`}
-                    onFocus={e=>e.target.style.borderColor="var(--c1)"}
-                    onBlur={e=>e.target.style.borderColor="var(--b1)"}/>
-                </div>
-              ))}
-              <div>
-                <textarea rows={5} value={form.message} onChange={e=>setForm({...form,message:e.target.value})} style={{...inp,resize:"vertical"}}
-                  placeholder="Your message..."
-                  onFocus={e=>e.target.style.borderColor="var(--c1)"}
-                  onBlur={e=>e.target.style.borderColor="var(--b1)"}/>
-              </div>
-              <button onClick={send} disabled={status==="sending"} style={{padding:".88rem",background:btnBg,color:btnCol,fontFamily:"var(--fH)",fontSize:".7rem",fontWeight:700,letterSpacing:".12em",cursor:"none",border:`1px solid ${status==="sent"?"rgba(0,255,136,.35)":status==="error"?"rgba(255,34,85,.35)":"var(--c1)"}`,transition:"all .25s",width:"100%"}}
-                onMouseEnter={e=>{if(status==="idle"){e.currentTarget.style.background="#000";e.currentTarget.style.color="var(--c1)";}}}
-                onMouseLeave={e=>{if(status==="idle"){e.currentTarget.style.background="var(--c1)";e.currentTarget.style.color="#000";}}}>
-                {btnTxt}
-              </button>
-             
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ══════════════════════ FOOTER ══════════════════════ */
-function Footer(){
-  const[ts,setTs]=useState("");
-  useEffect(()=>{
-    const tick=()=>setTs(new Date().toUTCString().slice(0,25));
-    tick();const t=setInterval(tick,1000);return()=>clearInterval(t);
-  },[]);
-  return(
-    <footer style={{padding:"2rem 5%",borderTop:"1px solid var(--b1)",display:"flex",alignItems:"center",justifyContent:"space-between",maxWidth:1180,margin:"0 auto",flexWrap:"wrap",gap:"1rem"}}>
-      <span style={{fontFamily:"var(--fM)",fontSize:".56rem",color:"var(--t3)"}}>© 2026 Gopalakrishnan S · <span style={{color:"var(--c1)"}}>Coimbatore, India</span></span>
-      <span style={{fontFamily:"var(--fM)",fontSize:".54rem",color:"var(--t3)"}}>{ts}<span style={{animation:"blink 1s step-end infinite",color:"var(--c1)",marginLeft:".4rem"}}>▌</span></span>
-      <div style={{display:"flex",gap:"1.5rem"}}>
-        {["about","projects","contact"].map(l=>(
-          <a key={l} href={`#${l}`} style={{fontFamily:"var(--fM)",fontSize:".56rem",color:"var(--t3)",letterSpacing:".08em",textTransform:"uppercase",transition:"color .2s"}}
-            onMouseEnter={e=>e.target.style.color="var(--c1)"} onMouseLeave={e=>e.target.style.color="var(--t3)"}>{l}</a>
-        ))}
-      </div>
-    </footer>
-  );
-}
-
-/* ══════════════════════ APP ══════════════════════ */
-function App(){
-  const[booted,setBooted]=useState(false);
-  const[active,setActive]=useState("hero");
-  useCursor();
-  useNav(active);
-  useEffect(()=>{
-    if(!booted)return;
-    const ids=["hero","about","skills","experience","projects","certs","contact"];
-    const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)setActive(e.target.id);}),{threshold:.22});
-    ids.forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el);});
-    return()=>obs.disconnect();
-  },[booted]);
-  return(
-    <>
-      {!booted&&<Boot onDone={()=>setBooted(true)}/>}
-      <div style={{opacity:booted?1:0,transition:"opacity .7s .1s"}}>
-        <Hero/>
-        <Ticker/>
-        <About/>
-        <Skills/>
-        <Experience/>
-        <Projects/>
-        <Certs/>
-        <Contact/>
-        <Footer/>
-      </div>
-    </>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+/* ─── FOOTER CLOCK ─── */
+(()=>{const el=document.getElementById('ftime');const t=()=>el&&(el.textContent=new Date().toUTCString().slice(0,25)+' ▌');t();setInterval(t,1000);})();
 </script>
 </body>
 </html>
