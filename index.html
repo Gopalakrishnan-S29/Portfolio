@@ -80,7 +80,7 @@ textarea,input{font-family:inherit}
 .sec{padding:4.5rem 5%}
 .wrap{max-width:1180px;margin:0 auto;width:100%}
 .lbl{font-family:var(--fM);font-size:.54rem;letter-spacing:.25em;color:var(--c1);display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;text-transform:uppercase}
-.lbl::before{content:'';color:var(--c2);font-weight:600}
+.lbl::before{content:'//';color:var(--c2);font-weight:600}
 .stitle{font-family:var(--fH);font-weight:700;font-size:clamp(1.6rem,4vw,2.8rem);color:var(--t1);letter-spacing:.03em;margin-bottom:2.5rem;line-height:1.15}
 .stitle span{color:var(--c1)}
 
@@ -110,9 +110,13 @@ textarea,input{font-family:inherit}
 .hcon{position:relative;z-index:4;max-width:860px;width:100%;margin:0 auto}
 .hbadge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(0,220,255,.18);padding:.25rem .95rem;margin-bottom:1.8rem;font-family:var(--fM);font-size:.53rem;color:var(--c1);letter-spacing:.14em;background:rgba(0,220,255,.04)}
 .hbadge i{width:5px;height:5px;background:var(--c2);border-radius:50%;animation:pdot 2s infinite;display:inline-block;font-style:normal}
-.hname{font-family:var(--fH);font-weight:700;font-size:clamp(1.8rem,6.5vw,5.4rem);line-height:1;letter-spacing:.05em;color:var(--t1);margin-bottom:1.1rem;animation:glow 5s ease-in-out infinite}
+.hname{font-family:var(--fH);font-weight:700;font-size:clamp(1.2rem,5.2vw,4.8rem);line-height:1;letter-spacing:.02em;color:var(--t1);margin-bottom:1.1rem;animation:glow 5s ease-in-out infinite;white-space:nowrap}
 .hline{width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--c1),transparent);margin-bottom:1.3rem;box-shadow:0 0 10px rgba(0,220,255,.45)}
 .hrole{font-family:var(--fM);font-size:clamp(.65rem,1.8vw,1rem);color:var(--t2);letter-spacing:.1em;min-height:2rem;display:flex;align-items:center;justify-content:center;gap:.4rem;margin-bottom:1.3rem}
+@keyframes roleIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes roleOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-10px)}}
+.role-in{animation:roleIn .4s ease forwards}
+.role-out{animation:roleOut .3s ease forwards}
 .hprompt{color:var(--c1);opacity:.4}
 .hdesc{font-family:var(--fM);font-size:.74rem;color:var(--t3);max-width:460px;margin:0 auto 2.5rem;line-height:2}
 .hctas{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;margin-bottom:3.5rem}
@@ -299,7 +303,6 @@ footer{padding:1.7rem 5%;border-top:1px solid var(--b1)}
   .exgrid{grid-template-columns:260px 1fr;gap:2.5rem}
 }
 @media(max-width:639px){
-  .hname{white-space:normal;word-break:break-word}
   .hctas{flex-direction:column;align-items:center}
   .btn{width:100%;max-width:270px;justify-content:center}
   .extabs{grid-template-columns:1fr 1fr}
@@ -354,6 +357,7 @@ footer{padding:1.7rem 5%;border-top:1px solid var(--b1)}
   <a href="#experience" onclick="toggleMenu()">Experience</a>
   <a href="#projects"   onclick="toggleMenu()">Projects</a>
   <a href="#certs"      onclick="toggleMenu()">Certs</a>
+  <a href="#extra"      onclick="toggleMenu()">Extra</a>
   <a href="#contact"    onclick="toggleMenu()">Contact</a>
   <a href="Gopalakrishnan_S Resume.pdf" download class="mr">↓ Download Resume</a>
 </div>
@@ -370,7 +374,7 @@ footer{padding:1.7rem 5%;border-top:1px solid var(--b1)}
     <div class="hbadge"><i></i>Available for Internships &amp; Collaborations</div>
     <h1 class="hname">GOPALAKRISHNAN S</h1>
     <div class="hline"></div>
-    <div class="hrole"><span class="hprompt">&gt;&nbsp;</span><span id="tw"></span><span style="animation:blink .75s step-end infinite;color:var(--c1)">_</span></div>
+    <div class="hrole"><span class="hprompt">&gt;&nbsp;</span><span id="tw"></span></div>
     <p class="hdesc">Cybersecurity student from Coimbatore — hunting bugs,<br>hardening systems and building tools that make them harder to break.</p>
     <div class="hctas">
       <a href="#projects" class="btn bp">View Projects</a>
@@ -403,7 +407,7 @@ footer{padding:1.7rem 5%;border-top:1px solid var(--b1)}
           <div class="irow"><span class="ikey">Location</span><span class="ival">Coimbatore, India</span></div>
           <div class="irow"><span class="ikey">Degree</span><span class="ival">B.E. CSE – Cyber Security</span></div>
           <div class="irow"><span class="ikey">Specialization</span><span class="ival">Blockchain</span></div>
-          <div class="irow"><span class="ikey">Year</span><span class="ival">3rd Year · 2023–2027</span></div>
+          <div class="irow"><span class="ikey">Year</span><span class="ival">4rd Year · 2023–2027</span></div>
         </div>
       </div>
       <div class="pwrap">
@@ -411,7 +415,7 @@ footer{padding:1.7rem 5%;border-top:1px solid var(--b1)}
         <div class="term">
           <div class="tbar"><div class="tdot" style="background:#ff5f56"></div><div class="tdot" style="background:#ffbd2e"></div><div class="tdot" style="background:#27c93f"></div><span class="ttl">profile.exe</span></div>
           <img src="me.jpeg" alt="Gopalakrishnan S" class="pimg" onerror="this.style.display='none';document.getElementById('pph').style.display='flex'"/>
-          <div class="pph" id="pph" style="display:none">me.jpeg</div>
+          <div class="pph" id="pph" style="display:none">// place me.jpeg here</div>
           <div class="pname"><div class="pnm">GOPALAKRISHNAN S</div><div class="pns">Cybersecurity Student</div></div>
         </div>
       </div>
@@ -445,7 +449,7 @@ footer{padding:1.7rem 5%;border-top:1px solid var(--b1)}
   <div class="wrap">
     <div class="lbl">Projects</div>
     <h2 class="stitle">Security <span>Projects.</span></h2>
-    
+    <p style="font-family:var(--fM);font-size:.62rem;color:var(--t3);margin-bottom:2.8rem">// Click to expand</p>
     <div class="pcard rv" id="rprojlist"></div>
   </div>
 </section>
@@ -456,6 +460,15 @@ footer{padding:1.7rem 5%;border-top:1px solid var(--b1)}
     <div class="lbl">Certifications</div>
     <h2 class="stitle">Verified <span>Credentials.</span></h2>
     <div style="border:1px solid var(--b1)" class="rv" id="rcerts"></div>
+  </div>
+</section>
+
+<!-- EXTRA CURRICULAR -->
+<section class="sec" id="extra" style="background:var(--bg2);border-bottom:1px solid var(--b1)">
+  <div class="wrap">
+    <div class="lbl">Extra Curricular</div>
+    <h2 class="stitle">Beyond the <span>Terminal.</span></h2>
+    <div class="rv" id="rextra" style="display:grid;grid-template-columns:1fr;gap:.9rem"></div>
   </div>
 </section>
 
@@ -500,10 +513,11 @@ const W3K='64fb0b4e-4083-4ebe-9f06-9214021c1d24';
 const SKILLS=[
   {g:'Offensive Security',c:'#ff2255',i:[{n:'VAPT / Pen Testing',v:88},{n:'Web App Security',v:85},{n:'Vulnerability Assessment',v:82},{n:'OWASP Top 10',v:90},{n:'SQL Injection',v:86},{n:'XSS & CSRF',v:83}]},
   {g:'Security Tools',c:'#00dcff',i:[{n:'Burp Suite',v:82},{n:'Kali Linux',v:86},{n:'Nmap',v:84},{n:'Wireshark',v:78},{n:'OWASP ZAP',v:76},{n:'Metasploit',v:72}]},
-  {g:'Programming',c:'#ffaa00',i:[{n:'Python',v:82},{n:'Bash / Shell',v:78},{n:'Java',v:87},{n:'JavaScript',v:78},{n:'SQL',v:72},{n:'HTML / CSS',v:90}]},
-  {g:'Networking & Dev',c:'#00ff88',i:[{n:'TCP/IP & OSI',v:80},{n:'Network Scanning',v:82},{n:'Log Analysis',v:70},{n:'MERN Stack',v:50},{n:'OpenCV / AI',v:60},{n:'Incident Response',v:73}]},
+  {g:'Programming',c:'#ffaa00',i:[{n:'Python',v:82},{n:'Bash / Shell',v:78},{n:'Java',v:77},{n:'JavaScript',v:68},{n:'SQL',v:72},{n:'HTML / CSS',v:90}]},
+  {g:'Networking & Dev',c:'#00ff88',i:[{n:'TCP/IP & OSI',v:80},{n:'Network Scanning',v:82},{n:'Log Analysis',v:70},{n:'MERN Stack',v:68},{n:'OpenCV / AI',v:72},{n:'Incident Response',v:66}]},
 ];
 const EXP=[
+  {r:'Cyber Security Analyst',co:'Hebesec Technologies Pvt. Ltd',p:'Jun 2026 – Present',l:'Karaikudi, TN',t:'Security Analysis',c:'#00ff88',ts:['Conducting continuous vulnerability assessments and security audits on client systems.','Monitoring network traffic and analyzing logs to detect and respond to suspicious activity.','Performing web application penetration testing using Burp Suite and OWASP methodology.','Generating detailed security reports with risk ratings and remediation recommendations.','Collaborating with development teams to remediate identified vulnerabilities promptly.','Staying current with emerging CVEs, threat intelligence, and cybersecurity best practices.']},
   {r:'VAPT Intern',co:'BCBUZZ Technology Pvt Ltd',p:'Jun 2025',l:'Coimbatore, TN',t:'Web App Security',c:'#ff2255',ts:['Web app pentesting following complete OWASP methodology.','Identified SQL Injection, XSS, and authentication flaws in lab environments.','Reconnaissance and service enumeration using Nmap.','Manual testing with Burp Suite; automated scanning with OWASP ZAP.','Structured VAPT reports with remediation recommendations.']},
   {r:'Cyber Security & Ethical Hacking Intern',co:'Rinex Technologies Pvt Ltd',p:'Apr–May 2025',l:'Bengaluru, KA',t:'Core Security',c:'#ffaa00',ts:['Core pentesting, VA, and offensive security methodologies.','Network scanning and service enumeration in lab environments.','Vulnerability discovery and traffic inspection via Burp Suite & Wireshark.','Documented vulnerabilities with mitigation strategies.']},
   {r:'Artificial Intelligence Intern',co:'NoviTech R&D Pvt Ltd',p:'Jul–Aug 2025',l:'Coimbatore, TN',t:'AI / CV',c:'#9955ff',ts:['Built chatbot using conversational AI workflows.','Implemented CV pipelines with OpenCV — object detection, face recognition.','Explored deep learning and neural networks with pretrained models.','Built hand gesture recognition and leaf disease detection systems.']},
@@ -515,11 +529,12 @@ const PROJS=[
   {id:'03',title:'Secure Scan — Networking Intrusion Detection',year:'2024–25',c:'#00ff88',desc:'Command-line utilities for network scanning and security log monitoring. Automation scripts detect suspicious network activity with structured alert generation.',tags:['Python','Nmap','Bash','CLI','IDS'],pts:['CLI-based network scanning and log monitoring','Automated suspicious activity detection with alerting','Structured reporting pipeline for incident documentation']},
 ];
 const CERTS=[
+  {n:'Certified LLM Security Professional',by:'RED TEAM Leaders',yr:'2026',c:'#00dcff'},
   {n:'Practical Web Application Security and Testing',by:'Tagger Institute',yr:'2025',c:'#ff2255'},
   {n:'SQL Injection Attacks',by:'EC-Council',yr:'2025',c:'#ffaa00'},
-  {n:'Practical Cyber Security for Practitioners',by:'NPTEL',yr:'2025',c:'#00dcff'},
+  {n:'Practical Cyber Security for Practitioners',by:'NPTEL',yr:'2025',c:'#9955ff'},
   {n:'Networking Basics',by:'Cisco Academy',yr:'2025',c:'#00ff88'},
-  {n:"NCC 'C' Certificate",by:'Ministry of Defence, Govt. of India',yr:'2026',c:'#9955ff'},
+  {n:"NCC 'B' Certificate",by:'Ministry of Defence, Govt. of India',yr:'2025',c:'#c5a028'},
 ];
 
 /* ─── BOOT ─── */
@@ -575,19 +590,21 @@ const CERTS=[
   })();
 })();
 
-/* ─── TYPEWRITER ─── */
+/* ─── ROLE SWITCHER ─── */
 (()=>{
   const el=document.getElementById('tw');
-  const roles=['VAPT Specialist','Ethical Hacker','Bug Hunter','Security Researcher','Defensive Engineer'];
-  let ri=0,ci=0,del=false;
-  (function tick(){
-    const cur=roles[ri],spd=del?26:65;
+  const roles=['VAPT Specialist','Ethical Hacker','Bug Hunter','Security Researcher','Cyber Security Analyst','Defensive Engineer'];
+  let ri=0;
+  function show(){
+    el.textContent=roles[ri];
+    el.style.color='var(--c1)';
+    el.className='role-in';
     setTimeout(()=>{
-      if(!del){el.textContent=cur.slice(0,ci+1);if(ci+1===cur.length)setTimeout(()=>del=true,1900);else ci++;}
-      else{el.textContent=cur.slice(0,ci-1);if(ci-1<0){del=false;ri=(ri+1)%roles.length;ci=0;}else ci--;}
-      tick();
-    },spd);
-  })();
+      el.className='role-out';
+      setTimeout(()=>{ri=(ri+1)%roles.length;show();},320);
+    },2800);
+  }
+  show();
 })();
 
 /* ─── TICKER ─── */
@@ -598,7 +615,7 @@ const CERTS=[
 })();
 
 /* ─── NAV + SIDENAV ─── */
-const SECS=['about','skills','experience','projects','certs','contact'];
+const SECS=['about','skills','experience','projects','certs','extra','contact'];
 let actSec='hero';
 function buildNav(){
   document.getElementById('nlinks').innerHTML=SECS.map(s=>`<a href="#${s}" class="nav-link${actSec===s?' on':''}">${s}</a>`).join('');
@@ -728,9 +745,9 @@ document.querySelectorAll('.rv').forEach(el=>new IntersectionObserver(([e])=>{if
         <div class="pmeta"><span class="pyear">${p.year}</span><span class="ptog" style="color:${p.c};transform:${open===i?'rotate(45deg)':'none'}">+</span></div>
       </div>
       ${open===i?`<div class="pexp"><div class="pexpg">
-        <div><div class="pelbl"> DESCRIPTION</div><p class="pdesc">${p.desc}</p><div class="pelbl">HIGHLIGHTS</div>${p.pts.map(h=>`<div class="phi"><span class="phiarr" style="color:${p.c}">→</span><span class="phitxt">${h}</span></div>`).join('')}</div>
-        <div><div class="pelbl">TECH STACK</div><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-         
+        <div><div class="pelbl">// DESCRIPTION</div><p class="pdesc">${p.desc}</p><div class="pelbl">// HIGHLIGHTS</div>${p.pts.map(h=>`<div class="phi"><span class="phiarr" style="color:${p.c}">→</span><span class="phitxt">${h}</span></div>`).join('')}</div>
+        <div><div class="pelbl">// TECH STACK</div><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+          <a href="${D.github}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="font-family:var(--fM);font-size:.58rem;color:${p.c};border:1px solid ${p.c}44;padding:.36rem .88rem;background:${p.c}07;display:inline-flex;align-items:center;gap:.4rem;letter-spacing:.1em;transition:background .2s" onmouseenter="this.style.background='${p.c}18'" onmouseleave="this.style.background='${p.c}07'">View on GitHub →</a>
         </div></div></div>`:''}
     </div>`).join('');}
   window.projTog=i=>{open=open===i?null:i;render();};render();
@@ -771,6 +788,36 @@ window.sendMsg=async()=>{
     setTimeout(()=>{btn.className='fsub';btn.textContent='Send Message';},4000);
   }
 };
+
+/* ─── EXTRA CURRICULAR ─── */
+(()=>{
+  const el=document.getElementById('rextra');if(!el)return;
+  const items=[
+    {icon:'🏆',col:'#ffaa00',title:'Smart India Hackathon (SIH) 2025',sub:'Selected at college level · Waiting list for national finals',desc:'Selected among top teams at the college-level SIH 2025 screening round. Shortlisted and placed on the waiting list for the SIH Grand Finale — national-level competition organized by the Ministry of Education.'},
+    {icon:'🥉',col:'#00dcff',title:'3rd Place — CTF (Capture the Flag)',sub:'Under-college level competition',desc:'Secured 3rd position in a Capture the Flag (CTF) competition conducted at the college level, solving challenges across categories including web exploitation, reverse engineering, and cryptography.'},
+    {icon:'🎤',col:'#9955ff',title:'DCG Coimbatore Conference',sub:'Participant · Cybersecurity domain',desc:'Participated in the DCG (District Cyber Group) Coimbatore conference, engaging with cybersecurity professionals, researchers, and practitioners from the region on current threats and industry developments.'},
+    {icon:'⚡',col:'#00ff88',title:'Sports & Athletics',sub:'Athletics meet · Basketball match',desc:'Active participant in the under-college athletics meet and basketball tournament, demonstrating teamwork, discipline, and physical fitness alongside academic and technical pursuits.'},
+  ];
+  const cols=window.innerWidth>=768?'repeat(2,1fr)':'1fr';
+  el.style.gridTemplateColumns=cols;
+  window.addEventListener('resize',()=>{el.style.gridTemplateColumns=window.innerWidth>=768?'repeat(2,1fr)':'1fr';});
+  el.innerHTML=items.map((item,i)=>`
+    <div style="background:var(--surf);border:1px solid var(--b1);padding:0;overflow:hidden;position:relative;transition:border-color .28s,box-shadow .28s;animation:fadeUp .5s ease ${i*.1}s both"
+      onmouseenter="this.style.borderColor='${item.col}44';this.style.boxShadow='0 0 24px ${item.col}12'"
+      onmouseleave="this.style.borderColor='var(--b1)';this.style.boxShadow='none'">
+      <div style="height:2px;background:linear-gradient(90deg,transparent,${item.col},transparent)"></div>
+      <div style="padding:1.2rem 1.3rem">
+        <div style="display:flex;align-items:flex-start;gap:.9rem">
+          <div style="width:38px;height:38px;border:1px solid ${item.col}44;background:${item.col}0a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">${item.icon}</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:var(--fH);font-weight:700;font-size:.78rem;color:var(--t1);letter-spacing:.03em;margin-bottom:.22rem">${item.title}</div>
+            <div style="font-family:var(--fM);font-size:.54rem;color:${item.col};letter-spacing:.08em;margin-bottom:.65rem">${item.sub}</div>
+            <div style="font-family:var(--fM);font-size:.67rem;color:var(--t2);line-height:1.85">${item.desc}</div>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+})();
 
 /* ─── FOOTER CLOCK ─── */
 (()=>{const el=document.getElementById('ftime');const t=()=>el&&(el.textContent=new Date().toUTCString().slice(0,25)+' ▌');t();setInterval(t,1000);})();
